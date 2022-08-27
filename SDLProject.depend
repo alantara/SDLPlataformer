@@ -1,0 +1,355 @@
+# depslib dependency file v1.0
+1658188880 source:d:\projects\sdlproject\main.cpp
+	"Engine.h"
+	"Timer.h"
+
+1658194642 d:\projects\sdlproject\src\core\engine.h
+	<SDL.h>
+	<SDL_image.h>
+
+1658198021 source:d:\projects\sdlproject\src\core\engine.cpp
+	"Engine.h"
+	<SDL.h>
+	"TextureManager.h"
+	"Player.h"
+	"EventHandler.h"
+	"Timer.h"
+
+1658195792 source:d:\projects\sdlproject\src\graphics\texturemanager.cpp
+	"TextureManager.h"
+	"Engine.h"
+
+1658195800 d:\projects\sdlproject\src\graphics\texturemanager.h
+	<map>
+	<string>
+	<SDL.h>
+
+1658162173 d:\projects\sdlproject\src\characters\player.h
+	"Character.h"
+	"Animator.h"
+	"RigidBody.h"
+
+1658073549 d:\projects\sdlproject\src\characters\character.h
+	<string>
+	"GameObject.h"
+
+1658074014 d:\projects\sdlproject\src\object\gameobject.h
+	<SDL.h>
+	"IObject.h"
+	"Transform.h"
+
+1658073506 d:\projects\sdlproject\src\object\iobject.h
+
+1658183817 d:\projects\sdlproject\src\physics\transform.h
+	"Vector2D.h"
+
+1658166560 d:\projects\sdlproject\src\physics\vector2d.h
+
+1658249242 source:d:\projects\sdlproject\src\characters\player.cpp
+	"Player.h"
+	<SDL.h>
+	<math.h>
+	"TextureManager.h"
+	"EventHandler.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\checkkeys.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\checkkeysthreads.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\controllermap.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\loopwave.c
+	"SDL_config.h"
+	<stdio.h>
+	<stdlib.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+
+1658196343 source:d:\projects\sdlproject\src\animator\animator.cpp
+	"Animator.h"
+	"TextureManager.h"
+
+1658194618 d:\projects\sdlproject\src\animator\animator.h
+	<SDL.h>
+	<string>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\loopwavequeue.c
+	<stdio.h>
+	<stdlib.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+	<signal.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testatomic.c
+	<stdio.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testaudiocapture.c
+	"SDL.h"
+	<stdlib.h>
+	<emscripten/emscripten.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testaudiohotplug.c
+	"SDL_config.h"
+	<stdio.h>
+	<stdlib.h>
+	<signal.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testaudioinfo.c
+	<stdio.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation.c
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	"SDL.h"
+	"SDL_test.h"
+	"testautomation_suites.h"
+
+1650910413 d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_suites.h
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_audio.c
+	<stdio.h>
+	<string.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_clipboard.c
+	<stdio.h>
+	<string.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_events.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_hints.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_keyboard.c
+	<stdio.h>
+	<limits.h>
+	"SDL_config.h"
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_main.c
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_mouse.c
+	<stdio.h>
+	<limits.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_pixels.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_platform.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_rect.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_render.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_rwops.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_sdltest.c
+	<limits.h>
+	<stdint.h>
+	<stdio.h>
+	<float.h>
+	<ctype.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_stdlib.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_surface.c
+	<stdio.h>
+	<unistd.h>
+	<sys/stat.h>
+	"SDL.h"
+	"SDL_test.h"
+	<unistd.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_syswm.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_syswm.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_timer.c
+	<stdio.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testautomation_video.c
+	<stdio.h>
+	<string.h>
+	<stdint.h>
+	"SDL.h"
+	"SDL_test.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testbounds.c
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testcustomcursor.c
+	<stdlib.h>
+	<stdio.h>
+	<emscripten/emscripten.h>
+	"SDL_test_common.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testdisplayinfo.c
+	"SDL.h"
+	<stdio.h>
+	<stdlib.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testdraw2.c
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<emscripten/emscripten.h>
+	"SDL_test_common.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testdrawchessboard.c
+	<stdlib.h>
+	<stdio.h>
+	<emscripten/emscripten.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testdropfile.c
+	<stdlib.h>
+	<stdio.h>
+	"SDL_test_common.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testerror.c
+	<stdio.h>
+	<stdlib.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testfile.c
+	<stdlib.h>
+	<unistd.h>
+	"SDL.h"
+	<stdio.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testfilesystem.c
+	<stdio.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testgamecontroller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"SDL.h"
+	<emscripten/emscripten.h>
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testgeometry.c
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<emscripten/emscripten.h>
+	"SDL_test_common.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testgesture.c
+	"SDL.h"
+	<stdlib.h>
+	<emscripten/emscripten.h>
+	"SDL_test.h"
+	"SDL_test_common.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testgl2.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	"SDL_test_common.h"
+	"SDL_opengl.h"
+	"../src/render/opengl/SDL_glfuncs.h"
+	"../src/render/opengl/SDL_glfuncs.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testgles.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	"SDL_test_common.h"
+	"SDL_opengles.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testhaptic.c
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testhittesting.c
+	<stdio.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testhotplug.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"SDL.h"
+
+1650910413 source:d:\projects\sdlproject\src\external\sdl2-2.0.22\test\testiconv.c
+	<stdio.h>
+	"SDL.h"
+
+1658198141 d:\projects\sdlproject\src\physics\rigidbody.h
+	<SDL.h>
+	"Vector2D.h"
+
+1658107964 source:d:\projects\sdlproject\src\physics\rigidbody.cpp
+	"RigidBody.h"
+
+1658194179 d:\projects\sdlproject\src\event-handler\eventhandler.h
+	<SDL.h>
+
+1658194173 source:d:\projects\sdlproject\src\event-handler\eventhandler.cpp
+	"EventHandler.h"
+	"Engine.h"
+
+1658204333 d:\projects\sdlproject\src\timer\timer.h
+
+1658198337 source:d:\projects\sdlproject\src\timer\timer.cpp
+	"Timer.h"
+	<SDL.h>
+
