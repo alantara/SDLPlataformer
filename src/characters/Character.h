@@ -1,8 +1,8 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+
+#pragma once
 
 #include <string>
-#include "GameObject.h"
+#include "../object/GameObject.h"
 
 class Character : public GameObject
 {
@@ -16,5 +16,3 @@ class Character : public GameObject
     protected:
         std::string m_Name;
 };
-
-#endif // CHARACTER_H

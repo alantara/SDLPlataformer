@@ -1,7 +1,9 @@
-#ifndef EVENTHANDLER_H
-#define EVENTHANDLER_H
 
-#include <SDL.h>
+#pragma once
+
+#include <SDL2/SDL.h>
+
+class Engine;
 
 class EventHandler
 {
@@ -15,11 +17,9 @@ class EventHandler
         bool GetKeyDown(SDL_Scancode key);
 
     private:
-        EventHandler() {};
+        EventHandler();
         static EventHandler* s_Instance;
 
         void KeyUpdate();
         const Uint8* m_KeyStates;
 };
-
-#endif // EVENTHANDLER_H

@@ -1,8 +1,13 @@
 #include "EventHandler.h"
 
-#include "Engine.h"
+#include "../core/Engine.h"
 
 EventHandler* EventHandler::s_Instance = nullptr;
+
+EventHandler::EventHandler()
+{
+    m_KeyStates = SDL_GetKeyboardState(nullptr);
+}
 
 void EventHandler::Listen()
 {

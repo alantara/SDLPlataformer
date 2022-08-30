@@ -1,9 +1,9 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+
+#pragma once
 
 #include "Character.h"
-#include "Animator.h"
-#include "RigidBody.h"
+#include "../animator/Animator.h"
+#include "../physics/RigidBody.h"
 
 class Player : public Character
 {
@@ -21,5 +21,3 @@ class Player : public Character
         Animator* m_Animator;
         RigidBody* m_Rigidbody;
 };
-
-#endif // PLAYER_H

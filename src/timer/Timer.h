@@ -1,5 +1,4 @@
-#ifndef TIMER_H
-#define TIMER_H
+#pragma once
 
 const int MAX_DELTATIME = 150.0f;
 
@@ -24,5 +23,3 @@ class Timer
         float m_DeltaTime, m_LastTime;
 
 };
-
-#endif // TIMER_H

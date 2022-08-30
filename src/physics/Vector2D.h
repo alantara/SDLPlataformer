@@ -1,5 +1,5 @@
-#ifndef VECTOR2D_H
-#define VECTOR2D_H
+
+#pragma once
 
 class Vector2D
 {
@@ -25,5 +25,3 @@ class Vector2D
             return Vector2D(x * scalar, y * scalar);
         }
 };
-
-#endif // VECTOR2D_H

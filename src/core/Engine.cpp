@@ -1,50 +1,49 @@
 #include "Engine.h"
 
-#include <SDL.h>
-#include "TextureManager.h"
-#include "Player.h"
-#include "EventHandler.h"
-#include "Timer.h"
+#include "../graphics/TextureManager.h"
+#include "../characters/Player.h"
+#include "../timer/Timer.h"
 
 Engine* Engine::s_Instance = nullptr;
 Player* m_Player = nullptr;
 
 Engine::Engine()
 {
-    SDL_Log("starting engine");///Log
+    SDL_Log("starting engine");
+
     m_RunState = false;
 }
 
 bool Engine::Init()
 {
     //SDL Inicialization
-    SDL_Log("initializing SDL");///Log
+    SDL_Log("initializing SDL");
     if(SDL_Init(SDL_INIT_VIDEO) != 0 && IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG))
     {
-        SDL_Log("Failed to initialize SDL: %s", SDL_GetError());///Log
+        SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
         return false;
     }
-    SDL_Log("SDL initialized");///Log
+    SDL_Log("SDL initialized");
 
     //Create Window Display
-    SDL_Log("creating window");///Log
+    SDL_Log("creating window");
     s_Window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     if(s_Window == nullptr)
     {
-        SDL_Log("Failed to create window: %s", SDL_GetError());///Log
+        SDL_Log("Failed to create window: %s", SDL_GetError());
         return false;
     }
-    SDL_Log("window created");///Log
+    SDL_Log("window created");
 
     //Create Renderer
-    SDL_Log("creating renderer");///Log
+    SDL_Log("creating renderer");
     s_Renderer = SDL_CreateRenderer(s_Window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if(s_Renderer == nullptr)
     {
-        SDL_Log("Failed to create renderer: %s", SDL_GetError());///Log
+        SDL_Log("Failed to create renderer: %s", SDL_GetError());
         return false;
     }
-    SDL_Log("renderer created");///Log
+    SDL_Log("renderer created");
 
     m_RunState = true;
 
@@ -56,7 +55,7 @@ bool Engine::Init()
 
 bool Engine::Clean()
 {
-    SDL_Log("starting cleanup");///Log
+    SDL_Log("starting cleanup");
 
     TextureManager::GetInstance()->Clean();
     SDL_DestroyRenderer(s_Renderer);
@@ -64,13 +63,13 @@ bool Engine::Clean()
     IMG_Quit();
     SDL_Quit();
 
-    SDL_Log("engine cleaned");///Log
+    SDL_Log("engine cleaned");
 
 }
 
 void Engine::Quit()
 {
-    SDL_Log("event quit, exiting game loop");///Log
+    SDL_Log("event quit, exiting game loop");
     m_RunState = false;
 }
 

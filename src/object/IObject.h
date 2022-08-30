@@ -1,5 +1,5 @@
-#ifndef IOBJECT_H
-#define IOBJECT_H
+
+#pragma once
 
 class IObject
 {
@@ -9,5 +9,3 @@ class IObject
         virtual void Clean() = 0;
 
 };
-
-#endif // IOBJECT_H

@@ -1,5 +1,5 @@
-#ifndef TRANSFORM_H
-#define TRANSFORM_H
+
+#pragma once
 
 #include "Vector2D.h"
 
@@ -23,5 +23,3 @@ class Transform
             y += vec.y;
         }
 };
-
-#endif // TRANSFORM_H

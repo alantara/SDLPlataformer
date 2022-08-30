@@ -1,9 +1,9 @@
-#ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
+
+#pragma once
 
 #include <map>
 #include <string>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 class TextureManager
 {
@@ -26,5 +26,3 @@ class TextureManager
         static TextureManager* s_Instance;
 
 };
-
-#endif // TEXTUREMANAGER_H

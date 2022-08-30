@@ -1,5 +1,5 @@
-#include "Engine.h"
-#include "Timer.h"
+#include "src/core/Engine.h"
+#include "src/timer/Timer.h"
 
 int main(int argsc, char** argv)
 {

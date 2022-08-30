@@ -1,8 +1,10 @@
-#ifndef ENGINE_H
-#define ENGINE_H
 
-#include <SDL.h>
-#include <SDL_image.h>
+#pragma once
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
+#include "../event-handler/EventHandler.h"
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
@@ -40,5 +42,3 @@ class Engine
         SDL_Window* s_Window;
         SDL_Renderer* s_Renderer;
 };
-
-#endif // ENGINE_H

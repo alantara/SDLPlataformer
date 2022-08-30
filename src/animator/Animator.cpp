@@ -1,6 +1,6 @@
 #include "Animator.h"
 
-#include "TextureManager.h"
+#include "../graphics/TextureManager.h"
 
 void Animator::Update()
 {

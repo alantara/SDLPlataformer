@@ -1,20 +1,13 @@
-#ifndef RIGIDBODY_H
-#define RIGIDBODY_H
 
-#include <SDL.h>
+#pragma once
+
+#include <SDL2/SDL.h>
 #include "Vector2D.h"
 
 class RigidBody
 {
     public:
-        RigidBody()
-        {
-            m_Gravity = 0;
-            m_Mass = 1;
-            m_Acceleration = 0;
-            m_Velocity = 0;
-            m_Position = 0;
-        }
+        RigidBody();
 
         inline void SetMass(float mass)
         {
@@ -67,5 +60,3 @@ class RigidBody
         Vector2D m_Force;
         Vector2D m_Position, m_Velocity, m_Acceleration;
 };
-
-#endif // RIGIDBODY_H
