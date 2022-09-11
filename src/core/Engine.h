@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "../event-handler/EventHandler.h"
+#include "../map/GameMap.h"
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
@@ -39,6 +40,7 @@ class Engine
         static Engine* s_Instance;
         bool m_RunState;
 
+        GameMap* m_LevelMap;
         SDL_Window* s_Window;
         SDL_Renderer* s_Renderer;
 };

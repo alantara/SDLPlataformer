@@ -9,7 +9,7 @@ Player::Player(Properties* props): Character(props)
 {
     m_Rigidbody = new RigidBody();
     m_Animator = new Animator();
-    m_Animator->SetProps(m_TextureID, 0, 8, 50, SDL_FLIP_NONE);
+    m_Animator->SetProps(m_TextureID, 1, 8, 50, SDL_FLIP_NONE);
 }
 
 void Player::Draw()

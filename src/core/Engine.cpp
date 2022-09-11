@@ -3,6 +3,7 @@
 #include "../graphics/TextureManager.h"
 #include "../characters/Player.h"
 #include "../timer/Timer.h"
+#include "../map/MapParser.h"
 
 Engine* Engine::s_Instance = nullptr;
 Player* m_Player = nullptr;
@@ -47,6 +48,13 @@ bool Engine::Init()
 
     m_RunState = true;
 
+    if(MapParser::GetInstance()->Load())
+    {
+        std::cout << "Failed to load map" << std::endl;
+    }
+
+    m_LevelMap = MapParser::GetInstance()->GetMap("level1");
+
     //Inicializations
     TextureManager::GetInstance()->Load("player", "assets/idle-sprite.png");
     TextureManager::GetInstance()->Load("tree", "assets/tree.png");
@@ -76,6 +84,7 @@ void Engine::Quit()
 void Engine::Update()
 {
     m_Player->Update(Timer::GetInstance()->GetDeltaTime());
+    m_LevelMap->Update();
 }
 
 void Engine::Render()
@@ -84,6 +93,7 @@ void Engine::Render()
 
     SDL_SetRenderDrawColor(s_Renderer, 255, 255, 255, 255);
     m_Player->Draw();
+    m_LevelMap->Render();
     TextureManager::GetInstance()->Draw("tree", 200, 100, 360, 510);
     SDL_RenderPresent(s_Renderer);
 }
