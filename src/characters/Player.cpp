@@ -43,6 +43,9 @@ void Player::Update(float dt)
     
     m_Rigidbody->Update(dt);
     m_Animator->Update();
+
+    m_Origin->X = m_Position->x + m_Width/2;
+    m_Origin->Y = m_Position->y + m_Height/2;
 }
 
 void Player::Clean()

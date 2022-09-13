@@ -7,8 +7,8 @@
 #include "../event-handler/EventHandler.h"
 #include "../map/GameMap.h"
 
-#define SCREEN_WIDTH 960
-#define SCREEN_HEIGHT 640
+#define SCREEN_WIDTH 1600
+#define SCREEN_HEIGHT 900
 
 class Engine
 {

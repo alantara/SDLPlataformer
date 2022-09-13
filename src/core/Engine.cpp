@@ -4,6 +4,7 @@
 #include "../characters/Player.h"
 #include "../timer/Timer.h"
 #include "../map/MapParser.h"
+#include "../camera/Camera.h"
 
 Engine* Engine::s_Instance = nullptr;
 Player* m_Player = nullptr;
@@ -56,9 +57,12 @@ bool Engine::Init()
     m_LevelMap = MapParser::GetInstance()->GetMap("level1");
 
     //Inicializations
+    TextureManager::GetInstance()->Load("bg", "assets/images/bg.png");
     TextureManager::GetInstance()->Load("player", "assets/idle-sprite.png");
     TextureManager::GetInstance()->Load("tree", "assets/tree.png");
     m_Player = new Player(new Properties("player", 100, 100, 16, 16));
+
+    Camera::GetInstance()->SetTarget(m_Player->GetOrigin());
 }
 
 bool Engine::Clean()
@@ -83,8 +87,10 @@ void Engine::Quit()
 
 void Engine::Update()
 {
-    m_Player->Update(Timer::GetInstance()->GetDeltaTime());
+    float dt = Timer::GetInstance()->GetDeltaTime();
+    m_Player->Update(dt);
     m_LevelMap->Update();
+    Camera::GetInstance()->Update(dt);
 }
 
 void Engine::Render()
@@ -92,6 +98,7 @@ void Engine::Render()
     SDL_RenderClear(s_Renderer);
 
     SDL_SetRenderDrawColor(s_Renderer, 255, 255, 255, 255);
+    TextureManager::GetInstance()->Draw("bg", 0, 0, 1920, 1080);
     m_Player->Draw();
     m_LevelMap->Render();
     TextureManager::GetInstance()->Draw("tree", 200, 100, 360, 510);
