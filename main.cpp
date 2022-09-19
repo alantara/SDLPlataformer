@@ -1,19 +1,8 @@
-#include "src/core/Engine.h"
-#include "src/timer/Timer.h"
 
-int main(int argsc, char** argv)
-{
-    Engine::GetInstance()->Init();
+#include "src/core/Core.hpp"
 
-    while(Engine::GetInstance()->IsRunning())
-    {
-        Engine::GetInstance()->Events();
-        Engine::GetInstance()->Update();
-        Engine::GetInstance()->Render();
-        Timer::GetInstance()->Tick();
-    }
+int main(int argc, char* argv[]) {
+    Core Instance;
 
-    Engine::GetInstance()->Clean();
-
-    return 0;
+    return Instance.Execute();
 }

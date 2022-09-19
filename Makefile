@@ -1,5 +1,2 @@
-
-C_FILES = src/camera/*.cpp src/animator/*.cpp src/characters/*.cpp src/core/*.cpp src/event-handler/*.cpp src/graphics/*.cpp src/physics/*.cpp src/timer/*.cpp src/vendor/tinyxml/*.cpp src/map/*.cpp
-
 all:
-	g++ main.cpp $(C_FILES) -w -lSDL2 -lSDL2_image -o main
+	g++ -o main main.cpp src/core/Core.cpp src/gfx/TextureManager.cpp src/map/Map.cpp -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
