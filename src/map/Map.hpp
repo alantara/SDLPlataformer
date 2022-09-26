@@ -2,19 +2,33 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include <iostream>
+#include <vector>
 #include "../gfx/TextureManager.hpp"
 
 class Map
 {
     public:
+
+        /*  Class Methods   */
+        void Render();
+        void LiveRender();
+
+        /*  Instance    */
+        static Map* GetInstance()
+        {
+            return Instance = Instance ? Instance : new Map();
+        }
+
+    private:
         Map();
         ~Map();
 
-        /*  Class Methods   */
+        int mapRows, mapCols;
+        int tilemapRows, tilemapCols, tileSize, tileMultiplier;
+        int displayedTileSize;
 
-        void Render(SDL_Renderer* renderer, TextureManager* gfxManager);
-
-    private:
-
+        int** GameMap;
+        std::vector<std::vector<int>> CollisionMap();
+        
+        static Map* Instance;
 };

@@ -9,18 +9,28 @@
 class TextureManager
 {
     public:
-        TextureManager(){}
-        ~TextureManager();
 
         /*  Class Methods   */
-        int Load(SDL_Renderer* renderer, std::string id, std::string filepath);
+        int Load(std::string id, std::string filepath);
         void Drop(std::string id);
         void Clean();
 
-        void DrawTile(SDL_Renderer* renderer, std::string id, int tileSize, int dst_multiplier, int row, int col, int x, int y);
+        void DrawTile(std::string id, int tileSize, int dst_multiplier, int row, int col, int x, int y);
 
+        /*  Getter Methods  */
         std::map<std::string, SDL_Texture*> GetTextureMap() { return TextureMap; }
-        std::map<std::string, SDL_Texture* > TextureMap;
-    private:
 
+        /*  Instance    */
+        static TextureManager* GetInstance()
+        {
+            return Instance = Instance ? Instance : new TextureManager();
+        }
+
+    private:
+        TextureManager();
+        ~TextureManager();
+
+        std::map<std::string, SDL_Texture* > TextureMap;
+
+        static TextureManager* Instance;
 };

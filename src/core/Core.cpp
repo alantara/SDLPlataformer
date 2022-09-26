@@ -2,14 +2,16 @@
 #include "Core.hpp"
 
 #include <iostream>
-#include <fstream>
+#include "../gfx/TextureManager.hpp"
+#include "../map/Map.hpp"
 
 #define WINDOW_WIDTH 1600
 #define WINNDOW_HEIGHT 900
 
+Core* Core::Instance = nullptr;
+
 Core::Core()
 {
-    GameMap = nullptr;
     Window = nullptr;
     Renderer = nullptr;
     RunState = true;
@@ -47,7 +49,7 @@ bool Core::Init()
         return false;
     }
 
-    Window = SDL_CreateWindow("Plataformer  ", 100, 100, WINDOW_WIDTH, WINNDOW_HEIGHT, SDL_WINDOW_RESIZABLE);
+    Window = SDL_CreateWindow("Plataformer", 100, 100, WINDOW_WIDTH, WINNDOW_HEIGHT, SDL_WINDOW_RESIZABLE);
     if(Window == nullptr)
     {
         std::cout << "Failed to Initialize Window" << std::endl;
@@ -61,10 +63,7 @@ bool Core::Init()
         return false;
     }
 
-    gfxManager = new TextureManager();
-    gfxManager->Load(Renderer, "das", "texture.png");
-
-    GameMap = new Map();
+    TextureManager::GetInstance()->Load("das", "assets/texture.png");
 
     return true;
 }
@@ -80,7 +79,7 @@ void Core::Render()
 
     SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
 
-    GameMap->Render(Renderer, gfxManager);
+    Map::GetInstance()->Render();
 
     SDL_RenderPresent(Renderer);
 }
@@ -101,7 +100,8 @@ void Core::Events()
 
 void Core::Clean()
 {
-    gfxManager->Clean();
+    TextureManager::GetInstance()->Clean();
+    
     SDL_DestroyWindow(Window);
     SDL_DestroyRenderer(Renderer);
     SDL_Quit();
