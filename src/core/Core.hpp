@@ -2,6 +2,8 @@
 #pragma once
 
 #include <SDL2/SDL.h>
+#include "Scene.hpp"
+#include "MainMenu.hpp"
 
 class Core
 {
@@ -31,6 +33,8 @@ class Core
         ~Core();
 
         bool isRunning;
+
+        MainMenu* mainMenu;
 
         static Core* Instance;
 };

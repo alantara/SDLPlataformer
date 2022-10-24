@@ -1,15 +1,25 @@
 
 #include "MainMenu.hpp"
 
+#include <iostream>
+#include "Screen.hpp"
 
-class MainMenu
+MainMenu::MainMenu()
 {
-    public:
 
-        void Render();
-        void Update();
+}
 
-    private:
+MainMenu::~MainMenu()
+{
 
-    
-};
+}
+
+void MainMenu::Render()
+{
+    SDL_SetRenderDrawColor(Screen::GetInstance()->GetRenderer(), 0, 0, 255, 255);
+}
+
+void MainMenu::Update()
+{
+
+}

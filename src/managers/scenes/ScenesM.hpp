@@ -2,15 +2,17 @@
 #pragma once
 
 #include "Scene.hpp"
+#include <string>
+#include <map>
 
 class ScenesM
 {
     public:
 
-        void Create(std::string name, Scene* sc);
-        void Render();
-        void Update();
-        void SetActive();
+        void CreateScene(std::string id, Scene* sc);
+        void RenderScene();
+        void UpdateScene();
+        void SetActiveScene(std::string id);
 
         void Clean();
 

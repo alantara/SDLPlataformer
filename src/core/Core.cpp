@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Screen.hpp"
 #include "Event.hpp"
+#include "ScenesM.hpp"
+#include "Frame.hpp"
 
 Core* Core::Instance = nullptr;
 
@@ -12,6 +14,8 @@ Core* Core::Instance = nullptr;
 Core::Core()
 {
     isRunning = true;
+    mainMenu = nullptr;
+    Frame::GetInstance()->setFrameRate(60);
 }
 
 Core::~Core()
@@ -28,25 +32,35 @@ bool Core::Init()
         return false;
     }
 
+    mainMenu = new MainMenu();
+    ScenesM::GetInstance()->CreateScene("mainMenu", static_cast<Scene*>(mainMenu));
+    ScenesM::GetInstance()->SetActiveScene("mainMenu");
+
     return true;
 }
 
 void Core::Clean()
 {    
     Screen::GetInstance()->Clean();
+    ScenesM::GetInstance()->Clean();
 }
 
 
 /*  Logic Functions */
 void Core::Update()
 {
+    Frame::GetInstance()->FrameStart();
 
+    ScenesM::GetInstance()->UpdateScene();
+
+    Frame::GetInstance()->FrameEnd();
 }
 
 void Core::Render()
 {
     Screen::GetInstance()->RenderPrepare();
 
+    ScenesM::GetInstance()->RenderScene();
 
     Screen::GetInstance()->RenderPresent();
 }

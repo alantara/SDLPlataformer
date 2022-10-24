@@ -13,24 +13,24 @@ ScenesM::~ScenesM()
 
 }
 
-void ScenesM::Create(std::string name, Scene* sc)
+void ScenesM::CreateScene(std::string id, Scene* sc)
 {
-    scenesMap.push_back(make_pair(id, sc));
+    scenesMap.insert(make_pair(id, sc));
 }
 
-void ScenesM::Render()
+void ScenesM::RenderScene()
 {
     activeScene->Render();
 }
 
-void ScenesM::Update()
+void ScenesM::UpdateScene()
 {
     activeScene->Update();
 }
 
-void ScenesM::SetActive(Scenes* sc)
+void ScenesM::SetActiveScene(std::string id)
 {
-    activeScene = sc;
+    activeScene = scenesMap[id];
 }
 
 void ScenesM::Clean()
@@ -39,7 +39,7 @@ void ScenesM::Clean()
 
     for(it = scenesMap.begin(); it != scenesMap.end(); it++)
     {
-        delete *it;
+        delete it->second;
     }
     scenesMap.clear();
 }
