@@ -8,18 +8,17 @@ class Core
     public:
 
         /*  Class Methods   */
-        int Execute();
-
         bool Init();
         void Clean();
 
         void Update();
         void Render();
-        void Events();
 
+        int Execute();
+        void Quit();
+        
         /*  Getter Methods   */
-        SDL_Window* GetWindow() { return Window; }
-        SDL_Renderer* GetRenderer() { return Renderer; }
+        const bool GetRunState() const { return isRunning; }
 
         /*  Instance    */
         static Core* GetInstance()
@@ -30,10 +29,8 @@ class Core
     private:
         Core();
         ~Core();
-        bool RunState;
 
-        SDL_Window* Window;
-        SDL_Renderer* Renderer;
+        bool isRunning;
 
         static Core* Instance;
 };

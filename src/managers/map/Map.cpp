@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "../core/Core.hpp"
+#include "../../core/Core.hpp"
 
 Map* Map::Instance = nullptr;
 

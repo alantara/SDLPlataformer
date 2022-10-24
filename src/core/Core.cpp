@@ -2,19 +2,16 @@
 #include "Core.hpp"
 
 #include <iostream>
-#include "../gfx/TextureManager.hpp"
-#include "../map/Map.hpp"
-
-#define WINDOW_WIDTH 1600
-#define WINNDOW_HEIGHT 900
+#include "Screen.hpp"
+#include "Event.hpp"
 
 Core* Core::Instance = nullptr;
 
+
+/*  Constructor and Destructor  */
 Core::Core()
 {
-    Window = nullptr;
-    Renderer = nullptr;
-    RunState = true;
+    isRunning = true;
 }
 
 Core::~Core()
@@ -22,52 +19,25 @@ Core::~Core()
 
 }
 
-int Core::Execute()
-{
-    if(!Init())
-    {
-        return -1;
-    }
 
-    while(RunState)
-    {
-        Events();
-        Update();
-        Render();
-    }
-
-    Clean();
-
-    return 0;
-}
-
+/*  Initialization and Clean    */
 bool Core::Init()
 {
-    if(SDL_Init(SDL_INIT_VIDEO) != 0)
+    if(!Screen::GetInstance()->Init("Plataformer", 800, 600))
     {
-        std::cout << "Failed to Initialize SDL" << std::endl;
         return false;
     }
-
-    Window = SDL_CreateWindow("Plataformer", 100, 100, WINDOW_WIDTH, WINNDOW_HEIGHT, SDL_WINDOW_RESIZABLE);
-    if(Window == nullptr)
-    {
-        std::cout << "Failed to Initialize Window" << std::endl;
-        return false;
-    }
-
-    Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_PRESENTVSYNC);
-    if(Renderer == nullptr)
-    {
-        std::cout << "Failed to Initialize Renderer" << std::endl;
-        return false;
-    }
-
-    TextureManager::GetInstance()->Load("das", "assets/texture.png");
 
     return true;
 }
 
+void Core::Clean()
+{    
+    Screen::GetInstance()->Clean();
+}
+
+
+/*  Logic Functions */
 void Core::Update()
 {
 
@@ -75,34 +45,34 @@ void Core::Update()
 
 void Core::Render()
 {
-    SDL_RenderClear(Renderer);
+    Screen::GetInstance()->RenderPrepare();
 
-    SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
 
-    Map::GetInstance()->Render();
-
-    SDL_RenderPresent(Renderer);
+    Screen::GetInstance()->RenderPresent();
 }
 
-void Core::Events()
-{
-    SDL_Event Event;
 
-    while(SDL_PollEvent(&Event))
+/*  Execute */
+int Core::Execute()
+{
+    if(!Init())
     {
-        if(Event.type == SDL_QUIT)
-        {
-            RunState = false;
-        }
+        return -1;
     }
+
+    while(isRunning)
+    {
+        Event::GetInstance()->Listen();
+        Update();
+        Render();
+    }
+
+    Clean();
     
+    return 0;
 }
 
-void Core::Clean()
+void Core::Quit()
 {
-    TextureManager::GetInstance()->Clean();
-    
-    SDL_DestroyWindow(Window);
-    SDL_DestroyRenderer(Renderer);
-    SDL_Quit();
+    isRunning = false;
 }
