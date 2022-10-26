@@ -16,11 +16,6 @@ Frame::~Frame()
 }
 
 
-void Frame::setFrameRate(int fps)
-{
-    FPS = fps;
-    frameDelay = (float)1000 / FPS;
-}
 
 void Frame::FrameStart()
 {
@@ -35,4 +30,10 @@ void Frame::FrameEnd()
     {
         SDL_Delay(frameDelay - frameTime);
     }
+}
+
+void Frame::setFrameRate(int fps)
+{
+    FPS = fps;
+    frameDelay = (float)1000 / FPS;
 }

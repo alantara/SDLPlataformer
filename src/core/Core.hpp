@@ -2,27 +2,23 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-#include "Scene.hpp"
+
 #include "MainMenu.hpp"
 
 class Core
 {
     public:
 
-        /*  Class Methods   */
         bool Init();
+        int Execute();
         void Clean();
+        void Quit();
 
         void Update();
         void Render();
 
-        int Execute();
-        void Quit();
-        
-        /*  Getter Methods   */
         const bool GetRunState() const { return isRunning; }
 
-        /*  Instance    */
         static Core* GetInstance()
         {
             return Instance = Instance ? Instance : new Core();

@@ -2,15 +2,15 @@
 #include "Core.hpp"
 
 #include <iostream>
+
 #include "Screen.hpp"
 #include "Event.hpp"
 #include "ScenesM.hpp"
 #include "Frame.hpp"
+#include "EntityM.hpp"
 
 Core* Core::Instance = nullptr;
 
-
-/*  Constructor and Destructor  */
 Core::Core()
 {
     isRunning = true;
@@ -24,7 +24,6 @@ Core::~Core()
 }
 
 
-/*  Initialization and Clean    */
 bool Core::Init()
 {
     if(!Screen::GetInstance()->Init("Plataformer", 800, 600))
@@ -43,30 +42,9 @@ void Core::Clean()
 {    
     Screen::GetInstance()->Clean();
     ScenesM::GetInstance()->Clean();
+    EntityM::GetInstance()->Clean();
 }
 
-
-/*  Logic Functions */
-void Core::Update()
-{
-    Frame::GetInstance()->FrameStart();
-
-    ScenesM::GetInstance()->UpdateScene();
-
-    Frame::GetInstance()->FrameEnd();
-}
-
-void Core::Render()
-{
-    Screen::GetInstance()->RenderPrepare();
-
-    ScenesM::GetInstance()->RenderScene();
-
-    Screen::GetInstance()->RenderPresent();
-}
-
-
-/*  Execute */
 int Core::Execute()
 {
     if(!Init())
@@ -89,4 +67,27 @@ int Core::Execute()
 void Core::Quit()
 {
     isRunning = false;
+}
+
+
+void Core::Update()
+{
+    Frame::GetInstance()->FrameStart();
+
+    ScenesM::GetInstance()->UpdateScene();
+
+    EntityM::GetInstance()->Update();
+
+    Frame::GetInstance()->FrameEnd();
+}
+
+void Core::Render()
+{
+    Screen::GetInstance()->RenderPrepare();
+
+    ScenesM::GetInstance()->RenderScene();
+
+    EntityM::GetInstance()->Render();
+
+    Screen::GetInstance()->RenderPresent();
 }

@@ -10,11 +10,12 @@ class ScenesM
     public:
 
         void CreateScene(std::string id, Scene* sc);
+        void Clean();
+
         void RenderScene();
         void UpdateScene();
+        
         void SetActiveScene(std::string id);
-
-        void Clean();
 
         static ScenesM* GetInstance() 
         {
@@ -27,5 +28,6 @@ class ScenesM
 
         Scene* activeScene;
         std::map<std::string, Scene*> scenesMap;
+        
         static ScenesM* Instance;
 };

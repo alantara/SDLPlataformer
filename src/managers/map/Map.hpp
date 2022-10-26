@@ -3,32 +3,19 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
-#include "../gfx/TextureManager.hpp"
+#include <string>
+
+#include "Tileset.hpp"
 
 class Map
 {
     public:
-
-        /*  Class Methods   */
-        void Render();
-        void LiveRender();
-
-        /*  Instance    */
-        static Map* GetInstance()
-        {
-            return Instance = Instance ? Instance : new Map();
-        }
-
-    private:
         Map();
+        Map(std::string mappath, Tileset* ts);
         ~Map();
 
-        int mapRows, mapCols;
-        int tilemapRows, tilemapCols, tileSize, tileMultiplier;
-        int displayedTileSize;
+    private:
 
-        int** GameMap;
-        std::vector<std::vector<int>> CollisionMap();
-        
-        static Map* Instance;
+        Tileset* tileset;
+        int rowCount, colCount;
 };

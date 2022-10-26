@@ -3,6 +3,7 @@
 #pragma once 
 
 #include "Menu.hpp"
+#include "Map.hpp"
 
 class MainMenu : public Menu
 {
@@ -15,5 +16,5 @@ class MainMenu : public Menu
         void Update();
 
     private:
-        
+        Map* map;
 };

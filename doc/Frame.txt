@@ -1,0 +1,19 @@
+
+Singleton:
+    static Frame* Instance;           // Singleton 
+    static Frame* GetInstance()       // Singleton Getter
+
+
+Atributes:
+    int FPS;                          // Game FPS
+    float frameDelay;                 // Time that takes for a unique frame (in milliseconds)
+    Uint32 frameStart;                // Time of first interaction at the frame
+
+Methods:
+
+    Frame(int fps = 60);              // Input = Game FPS; Output = none; Description = Creates Frame Manager
+    ~Frame();                         // Input = none; Output = none; Description = Delete Frame Manager
+    void FrameStart();                // Input = none; Output = none; Description = Register the time of first interaction in the frame
+    void FrameEnd();                  // Input = none; Output = none; Description = Adjust Frame Time
+    void setFrameRate(int fps);       // Input = Game FPS; Output = none; Description = Set New Frame Rate
+        

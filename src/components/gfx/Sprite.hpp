@@ -10,16 +10,19 @@ class Sprite
     public:
 
         Sprite();
+        Sprite(std::string filepath, int width, int height, int row = 0, int col = 0, int multiplier = 1);
+        Sprite(SDL_Texture* texture, int width, int height, int row = 0, int col = 0,  int multiplier = 1);
         ~Sprite();
 
-        /*  Class Methods   */
-        bool LoadTexture(std::string filepath);
-        void DropTexture();
+        void Render(int x, int y);
 
-        void Render(int x, int y, int dst_multiplier = 1);
+        SDL_Texture* GetTexture() const { return spriteTexture; }
+
+        void SetDSTMultiplier(int multiplier) { dst_multiplier = multiplier; }
 
     private:
 
         SDL_Texture* spriteTexture;
-        int srcRow, srcCol, srcW, srcH;
+        int srcRow, srcCol, srcWidth, srcHeight;
+        int dst_multiplier;
 };

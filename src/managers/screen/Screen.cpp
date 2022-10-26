@@ -6,7 +6,6 @@
 
 Screen* Screen::Instance = nullptr;
 
-/*  Constructor and Destructor  */
 Screen::Screen()
 {
     screenWindow = nullptr;
@@ -19,7 +18,6 @@ Screen::~Screen()
 }
 
 
-/*  Initialization and Clean    */
 bool Screen::Init(std::string title, int w, int h, Uint32 flags)
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -41,6 +39,9 @@ bool Screen::Init(std::string title, int w, int h, Uint32 flags)
         std::cout << "Failed to Initialize Renderer" << std::endl;
         return false;
     }
+    
+    width = w;
+    heigth = h;
 
     return true;
 }
@@ -54,8 +55,6 @@ void Screen::Clean()
 
 
 
-
-/*  Logic Functions */
 void Screen::RenderPrepare()
 {
     SDL_RenderClear(screenRenderer);

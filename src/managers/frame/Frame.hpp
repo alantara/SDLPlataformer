@@ -7,11 +7,11 @@ class Frame
 {
     public:
 
-        void setFrameRate(int fps);
         void FrameStart();
         void FrameEnd();
 
-        /*  Instance    */
+        void setFrameRate(int fps);
+
         static Frame* GetInstance()
         {
             return Instance = Instance ? Instance : new Frame();
