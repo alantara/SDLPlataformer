@@ -1,7 +1,9 @@
+#include "Game.hpp"
 
-#include "src/core/Core.hpp"
-#include <string>
+int main ()
+{
+    Game Principal;
+    Principal.init();
 
-int main(int argc, char* argv[]) {
-    return Core::GetInstance()->Execute();
+    return 0;
 }
