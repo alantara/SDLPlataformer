@@ -1,6 +1,4 @@
 #include "Game.hpp"
-#include "GraphicManager.hpp"
-#include "Tileset.hpp"
 
 Game::Game()
 {
@@ -17,9 +15,6 @@ void Game::init()
 {
     gfx.init("Plataformer", 800, 600);
     isRunning = true;
-
-    Tileset *ts = new Tileset(gfx.getRenderer(), "assets/texture.png", 22, 24, 8, 8);
-    Map *map = new Map(gfx.getRenderer(), "assets/data.dat", ts);
 
     run();
 }

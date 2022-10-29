@@ -6,10 +6,7 @@
 //#include "Menu.hpp"
 #include "GraphicManager.hpp"
 #include "EventManager.hpp"
-#include "Sprite.hpp"
-#include "Map.hpp"
-#include "EntityList.hpp"
-using namespace Lists;
+
 //using namespace Levels;
 
 class Game 
@@ -22,7 +19,6 @@ private:
     //Menu menu;
     GraphicManager gfx;
     EventManager events;
-    Map *map;
 
 public:
     Game();

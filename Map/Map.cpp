@@ -5,7 +5,6 @@
 #include <fstream>
 
 #include "Entity.hpp"
-#include "Sprite.hpp"
 #include "Tile.hpp"
 using namespace Entities;
 using namespace Plataform;
@@ -14,7 +13,16 @@ Map::Map()
 {
 }
 
-Map::Map(SDL_Renderer *renderer, std::string mappath, Tileset *ts) : tileset(ts)
+Map::~Map()
+{
+}
+
+void Map::addTileset(SDL_Renderer *renderer, std::string tilesetpath, int rows, int cols, int width, int height)
+{
+    tileset.setProps(renderer, tilesetpath, rows, cols, width, height);
+}
+
+void Map::init(SDL_Renderer *renderer, std::string mappath)
 {
     std::ifstream data(mappath, std::ios::in);
 
@@ -34,23 +42,18 @@ Map::Map(SDL_Renderer *renderer, std::string mappath, Tileset *ts) : tileset(ts)
         int ext;
         data >> ext;
 
-        int yt = ext / tileset->getTileSetColCount();
-        int xt = ext - yt * tileset->getTileSetColCount();
+        int yt = ext / tileset.getTileSetColCount();
+        int xt = ext - yt * tileset.getTileSetColCount();
 
         int y = pos / colCount;
         int x = pos - y * colCount;
 
         Tile *tile = new Tile(x, y);
 
-        tile->getSprite().setProps(renderer, tileset->getTileSetSprite()->getTexture(), tileset->getTileWidth(), tileset->getTileHeight(), xt, yt, 8);
+        tile->getSprite().setProps(renderer, tileset.getTileSetSprite().getTexture(), tileset.getTileWidth(), tileset.getTileHeight(), xt, yt, 8);
 
         pos++;
     }
     data.close();
 }
 
-Map::~Map()
-{
-    delete tileset;
-    tileset = nullptr;
-}
