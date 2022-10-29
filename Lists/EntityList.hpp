@@ -13,11 +13,12 @@ private:
     List<Entity> EntList;
 
 public:
-    EntityList();
-    ~EntityList();
+    EntityList() : EntList(){};
+    ~EntityList(){};
 
     void renderAll();
-    void insert(Entity* entity);
+    void updateAll();
+    void insert(Entity &entity);
 
 };
 }

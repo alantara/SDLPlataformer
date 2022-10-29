@@ -6,7 +6,7 @@ template<class TL>
 class List
 {
 public:
-    List():first(nullptr),last(nullptr) {}
+    List():first(nullptr), atual(nullptr) {}
     ~List()
     {
         Elemento<TL>* aux = nullptr;
@@ -25,7 +25,7 @@ public:
         Elemento<TE>* next;
         TE* info;
     public:
-        Elemento(TE* i = nullptr):info(i), next(nullptr){}
+        Elemento(TE &i = nullptr):next(nullptr){ info = i;}
         ~Elemento(){next = nullptr; info = nullptr;}
 
         TE* GetInfo() const {return info;}
@@ -35,17 +35,17 @@ public:
         void SetNext(Elemento<TE>* n) {next = n;}
     };
 
-    void insert(TL* elem)
+    void insert(TL &info)
     {
         Elemento<TL>* el = nullptr;
-        el = new Elemento(elem);
+        el = new Elemento<TL>(info);
         if(first == nullptr){
             first = el;
-            last = el;
+            atual = el;
         }
         else{
-            last->SetNext(el);
-            last = last->GetNext();
+            atual->SetNext(el);
+            atual = atual->GetNext();
         }
     }
 
@@ -54,13 +54,8 @@ public:
         return first;
     }
 
-    Elemento<TL>* end() const
-    {
-        return last;
-    }
-
     private:
     Elemento<TL>* first;
-    Elemento<TL>* last;
+    Elemento<TL>* atual;
 };
 }

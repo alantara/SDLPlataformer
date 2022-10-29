@@ -2,19 +2,26 @@
 
 #include "Ente.hpp"
 #include "EntityList.hpp"
+#include "Map.hpp"
 using namespace Lists;
 
 namespace Levels
 {
 class Level : public Ente
 {
-private:
+protected:
     EntityList entities;
+    Map map;
+
 public:
     Level();
     ~Level();
 
-    virtual void update();
+    Map* getMap() { return &map; }
+
+    void render();
+    virtual void update() = 0;
     void manageCollision();
+    EntityList* getEntityList() {return &entities;}
 };
 }

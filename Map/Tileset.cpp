@@ -2,6 +2,7 @@
 #include "Tileset.hpp"
 
 #include "Sprite.hpp"
+#include <iostream>
 
 Tileset::Tileset()
 {
@@ -17,5 +18,7 @@ void Tileset::setProps(SDL_Renderer *renderer, std::string tilesetpath, int rows
     colCount = cols;
     tileWidth = width;
     tileHeight = height;
-    tilesetSprite.setProps(renderer, tilesetpath, width, height);
+    std::cout << colCount << std::endl;
+
+    tilesetSprite.setProps(renderer, tilesetpath, width * cols, height * rows);
 }

@@ -17,6 +17,7 @@ public:
     Entity(){};
     ~Entity(){};
 
+    int getX() { return x; }
     void setSprite(Sprite spr) { sprite = spr;}
     Sprite getSprite() const {return sprite;}
     virtual void update() = 0;

@@ -2,7 +2,16 @@
 
 using namespace Levels;
 
-void Ente::render()
+Level::Level()
 {
 
+}
+
+Level::~Level()
+{
+}
+
+void Level::render()
+{
+    entities.renderAll();
 }

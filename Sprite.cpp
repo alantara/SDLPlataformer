@@ -4,6 +4,7 @@
 
 Sprite::Sprite()
 {
+    spriteTexture = nullptr;
 }
 
 Sprite::~Sprite()

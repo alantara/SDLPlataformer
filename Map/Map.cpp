@@ -6,6 +6,8 @@
 
 #include "Entity.hpp"
 #include "Tile.hpp"
+#include "EntityList.hpp"
+using namespace Lists;
 using namespace Entities;
 using namespace Plataform;
 
@@ -17,12 +19,12 @@ Map::~Map()
 {
 }
 
-void Map::addTileset(SDL_Renderer *renderer, std::string tilesetpath, int rows, int cols, int width, int height)
+void Map::setTilesetProps(SDL_Renderer *renderer, std::string tilesetpath, int rows, int cols, int width, int height)
 {
     tileset.setProps(renderer, tilesetpath, rows, cols, width, height);
 }
 
-void Map::init(SDL_Renderer *renderer, std::string mappath)
+void Map::init(SDL_Renderer *renderer, std::string mappath, EntityList* entities)
 {
     std::ifstream data(mappath, std::ios::in);
 
@@ -48,9 +50,11 @@ void Map::init(SDL_Renderer *renderer, std::string mappath)
         int y = pos / colCount;
         int x = pos - y * colCount;
 
-        Tile *tile = new Tile(x, y);
+        Tile tile(x, y);
 
-        tile->getSprite().setProps(renderer, tileset.getTileSetSprite().getTexture(), tileset.getTileWidth(), tileset.getTileHeight(), xt, yt, 8);
+        tile.getSprite().setProps(renderer, tileset.getTileSetSprite().getTexture(), tileset.getTileWidth(), tileset.getTileHeight(), xt, yt, 8);
+
+        entities->insert(static_cast<Entity>(tile));
 
         pos++;
     }
