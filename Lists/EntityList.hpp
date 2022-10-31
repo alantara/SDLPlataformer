@@ -7,18 +7,17 @@ using namespace Entities;
 
 namespace Lists
 {
-class EntityList
-{
-private:
-    List<Entity> EntList;
+    class EntityList
+    {
+    private:
+        List<Entity *> EntList;
 
-public:
-    EntityList() : EntList(){};
-    ~EntityList(){};
+    public:
+        EntityList() : EntList(){};
+        ~EntityList(){};
 
-    void renderAll();
-    void updateAll();
-    void insert(Entity &entity);
-
-};
+        void renderAll(SDL_Renderer *renderer);
+        void updateAll();
+        void insert(Entity *entity);
+    };
 }

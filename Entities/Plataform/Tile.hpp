@@ -15,7 +15,6 @@ namespace Entities
             Tile(int x = 0, int y = 0);
             ~Tile();
 
-            void render();
             void update();
 
         private:

@@ -2,24 +2,30 @@
 
 #include "Ente.hpp"
 #include "Sprite.hpp"
+#include <iostream>
 
 namespace Entities
 {
-class Entity : public Ente
-{
-protected:
-    int x;
-    int y;
-    Sprite sprite;
-    bool active;
+    class Entity : public Ente
+    {
+    protected:
+        int x;
+        int y;
+        Sprite sprite;
+        bool active;
 
-public:
-    Entity(){};
-    ~Entity(){};
+    public:
+        Entity(){};
+        ~Entity(){};
 
-    int getX() { return x; }
-    void setSprite(Sprite spr) { sprite = spr;}
-    Sprite getSprite() const {return sprite;}
-    virtual void update() = 0;
-};
+        int getX() { return x; }
+        void setSprite(Sprite spr) { sprite = spr; }
+        Sprite getSprite() const { return sprite; }
+        virtual void update() {}
+        void render(SDL_Renderer *renderer)
+        {
+            std::cout << x << std::endl;
+            // sprite.render(renderer, x, y);
+        }
+    };
 }

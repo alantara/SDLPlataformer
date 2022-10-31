@@ -1,61 +1,48 @@
-#pragma once
-
 namespace Lists
 {
-template<class TL>
-class List
-{
-public:
-    List():first(nullptr), atual(nullptr) {}
-    ~List()
+    template <class TL>
+    class List
     {
-        Elemento<TL>* aux = nullptr;
-        aux = first;
-        while(aux != nullptr){
-            first = first->GetNext();
-            delete aux;
-            aux = first;
-        }
-    }
-
-    template<class TE>
-    class Elemento
-    {
-    private:
-        Elemento<TE>* next;
-        TE* info;
     public:
-        Elemento(TE &i = nullptr):next(nullptr){ info = i;}
-        ~Elemento(){next = nullptr; info = nullptr;}
+        template <class TE>
+        class Element
+        {
+        private:
+            Element<TE> *next;
+            TE *data;
 
-        TE* GetInfo() const {return info;}
-        void SetInfo(TE* i) {info = i;}
+        public:
+            Element(TE *info) : data(info), next(nullptr) {}
 
-        Elemento<TE>* GetNext() const {return next;}
-        void SetNext(Elemento<TE>* n) {next = n;}
-    };
+            Element<TE> *getNext() { return next; }
+            void setNext(Element<TE> *el) { next = el; }
 
-    void insert(TL &info)
-    {
-        Elemento<TL>* el = nullptr;
-        el = new Elemento<TL>(info);
-        if(first == nullptr){
-            first = el;
-            atual = el;
-        }
-        else{
-            atual->SetNext(el);
-            atual = atual->GetNext();
-        }
-    }
-
-    Elemento<TL>* begin() const
-    {
-        return first;
-    }
+            TE getData()
+            {
+                return (*data);
+            }
+        };
 
     private:
-    Elemento<TL>* first;
-    Elemento<TL>* atual;
-};
+        Element<TL> *first;
+        Element<TL> *last;
+
+    public:
+        List() : first(nullptr), last(nullptr) {}
+
+        void insert(TL dat)
+        {
+            Element<TL> *el = new Element<TL>(&dat);
+            if (first == nullptr)
+            {
+                first = el;
+                last = el;
+            }
+            else
+            {
+                last->setNext(el);
+                last = el;
+            }
+        }
+    };
 }

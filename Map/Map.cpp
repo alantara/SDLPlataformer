@@ -24,7 +24,7 @@ void Map::setTilesetProps(SDL_Renderer *renderer, std::string tilesetpath, int r
     tileset.setProps(renderer, tilesetpath, rows, cols, width, height);
 }
 
-void Map::init(SDL_Renderer *renderer, std::string mappath, EntityList* entities)
+void Map::init(SDL_Renderer *renderer, std::string mappath, EntityList *entities)
 {
     std::ifstream data(mappath, std::ios::in);
 
@@ -50,14 +50,13 @@ void Map::init(SDL_Renderer *renderer, std::string mappath, EntityList* entities
         int y = pos / colCount;
         int x = pos - y * colCount;
 
-        Tile tile(x, y);
+        Tile *tile = new Tile(x, y);
 
-        tile.getSprite().setProps(renderer, tileset.getTileSetSprite().getTexture(), tileset.getTileWidth(), tileset.getTileHeight(), xt, yt, 8);
+        tile->getSprite().setProps(renderer, tileset.getTileSetSprite().getTexture(), tileset.getTileWidth(), tileset.getTileHeight(), xt, yt, 8);
 
-        entities->insert(static_cast<Entity>(tile));
+        entities->insert(static_cast<Entity *>(tile));
 
         pos++;
     }
     data.close();
 }
-

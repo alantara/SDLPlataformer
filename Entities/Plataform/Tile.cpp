@@ -6,19 +6,14 @@
 using namespace Entities;
 using namespace Plataform;
 
-Tile::Tile(int x, int y)
+Tile::Tile(int xpos, int ypos)
 {
-    x = x;
-    y = y;
+    x = xpos;
+    y = ypos;
 }
 
 Tile::~Tile()
 {
-}
-
-void Tile::render()
-{
-
 }
 
 void Tile::update()

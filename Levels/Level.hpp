@@ -19,7 +19,7 @@ public:
 
     Map* getMap() { return &map; }
 
-    void render();
+    void render(SDL_Renderer* renderer);
     virtual void update() = 0;
     void manageCollision();
     EntityList* getEntityList() {return &entities;}
