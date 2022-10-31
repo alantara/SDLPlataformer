@@ -15,9 +15,10 @@ namespace Entities
         int y;
         Sprite sprite;
         bool active;
+        SDL_Rect hitbox;
 
     public:
-        Entity(GraphicManager *graphM) : Ente(graphM), sprite(gfx->getRenderer(), "assets/texture.png", 8, 8, 0, 0, 8){};
+        Entity(GraphicManager *graphM) : Ente(graphM), sprite(gfx->getRenderer(), "assets/texture.png", 8, 8, 0, 0, 8), active(true) {}
         ~Entity(){};
 
         int getX() { return x; }
@@ -25,7 +26,7 @@ namespace Entities
 
         Sprite *getSprite() { return &sprite; }
 
-        virtual void update() {}
+        virtual void update() = 0;
         void render()
         {
             if (active)

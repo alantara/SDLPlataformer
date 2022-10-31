@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Sprite.hpp"
 #include "Character.hpp"
-using namespace Entities;
-using namespace Character;
+
+#include "EventManager.hpp"
+#include "GraphicManager.hpp"
 
 namespace Entities
 {
@@ -11,8 +11,11 @@ namespace Entities
     {
         class Player : public Character
         {
+        private:
+            EventManager *event;
+
         public:
-            Player();
+            Player(GraphicManager* graphM, EventManager *ev, int xPos, int yPos);
             ~Player();
 
             void update();

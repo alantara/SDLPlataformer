@@ -8,6 +8,8 @@ Game::Game() : gfx("Plataformer", 1600, 900),
                lvl1(&gfx)
 {
     cout << "Game Initialized" << endl;
+    player = new Player(&gfx, &events, 0, 0);
+    lvl1.getEntityList()->insert(static_cast<Entity *>(player));
 
     isRunning = true;
 
@@ -27,6 +29,7 @@ Game::~Game()
 
 void Game::update()
 {
+    lvl1.update();
 }
 
 void Game::render()

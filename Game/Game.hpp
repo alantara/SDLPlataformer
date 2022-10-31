@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "Player.hpp"
+#include "Player.hpp"
 #include "Level1.hpp"
 //#include "Level2.hpp"
 //#include "Menu.hpp"
@@ -9,8 +9,8 @@
 #include <string>
 
 using namespace Levels;
-
-//using namespace Levels;
+using namespace Entities;
+using namespace Character;
 
 class Game 
 {
@@ -21,7 +21,7 @@ private:
     EventManager events;
 
     Level1 lvl1;
-    //Player player;
+    Player *player;
     //Level2 lvl2;
     //Menu menu;
     

@@ -9,8 +9,7 @@ protected:
     GraphicManager *gfx;
 
 public:
-    Ente(){};
-    Ente(GraphicManager *graphM) : gfx(graphM){};
+    Ente(GraphicManager *graphM = nullptr) : gfx(graphM){};
     ~Ente(){};
 
     virtual void update() = 0;

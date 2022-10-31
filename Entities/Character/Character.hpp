@@ -12,8 +12,8 @@ namespace Entities
         protected:
             int health;
         public:
-            Character();
-            ~Character();
+            Character(GraphicManager *graphM) : Entity(graphM){};
+            ~Character(){};
 
             virtual void update() = 0;
         };

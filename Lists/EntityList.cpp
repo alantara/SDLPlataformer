@@ -18,6 +18,14 @@ void EntityList::renderAll()
 
 void EntityList::updateAll()
 {
+    List<Entity *>::Element<Entity *> *aux = nullptr;
+    aux = entList.begin();
+
+    while (aux != nullptr)
+    {
+        aux->getData()->update();
+        aux = aux->getNext();
+    }
 }
 
 void EntityList::insert(Entity *entity)

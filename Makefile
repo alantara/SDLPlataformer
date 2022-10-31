@@ -1,2 +1,2 @@
 all:
-	g++ -o main main.cpp Managers/GraphicManager.cpp Managers/EventManager.cpp Game/Game.cpp Sprite.cpp Map/Map.cpp Entities/Obstacle/Tile.cpp Lists/EntityList.cpp Levels/Level.cpp -lSDL2main -lSDL2 -lSDL2_image -IManagers -IGame -I./ -IMap -IEntities -IEntities/Obstacle -ILists -ILevels
+	g++ -o main main.cpp Managers/GraphicManager.cpp Managers/EventManager.cpp Game/Game.cpp Sprite.cpp Map/Map.cpp Entities/Obstacle/Tile.cpp Lists/EntityList.cpp Levels/Level.cpp Entities/Character/Player.cpp -lSDL2main -lSDL2 -lSDL2_image -IManagers -IGame -I./ -IMap -IEntities -IEntities/Obstacle -ILists -ILevels -IEntities/Character

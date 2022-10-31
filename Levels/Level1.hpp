@@ -19,6 +19,9 @@ namespace Levels
             cout << "Level1 Destroyed" << endl;
         }
 
-        void update(){};
+        void update()
+        {
+            entList.updateAll();
+        }
     };
 }

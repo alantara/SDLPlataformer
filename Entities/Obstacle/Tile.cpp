@@ -10,7 +10,6 @@ Tile::Tile(GraphicManager *graphM, int xpos, int ypos) : Obstacle(graphM)
 {
     x = xpos;
     y = ypos;
-    active = true;
 }
 
 Tile::~Tile()
