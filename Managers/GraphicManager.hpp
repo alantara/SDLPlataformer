@@ -12,13 +12,13 @@ public:
 
     SDL_Window *getWindow() const { return window; }
     SDL_Renderer *getRenderer() const { return renderer; }
-    int getWidth() const { return width; }
-    int getHeight() const { return height; }
+    int getWidth() const { return sWidth; }
+    int getHeight() const { return sHeight; }
 
 private:
 
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    int width, height;
+    int sWidth, sHeight;
 };

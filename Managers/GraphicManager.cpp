@@ -4,8 +4,7 @@
 #include <iostream>
 using namespace std;
 
-GraphicManager::GraphicManager(std::string title, int width, int height, Uint32 flags) :
-window(nullptr), renderer(nullptr)
+GraphicManager::GraphicManager(std::string title, int width, int height, Uint32 flags) : window(nullptr), renderer(nullptr)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
@@ -27,10 +26,10 @@ window(nullptr), renderer(nullptr)
         exit(1);
     }
 
-    width = width;
-    height = height;
+    sWidth = width;
+    sHeight = height;
 
-    cout << "Graphic Manager Initialized" << endl;
+    cout << "Graphic Manager Initialized " << endl;
 }
 
 GraphicManager::~GraphicManager()

@@ -2,15 +2,16 @@
 using namespace Lists;
 
 #include <iostream>
+using namespace std;
 
-void EntityList::renderAll(SDL_Renderer *renderer)
+void EntityList::renderAll()
 {
-    List<Entity>::Element<Entity> *aux = nullptr;
+    List<Entity*>::Element<Entity*> *aux = nullptr;
     aux = entList.begin();
 
     while (aux != nullptr)
     {
-        aux->getData().render(renderer);
+        aux->getData()->render();
         aux = aux->getNext();
     }
 }
@@ -19,7 +20,7 @@ void EntityList::updateAll()
 {
 }
 
-void EntityList::insert(Entity entity)
+void EntityList::insert(Entity *entity)
 {
     entList.insert(entity);
 }

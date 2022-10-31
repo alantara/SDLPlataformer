@@ -11,9 +11,10 @@ namespace Entities
         {
         protected:
             int damage;
+
         public:
-            Obstacle(int dmg) : damage(dmg){}
-            ~Obstacle();
+            Obstacle(GraphicManager *graphM, int dmg = 0) : Entity(graphM), damage(dmg) {}
+            ~Obstacle(){};
         };
     }
 }

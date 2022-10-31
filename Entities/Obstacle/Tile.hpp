@@ -1,18 +1,18 @@
 
 #pragma once
 
-#include "Plataform.hpp"
+#include "Obstacle.hpp"
 
 #include <string>
 
 namespace Entities
 {
-    namespace Plataform
+    namespace Obstacles
     {
-        class Tile : public Plataform
+        class Tile : public Obstacle
         {
         public:
-            Tile(SDL_Renderer *rend, int x = 0, int y = 0);
+            Tile(GraphicManager *graphM, int x = 0, int y = 0);
             ~Tile();
 
             void update();

@@ -6,24 +6,27 @@ using namespace Levels;
 
 #include "Tile.hpp"
 using namespace Entities;
-using namespace Plataform;
+using namespace Obstacles;
 
-Level::Level(GraphicManager *graphM) : 
-Ente(graphM)
+Level::Level(GraphicManager *graphM) : Ente(graphM)
 {
-    cout << "Level Initialized "  << gfx->getHeight() << endl;
+    cout << "Level Initialized " << endl;
 
-    Tile tile(0, 0);
+    Tile *tile = new Tile(graphM, 500, 500);
+    Tile *tile2 = new Tile(graphM, 200, 200);
+    Tile *tile3 = new Tile(graphM, 0, 0);
 
-    //entList.insert(static_cast<Entity>(tile));
+    entList.insert(static_cast<Entity *>(tile));
+    entList.insert(static_cast<Entity *>(tile2));
+    entList.insert(static_cast<Entity *>(tile3));
 }
 
 Level::~Level()
 {
-    cout << "Level Initialized" << endl;
+    cout << "Level Destroyed" << endl;
 }
 
-void Level::render(SDL_Renderer *renderer)
+void Level::render()
 {
-    entList.renderAll(renderer);
+    entList.renderAll();
 }

@@ -9,7 +9,7 @@
 #include "EntityList.hpp"
 using namespace Lists;
 using namespace Entities;
-using namespace Plataform;
+using namespace Obstacles;
 
 Map::Map()
 {

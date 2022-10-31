@@ -2,8 +2,11 @@
 #include <iostream>
 #include "GraphicManager.hpp"
 
+using namespace std;
+
 Sprite::Sprite(SDL_Renderer *renderer, std::string filepath, int width, int height, int row, int col, int mult)
 {
+    cout << "Create" << endl;
     spriteTexture = nullptr;
 
     srcRow = row;
@@ -15,7 +18,6 @@ Sprite::Sprite(SDL_Renderer *renderer, std::string filepath, int width, int heig
     SDL_Texture *texture = IMG_LoadTexture(renderer, filepath.c_str());
     if (texture == nullptr)
     {
-
         std::cout << "Texture could not be loaded: " << SDL_GetError() << std::endl;
         return;
     }
@@ -25,6 +27,8 @@ Sprite::Sprite(SDL_Renderer *renderer, std::string filepath, int width, int heig
 
 Sprite::~Sprite()
 {
+    cout << "Destroy" << endl;
+
     SDL_DestroyTexture(spriteTexture);
     spriteTexture = nullptr;
 }

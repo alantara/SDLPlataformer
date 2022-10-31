@@ -4,6 +4,8 @@
 #include "Sprite.hpp"
 #include <iostream>
 
+using namespace std;
+
 namespace Entities
 {
     class Entity : public Ente
@@ -15,16 +17,21 @@ namespace Entities
         bool active;
 
     public:
-        Entity() : sprite(gfx->getRenderer(), "assets/texture.png", 8, 8, 0, 0, 8){};
+        Entity(GraphicManager *graphM) : Ente(graphM), sprite(gfx->getRenderer(), "assets/texture.png", 8, 8, 0, 0, 8){};
         ~Entity(){};
 
-        Sprite* getSprite() { return &sprite; }
-        
+        int getX() { return x; }
+        int getY() { return y; }
+
+        Sprite *getSprite() { return &sprite; }
+
         virtual void update() {}
-        void render(SDL_Renderer *renderer)
+        void render()
         {
-            if(active)
-                sprite.render(renderer, x, y);
+            if (active)
+            {
+                sprite.render(gfx->getRenderer(), x, y);
+            }
         }
     };
 }

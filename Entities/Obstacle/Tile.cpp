@@ -4,9 +4,9 @@
 #include <iostream>
 
 using namespace Entities;
-using namespace Plataform;
+using namespace Obstacles;
 
-Tile::Tile(SDL_Renderer* rend, int xpos, int ypos)
+Tile::Tile(GraphicManager *graphM, int xpos, int ypos) : Obstacle(graphM)
 {
     x = xpos;
     y = ypos;

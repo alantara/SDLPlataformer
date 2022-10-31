@@ -18,7 +18,7 @@ public:
     Level(GraphicManager *graphM);
     ~Level();
 
-    void render(SDL_Renderer* renderer);
+    void render();
     virtual void update() = 0;
 
     void manageCollision();
