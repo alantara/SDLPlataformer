@@ -1,55 +1,40 @@
 #include "Game.hpp"
 
-#include "Tile.hpp"
-using namespace Entities;
-using namespace Plataform;
+#include <iostream>
+using namespace std;
 
-Game::Game()
+Game::Game(): 
+gfx("Plataformer", 800, 800),
+events(),
+lvl1(&gfx)
 {
+    cout << "Game Initialized" << gfx.getHeight() << endl;
+
     isRunning = true;
+
+    while (isRunning)
+    {
+        events.listen(isRunning);
+        SDL_RenderClear(gfx.getRenderer());
+        
+        update();
+        render();
+
+        SDL_RenderPresent(gfx.getRenderer());
+    }
 }
 
 Game::~Game()
 {
+    cout << "Game Deleted" << endl;
 }
 
-void Game::init()
-{
-    gfx.init("Plataformer", 800, 600);
-    isRunning = true;
-
-    Tile *tile = new Tile(0, 0);
-    lvl1.getEntityList()->insert(static_cast<Entity *>(tile));
-    Tile *tile2 = new Tile(1, 0);
-    lvl1.getEntityList()->insert(static_cast<Entity *>(tile2));
-    Tile *tile3 = new Tile(2, 0);
-    lvl1.getEntityList()->insert(static_cast<Entity *>(tile3));
-    std::cout << tile3 << std::endl;
-    // lvl1.getMap()->setTilesetProps(gfx.getRenderer(), "assets/texture.png", 22, 24, 8, 8);
-    // lvl1.getMap()->init(gfx.getRenderer(), "assets/data.dat", lvl1.getEntityList());
-
-    run();
-}
-
-void Game::run()
-{
-    SDL_Event outputEvent;
-
-    while (isRunning)
-    {
-        isRunning = events.listen();
-
-        update();
-        render();
-    }
-}
 void Game::update()
 {
+
 }
+
 void Game::render()
 {
-    SDL_RenderClear(gfx.getRenderer());
-
-    SDL_SetRenderDrawColor(gfx.getRenderer(), 0, 0, 255, 255);
-    SDL_RenderPresent(gfx.getRenderer());
+    lvl1.render(gfx.getRenderer());
 }

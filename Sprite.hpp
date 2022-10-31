@@ -7,8 +7,7 @@
 class Sprite
 {
     public:
-
-        Sprite();
+        Sprite(SDL_Renderer *renderer, std::string filepath, int width, int height, int row, int col, int mult);
         ~Sprite();
 
         void render(SDL_Renderer *renderer, int x, int y);
@@ -16,9 +15,7 @@ class Sprite
         SDL_Texture *getTexture() const { return spriteTexture; }
         int getRow() const { return srcRow; }
         int getWidth() const { return srcWidth; }
-
-        void setProps(SDL_Renderer *renderer, std::string filepath, int width, int height, int row = 0, int col = 0, int multiplier = 1);
-        void setProps(SDL_Renderer *renderer, SDL_Texture *tx, int width, int height, int row = 0, int col = 0, int multiplier = 1);
+        int getHeight() const { return srcHeight; }
 
     private:
 

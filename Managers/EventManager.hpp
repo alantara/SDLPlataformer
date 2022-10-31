@@ -9,7 +9,7 @@ public:
     EventManager();
     ~EventManager();
 
-    bool listen();
+    void listen(bool &isRunning);
     void keyUpdate();
 
     bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }

@@ -12,7 +12,7 @@ namespace Entities
         class Tile : public Plataform
         {
         public:
-            Tile(int x = 0, int y = 0);
+            Tile(SDL_Renderer *rend, int x = 0, int y = 0);
             ~Tile();
 
             void update();

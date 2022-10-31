@@ -9,18 +9,15 @@ namespace Lists
         {
         private:
             Element<TE> *next;
-            TE *data;
+            TE data;
 
         public:
-            Element(TE *info) : data(info), next(nullptr) {}
+            Element(TE info) : data(info), next(nullptr) {}
 
             Element<TE> *getNext() { return next; }
             void setNext(Element<TE> *el) { next = el; }
 
-            TE getData()
-            {
-                return (*data);
-            }
+            TE getData() { return data; }
         };
 
     private:
@@ -30,9 +27,12 @@ namespace Lists
     public:
         List() : first(nullptr), last(nullptr) {}
 
-        void insert(TL dat)
+        Element<TL> *begin() { return first; }
+
+        void insert(TL element)
         {
-            Element<TL> *el = new Element<TL>(&dat);
+            Element<TL> *el = nullptr;
+            el = new Element<TL>(element);
             if (first == nullptr)
             {
                 first = el;

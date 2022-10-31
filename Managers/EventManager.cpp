@@ -1,23 +1,28 @@
 #include "EventManager.hpp"
 
-EventManager::EventManager()
+#include <iostream>
+using namespace std;
+
+EventManager::EventManager() : 
+keyStates(SDL_GetKeyboardState(nullptr))
 {
-    keyStates = SDL_GetKeyboardState(nullptr);
+    cout << "Event Manager Initialized" << endl;
 }
 
 EventManager::~EventManager()
 {
     keyStates = nullptr;
+    cout << "Event Manager Deleted" << endl;
 }
 
-bool EventManager::listen()
+void EventManager::listen(bool &isRunning)
 {
     while (SDL_PollEvent(&outputEvent))
     {
         switch (outputEvent.type)
         {
         case SDL_QUIT:
-            return false;
+            isRunning = false;
             break;
         case SDL_KEYDOWN:
             keyUpdate();
@@ -27,8 +32,6 @@ bool EventManager::listen()
             break;
         }
     }
-
-    return true;
 }
 
 void EventManager::keyUpdate()

@@ -10,14 +10,14 @@ namespace Lists
     class EntityList
     {
     private:
-        List<Entity *> EntList;
+        List<Entity> entList;
 
     public:
-        EntityList() : EntList(){};
+        EntityList() : entList(){};
         ~EntityList(){};
 
         void renderAll(SDL_Renderer *renderer);
         void updateAll();
-        void insert(Entity *entity);
+        void insert(Entity entity);
     };
 }

@@ -7,11 +7,8 @@
 class GraphicManager
 {
 public:
-    GraphicManager();
+    GraphicManager(std::string title, int width = 1600, int height = 900, Uint32 flags = 0);
     ~GraphicManager();
-
-    bool init(std::string title, int width = 1600, int height = 900, Uint32 flags = 0);
-    void clean();
 
     SDL_Window *getWindow() const { return window; }
     SDL_Renderer *getRenderer() const { return renderer; }

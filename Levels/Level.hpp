@@ -5,23 +5,22 @@
 #include "Map.hpp"
 using namespace Lists;
 
+#include "GraphicManager.hpp"
+
 namespace Levels
 {
 class Level : public Ente
 {
 protected:
-    EntityList entities;
-    Map map;
+    EntityList entList;
 
 public:
-    Level();
+    Level(GraphicManager *graphM);
     ~Level();
-
-    Map* getMap() { return &map; }
 
     void render(SDL_Renderer* renderer);
     virtual void update() = 0;
+
     void manageCollision();
-    EntityList* getEntityList() {return &entities;}
 };
 }

@@ -15,17 +15,16 @@ namespace Entities
         bool active;
 
     public:
-        Entity(){};
+        Entity() : sprite(gfx->getRenderer(), "assets/texture.png", 8, 8, 0, 0, 8){};
         ~Entity(){};
 
-        int getX() { return x; }
-        void setSprite(Sprite spr) { sprite = spr; }
-        Sprite getSprite() const { return sprite; }
+        Sprite* getSprite() { return &sprite; }
+        
         virtual void update() {}
         void render(SDL_Renderer *renderer)
         {
-            std::cout << x << std::endl;
-            // sprite.render(renderer, x, y);
+            if(active)
+                sprite.render(renderer, x, y);
         }
     };
 }

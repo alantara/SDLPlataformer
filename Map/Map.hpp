@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 
-#include "Tileset.hpp"
 #include "EntityList.hpp"
 using namespace Lists;
 
@@ -14,12 +13,8 @@ public:
     Map();
     ~Map();
 
-    void setTilesetProps(SDL_Renderer *renderer, std::string tilesetpath, int rows, int cols, int width, int height);
     void init(SDL_Renderer *renderer, std::string mappath, EntityList *entities);
 
-    Tileset getTileset() { return tileset; }
-
 private:
-    Tileset tileset;
     int rowCount, colCount;
 };

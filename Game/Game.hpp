@@ -6,6 +6,7 @@
 //#include "Menu.hpp"
 #include "GraphicManager.hpp"
 #include "EventManager.hpp"
+#include <string>
 
 using namespace Levels;
 
@@ -15,19 +16,20 @@ class Game
 {
 private:
     bool isRunning;
-    //Player player;
-    Level1 lvl1;
-    //Level2 lvl2;
-    //Menu menu;
+
     GraphicManager gfx;
     EventManager events;
+
+    Level1 lvl1;
+    //Player player;
+    //Level2 lvl2;
+    //Menu menu;
+    
 
 public:
     Game();
     ~Game();
 
-    void init();
-    void run();
     void update();
     void render();
 };

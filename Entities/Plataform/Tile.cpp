@@ -6,10 +6,11 @@
 using namespace Entities;
 using namespace Plataform;
 
-Tile::Tile(int xpos, int ypos)
+Tile::Tile(SDL_Renderer* rend, int xpos, int ypos)
 {
     x = xpos;
     y = ypos;
+    active = true;
 }
 
 Tile::~Tile()

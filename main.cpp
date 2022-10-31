@@ -1,9 +1,8 @@
 #include "Game.hpp"
 
-int main ()
+int main()
 {
     Game Principal;
-    Principal.init();
 
     return 0;
 }
