@@ -10,10 +10,10 @@ namespace Entities
         class Obstacle : public Entity
         {
         protected:
-            int damage;
+            bool isHarmful;
 
         public:
-            Obstacle(GraphicManager *graphM, int dmg = 0) : Entity(graphM), damage(dmg) {}
+            Obstacle(GraphicManager *graphM, bool harm = false) : Entity(graphM, 0,0), isHarmful(harm) {}
             ~Obstacle(){};
         };
     }

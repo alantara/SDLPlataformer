@@ -10,7 +10,7 @@
 
 using namespace Levels;
 using namespace Entities;
-using namespace Character;
+using namespace Characters;
 
 class Game 
 {
@@ -22,9 +22,9 @@ private:
 
     Level1 lvl1;
     Player *player;
-    //Level2 lvl2;
-    //Menu menu;
-    
+    Player *player2;
+    // Level2 lvl2;
+    // Menu menu;
 
 public:
     Game();

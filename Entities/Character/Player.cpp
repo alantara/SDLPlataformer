@@ -1,12 +1,14 @@
 #include "Player.hpp"
 using namespace Entities;
-using namespace Character;
-
-Player::Player(GraphicManager *graphM, EventManager *ev, int xPos, int yPos) : Character(graphM)
+using namespace Characters;
+//(GraphicManager *gfxMan, EventManager *eveMan, CaracterInput charInp, SpriteConstraints sprConst, Position pos)
+Player::Player(GraphicManager *graphM, EventManager *ev, CharacterInput inp, int xPos, int yPos) : Character(graphM, xPos, yPos), input(inp)
 {
     event = ev;
-    x = xPos;
-    y = yPos;
+    id = 1;
+    vx = vy = 0;
+    ay = 1;
+    ax = 0;
 }
 
 Player::~Player()
@@ -15,20 +17,22 @@ Player::~Player()
 
 void Player::update()
 {
-    if (event->getKeyDown(SDL_SCANCODE_W))
+    ax = 0;
+    if (event->getKeyDown(input.getJump()))
     {
-        y--;
+        ay = -1; // A Fazer
     }
-    if (event->getKeyDown(SDL_SCANCODE_A))
+    if (event->getKeyDown(input.getLeft()))
     {
-        x--;
+        ax += -1;
     }
-    if (event->getKeyDown(SDL_SCANCODE_S))
+    if (event->getKeyDown(input.getRight()))
     {
-        y++;
+        ax += 1;
     }
-    if (event->getKeyDown(SDL_SCANCODE_D))
-    {
-        x++;
-    }
+
+    vy += ay;
+    y += vy;
+    vx += ax;
+    x += vx;
 }

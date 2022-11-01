@@ -11,7 +11,7 @@ namespace Obstacles
     class Spike : public Obstacle
     {
     public:
-        Spike() : Obstacle(1){}
+        Spike(){}
         ~Spike();
     };
 }

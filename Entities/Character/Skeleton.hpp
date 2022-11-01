@@ -1,12 +1,10 @@
 #pragma once
 
 #include "Enemy.hpp"
-using namespace Entities;
-using namespace Character;
 
 namespace Entities
 {
-    namespace Character
+    namespace Characters
     {
         class Skeleton : public Enemy
         {

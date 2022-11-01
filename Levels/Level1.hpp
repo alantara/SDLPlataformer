@@ -22,6 +22,7 @@ namespace Levels
         void update()
         {
             entList.updateAll();
+
         }
     };
 }

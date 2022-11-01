@@ -5,11 +5,9 @@
 #include <fstream>
 
 #include "Entity.hpp"
-#include "Tile.hpp"
 #include "EntityList.hpp"
 using namespace Lists;
 using namespace Entities;
-using namespace Obstacles;
 
 Map::Map()
 {

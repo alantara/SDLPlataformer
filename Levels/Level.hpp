@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Ente.hpp"
-#include "EntityList.hpp"
 #include "Map.hpp"
+
+#include "EntityList.hpp"
 using namespace Lists;
 
+#include "CollisionManager.hpp"
 #include "GraphicManager.hpp"
+using namespace Managers;
 
 namespace Levels
 {
@@ -13,6 +16,7 @@ namespace Levels
     {
     protected:
         EntityList entList;
+        CollisionManager colManager;
 
     public:
         Level(GraphicManager *graphM);
@@ -24,5 +28,6 @@ namespace Levels
         void manageCollision();
 
         EntityList *getEntityList() { return &entList; }
+        CollisionManager *getCollisionManager() { return &colManager; }
     };
 }
