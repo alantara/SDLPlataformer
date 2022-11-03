@@ -2,22 +2,17 @@
 
 #include "Character.hpp"
 
-#include "EventManager.hpp"
-#include "GraphicManager.hpp"
-#include "CharacterInput.hpp"
-
-/*
 #include "GraphicManager.hpp"
 #include "EventManager.hpp"
 using namespace Managers;
 
-#include "CaracterInput.hpp"
-#include "SpriteConstraints.hpp"
+#include "CharacterInput.hpp"
+#include "Sprite.hpp"
 #include "Position.hpp"
 using namespace Components;
-*/
 
-using namespace Components;
+#include "EntityList.hpp"
+using namespace Lists;
 
 namespace Entities
 {
@@ -30,8 +25,11 @@ namespace Entities
             CharacterInput input;
 
         public:
-            Player(GraphicManager *graphM, EventManager *ev, CharacterInput inp, int xPos, int yPos);
+            Player(bool act, int hp);
             ~Player();
+
+            void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j);
+            CharacterInput getInputSystem() { return input; };
 
             void update();
         };

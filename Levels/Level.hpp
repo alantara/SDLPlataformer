@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Ente.hpp"
-#include "Map.hpp"
 
 #include "EntityList.hpp"
 using namespace Lists;
 
-#include "CollisionManager.hpp"
+//#include "CollisionManager.hpp"
 #include "GraphicManager.hpp"
+#include "EventManager.hpp"
 using namespace Managers;
 
 namespace Levels
@@ -15,11 +15,15 @@ namespace Levels
     class Level : public Ente
     {
     protected:
+        GraphicManager *gfx;
+        EventManager *events;
+
         EntityList entList;
-        CollisionManager colManager;
+        Sprite bg;
+        // CollisionManager colManager;
 
     public:
-        Level(GraphicManager *graphM);
+        Level(GraphicManager *graphM, EventManager *ev);
         ~Level();
 
         void render();
@@ -28,6 +32,6 @@ namespace Levels
         void manageCollision();
 
         EntityList *getEntityList() { return &entList; }
-        CollisionManager *getCollisionManager() { return &colManager; }
+        // CollisionManager *getCollisionManager() { return &colManager; }
     };
 }

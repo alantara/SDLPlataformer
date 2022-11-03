@@ -12,15 +12,25 @@ namespace Components
         SDL_Scancode jump;
 
     public:
-        CharacterInput(SDL_Scancode l, SDL_Scancode r, SDL_Scancode j) : left(l), right(r), jump(j){};
+        CharacterInput() : left(SDL_SCANCODE_A), right(SDL_SCANCODE_D), jump(SDL_SCANCODE_W){};
         ~CharacterInput(){};
 
-        const SDL_Scancode getLeft() const { return left; }
+        void setCharacterInput(SDL_Scancode l, SDL_Scancode r, SDL_Scancode j)
+        {
+            setLeft(l);
+            setRight(r);
+            setJump(j);
+        }
+
+        const SDL_Scancode getLeft() const
+        {
+            return left;
+        }
         const SDL_Scancode getRight() const { return right; }
         const SDL_Scancode getJump() const { return jump; }
 
-        SDL_Scancode setLeft(SDL_Scancode l) { return left = l; }
-        SDL_Scancode setRight(SDL_Scancode r) { return right = r; }
-        SDL_Scancode setJump(SDL_Scancode j) { return jump = j; }
+        void setLeft(SDL_Scancode l) { left = l; }
+        void setRight(SDL_Scancode r) { right = r; }
+        void setJump(SDL_Scancode j) { jump = j; }
     };
 }

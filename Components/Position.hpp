@@ -11,13 +11,19 @@ namespace Components
         int y;
 
     public:
-        Position(int xPos, int yPos) : x(xPos), y(yPos){};
+        Position() : x(0), y(0){};
         ~Position(){};
+
+        void setPosition(int xPos, int yPos)
+        {
+            setX(xPos);
+            setY(yPos);
+        }
 
         const int getX() const { return x; }
         const int getY() const { return y; }
 
-        int getX(int xPos) { return x = xPos; }
-        int getY(int yPos) { return y = yPos; }
+        void setX(int xPos) { x = xPos; }
+        void setY(int yPos) { y = yPos; }
     };
 }

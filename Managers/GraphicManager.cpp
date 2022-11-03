@@ -1,5 +1,6 @@
 
 #include "GraphicManager.hpp"
+using namespace Managers;
 
 #include <iostream>
 using namespace std;

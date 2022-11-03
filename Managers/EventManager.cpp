@@ -1,4 +1,5 @@
 #include "EventManager.hpp"
+using namespace Managers;
 
 #include <iostream>
 using namespace std;

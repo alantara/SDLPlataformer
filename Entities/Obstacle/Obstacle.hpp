@@ -13,7 +13,7 @@ namespace Entities
             bool isHarmful;
 
         public:
-            Obstacle(GraphicManager *graphM, bool harm = false) : Entity(graphM, 0,0), isHarmful(harm) {}
+            Obstacle(bool harm = false) : isHarmful(harm) {}
             ~Obstacle(){};
         };
     }

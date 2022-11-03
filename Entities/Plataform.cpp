@@ -5,7 +5,7 @@
 
 using namespace Entities;
 
-Plataform::Plataform(GraphicManager *graphM, int xpos, int ypos) : Entity(graphM, xpos, ypos)
+Plataform::Plataform()
 {
     id = 3;
 }

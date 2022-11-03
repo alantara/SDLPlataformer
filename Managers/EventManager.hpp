@@ -2,20 +2,21 @@
 #pragma once
 
 #include <SDL2/SDL.h>
-
-class EventManager
+namespace Managers
 {
-public:
-    EventManager();
-    ~EventManager();
+    class EventManager
+    {
+    public:
+        EventManager();
+        ~EventManager();
 
-    void listen(bool &isRunning);
-    void keyUpdate();
+        void listen(bool &isRunning);
+        void keyUpdate();
 
-    bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }
+        bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }
 
-private:
-
-    SDL_Event outputEvent;
-    const Uint8 *keyStates;
-};
+    private:
+        SDL_Event outputEvent;
+        const Uint8 *keyStates;
+    };
+}

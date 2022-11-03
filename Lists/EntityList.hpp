@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Entity.hpp"
 #include "List.hpp"
-using namespace Lists;
+
+#include "Entity.hpp"
 using namespace Entities;
 
 namespace Lists

@@ -1,2 +1,6 @@
+linker = -lSDL2main -lSDL2 -lSDL2_image
+cpps = main.cpp Managers/GraphicManager.cpp Managers/EventManager.cpp Lists/EntityList.cpp Levels/Level.cpp Game/Game.cpp Entities/Plataform.cpp Entities/Character/Player.cpp 
+includes = -IManagers -ILists -ILevels -IGame -IEntities -IEntities/Character -IEntities/Obstacle -IComponents -I./
+
 all:
-	g++ -o main main.cpp Managers/GraphicManager.cpp Managers/EventManager.cpp Game/Game.cpp Sprite.cpp Map/Map.cpp Lists/EntityList.cpp Levels/Level.cpp Entities/Character/Player.cpp Entities/Plataform.cpp Managers/CollisionManager.cpp -lSDL2main -lSDL2 -lSDL2_image -IManagers -IGame -I./ -IMap -IEntities -IEntities/Obstacle -ILists -ILevels -IEntities/Character -IComponents
+	g++ -o main $(cpps) $(includes) $(linker)

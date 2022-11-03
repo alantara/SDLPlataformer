@@ -2,6 +2,9 @@
 
 #include "Entity.hpp"
 
+#include "Physics.hpp"
+using namespace Components;
+
 namespace Entities
 {
     namespace Characters
@@ -10,23 +13,22 @@ namespace Entities
         {
         protected:
             int health;
-            int vx, vy;
-            int ax, ay;
+            Physics physics;
 
         public:
-            Character(GraphicManager *graphM, int x, int y) : Entity(graphM, x, y), health(5){};
+            Character(int hp) : health(hp) {};
             ~Character(){};
 
+            void setPhysics(int xPos, int yPos, int xVel, int yVel, int xAcc, int yAcc) 
+            {
+                physics.setPhysics(xPos, yPos, xVel, yVel, xAcc, yAcc);
+            }
+            void setHealth(int hp) { health = hp; }
+
+            const Physics getPhysics() const { return physics; }
+            const int getHealth() const { return health; }
+
             void takeDamage() { health--; }
-
-            int getVx() { return vx; }
-            int getVy() { return vy; }
-
-            int setVx(int v) { return vx = v; }
-            int setVy(int v) { return vy = v; }
-
-            int setAx(int v) { return ax = v; }
-            int setAy(int v) { return ay = v; }
 
             virtual void update() = 0;
         };

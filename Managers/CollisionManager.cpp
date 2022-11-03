@@ -45,7 +45,7 @@ int CollisionManager::isColliding(Character *ch, Entity *ent)
             return 3;
         }
     }
-    
+
     if (chX + chW >= entX &&
         chX <= entX + entW &&
         chY + chH + chVy >= entY &&
@@ -76,11 +76,11 @@ void CollisionManager::handleCollision(Player *pl)
 
     while (itEne != LIs.end())
     {
-        while(itPla != LPs.end())
+        while (itPla != LPs.end())
         {
-            if(isColliding(static_cast<Character*>(*itEne), static_cast<Entity*>(*itPla)) % 2 == 1)
+            if (isColliding(static_cast<Character *>(*itEne), static_cast<Entity *>(*itPla)) % 2 == 1)
             {
-                (*itEne)->setVx((*itEne)->getVx()*-1);
+                (*itEne)->setVx((*itEne)->getVx() * -1);
             }
             else
             {
@@ -117,16 +117,18 @@ void CollisionManager::handleCollision(Player *pl)
     for (itPla; itPla != LPs.end(); itPla++)
     {
         int i = isColliding(static_cast<Character *>(pl), static_cast<Entity *>(*itPla));
-        
+
         if (i % 2 == 1)
         {
+            cout << "Cloosi" << endl;
+
             pl->setAx(0);
             pl->setVx(0);
         }
         else
         {
-            pl->setVy(0);
 
+            pl->setVy(0);
         }
     }
 }
