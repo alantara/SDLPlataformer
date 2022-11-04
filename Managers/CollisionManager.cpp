@@ -11,55 +11,79 @@ CollisionManager::~CollisionManager()
 {
 }
 
-int CollisionManager::isColliding(Character *ch, Entity *ent)
+bool CollisionManager::isColliding(const SDL_Rect *hb1, const SDL_Rect *hb2)
 {
-    int chX, chY, chW, chH, chVx, chVy;
-    int entX, entY, entW, entH;
+    int x1 = hb1->x;
+    int y1 = hb1->y;
+    int w1 = hb1->w;
+    int h1 = hb1->h;
 
-    chVx = ch->getVx();
-    chVy = ch->getVy();
+    int x2 = hb2->x;
+    int y2 = hb2->y;
+    int w2 = hb2->w;
+    int h2 = hb2->h;
 
-    chX = ch->getHitBox()->x;
-    chY = ch->getHitBox()->y;
-    chW = ch->getHitBox()->w;
-    chH = ch->getHitBox()->h;
-
-    entX = ent->getHitBox()->x;
-    entY = ent->getHitBox()->y;
-    entW = ent->getHitBox()->w;
-    entH = ent->getHitBox()->h;
-
-    if (chX + chW + chVx >= entX &&
-        chX + chVx <= entX + entW &&
-        chY + chH >= entY &&
-        chY <= entY + entH)
+    if (x1 + w1 > x2 && x1 < x2 + w2 && y1 + h1 > y2 && y1 < y2 + h2)
     {
-        if (chVx > 0)
+        return true;
+    }
+    return false;
+}
+
+int CollisionManager::sideColliding(Character *ch, Entity *ent2)
+{
+    int x1 = ch->getPosition()->getX();
+    int y1 = ch->getPosition()->getY();
+    int w1 = ch->getHitBox()->w;
+    int h1 = ch->getHitBox()->h;
+    int Vx = ch->getPhysics().getXVelocity();
+    int Vy = ch->getPhysics().getYVelocity();
+
+    int x2 = ent2->getPosition()->getX();
+    int y2 = ent2->getPosition()->getY();
+    int w2 = ent2->getHitBox()->w;
+    int h2 = ent2->getHitBox()->h;
+
+    if (x1 + w1 + Vx > x2 &&
+        x1 + Vx < x2 + w2 &&
+        y1 + h1 > y2 &&
+        y1 < y2 + h2)
+    {
+        if (Vx > 0)
         {
-            ch->setX(ent->getX() - ch->getHitBox()->w);
-            return 1;
+            ch->setPosition(x2 - w1, y1);
+            ch->setPhysics(x2 - w1, y1, 0, Vy, 0, ch->getPhysics().getYAcceleration());
+            ch->getHitBox()->x = x2 - w1;
+            return 1; // Right Collision
         }
-        else
+        else if (Vx < 0)
         {
-            ch->setX(ent->getX() + ent->getHitBox()->w);
-            return 3;
+            ch->setPosition(x2 + w2, y1);
+            ch->setPhysics(x2 + w2, y1, 0, Vy, 0, ch->getPhysics().getYAcceleration());
+            ch->getHitBox()->x = x2 + w2;
+            return 3; // Left Collision
         }
     }
 
-    if (chX + chW >= entX &&
-        chX <= entX + entW &&
-        chY + chH + chVy >= entY &&
-        chY + chVy <= entY + entH)
+    if (x1 + w1 > x2 &&
+        x1 < x2 + w2 &&
+        y1 + h1 + Vy > y2 &&
+        y1 + Vy < y2 + h2)
     {
-        if (chVy > 0)
+        if (Vy > 0)
         {
-            ch->setY(ent->getY() - ch->getHitBox()->h);
-            return 2;
+            ch->setPosition(x1, y2 - h1);
+            ch->setPhysics(x1, y2 - h1, Vx, 0, ch->getPhysics().getXAcceleration(), ch->getPhysics().getYAcceleration());
+            ch->getHitBox()->y = y2 - h1;
+            return 4; // Top Collision
         }
-        else
+        else if (Vy < 0)
         {
-            ch->setY(ent->getY() + ent->getHitBox()->h);
-            return 4;
+            ch->setPosition(x1, y2 + h2);
+            ch->setPhysics(x1, y2 + h2, Vx, 0, ch->getPhysics().getXAcceleration(), ch->getPhysics().getYAcceleration());
+            ch->getHitBox()->y = y2 + h2;
+
+            return 2; // Bottom Collision
         }
     }
 }
@@ -74,61 +98,8 @@ void CollisionManager::handleCollision(Player *pl)
     itObs = LOs.begin();
     itPla = LPs.begin();
 
-    while (itEne != LIs.end())
-    {
-        while (itPla != LPs.end())
-        {
-            if (isColliding(static_cast<Character *>(*itEne), static_cast<Entity *>(*itPla)) % 2 == 1)
-            {
-                (*itEne)->setVx((*itEne)->getVx() * -1);
-            }
-            else
-            {
-                (*itEne)->setVy(0);
-            }
-            itPla++;
-        }
-        if (isColliding(static_cast<Character *>(pl), static_cast<Entity *>(*itEne)) == 2)
-        {
-            (*itEne)->Inactivate();
-        }
-        else
-        {
-            pl->takeDamage();
-        }
-        itEne++;
-    }
-
-    for (itObs; itObs != LOs.end(); itObs++)
-    {
-        int i = isColliding(static_cast<Character *>(pl), static_cast<Entity *>(*itObs));
-
-        if (i % 2 == 1)
-        {
-            pl->setAx(0);
-            pl->setVx(0);
-        }
-        else
-        {
-            pl->setVy(0);
-        }
-    }
-
     for (itPla; itPla != LPs.end(); itPla++)
     {
-        int i = isColliding(static_cast<Character *>(pl), static_cast<Entity *>(*itPla));
-
-        if (i % 2 == 1)
-        {
-            cout << "Cloosi" << endl;
-
-            pl->setAx(0);
-            pl->setVx(0);
-        }
-        else
-        {
-
-            pl->setVy(0);
-        }
+        sideColliding(static_cast<Character *>(pl), static_cast<Entity *>(*itPla));
     }
 }

@@ -25,7 +25,9 @@ namespace Managers
         CollisionManager();
         ~CollisionManager();
 
-        int isColliding(Character *ch, Entity *ent);
+        bool isColliding(const SDL_Rect* hb1, const SDL_Rect* hb2);
+        int sideColliding(Character *ch, Entity *ent2);
+
         void handleCollision(Player *pl);
 
         list<Plataform *> *getListPlataforms() { return &LPs; }

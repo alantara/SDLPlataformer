@@ -11,7 +11,10 @@ using namespace std;
 
 Game::Game() : gfx("Plataformer", 1600, 900),
                events(),
-               lvl1(&gfx, &events, player, player2)
+               player(true, 5),
+               player2(true, 5),
+               lvl1(&gfx, &events, &player, &player2)
+
 {
     cout << "Game Initialized" << endl;
 

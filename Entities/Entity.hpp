@@ -40,7 +40,7 @@ namespace Entities
 
         const Position *getPosition() const { return &position; }
         const Sprite *getSprite() const { return &sprite; }
-        const SDL_Rect *getHitBox() const { return &hitbox; }
+        SDL_Rect* getHitBox() { return &hitbox; }
 
         virtual void update() = 0;
         void render()

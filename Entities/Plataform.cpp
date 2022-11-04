@@ -5,9 +5,10 @@
 
 using namespace Entities;
 
-Plataform::Plataform()
+Plataform::Plataform(bool act)
 {
     id = 3;
+    active = act;
 }
 
 Plataform::~Plataform()
@@ -16,4 +17,5 @@ Plataform::~Plataform()
 
 void Plataform::update()
 {
+    this->setHitBox({position.getX(), position.getY(), sprite.getWidth(), sprite.getHeight()});
 }

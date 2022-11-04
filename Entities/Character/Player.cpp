@@ -21,6 +21,10 @@ void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SD
 
 void Player::update()
 {
+    physics.update();
+
+    this->setHitBox({position.getX(), position.getY(), sprite.getWidth(), sprite.getHeight()});
+
     physics.setXAcceleration(0);
     if (event->getKeyDown(input.getLeft()))
     {
@@ -34,10 +38,7 @@ void Player::update()
     {
         physics.setYAcceleration(-3);
     }
-
-    physics.setYAcceleration(0);
-
-    physics.update();
+    physics.setYAcceleration(1); // Gravidade
 
     position.setX(physics.getXPosition());
     position.setY(physics.getYPosition());

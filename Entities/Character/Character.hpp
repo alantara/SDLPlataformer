@@ -16,16 +16,16 @@ namespace Entities
             Physics physics;
 
         public:
-            Character(int hp) : health(hp) {};
+            Character(int hp) : health(hp){};
             ~Character(){};
 
-            void setPhysics(int xPos, int yPos, int xVel, int yVel, int xAcc, int yAcc) 
+            void setPhysics(int xPos, int yPos, int xVel, int yVel, int xAcc, int yAcc)
             {
                 physics.setPhysics(xPos, yPos, xVel, yVel, xAcc, yAcc);
             }
             void setHealth(int hp) { health = hp; }
 
-            const Physics getPhysics() const { return physics; }
+            Physics getPhysics() { return physics; }
             const int getHealth() const { return health; }
 
             void takeDamage() { health--; }

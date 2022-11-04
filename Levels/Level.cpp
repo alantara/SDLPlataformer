@@ -4,7 +4,7 @@
 using namespace std;
 using namespace Levels;
 
-Level::Level(GraphicManager *graphM, EventManager *ev) : gfx(graphM), events(ev)
+Level::Level(GraphicManager *graphM, EventManager *ev) : gfx(graphM), events(ev), colManager(new CollisionManager())
 {
     cout << "Level Initialized " << endl;
 }

@@ -20,9 +20,9 @@ private:
     GraphicManager gfx;
     EventManager events;
 
+    Player player;
+    Player player2;
     Level1 lvl1;
-    Player *player;
-    Player *player2;
     // Level2 lvl2;
     // Menu menu;
 

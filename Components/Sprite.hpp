@@ -18,7 +18,7 @@ namespace Components
         string path;
         SDL_Texture *texture;
 
-        int frame;
+        int row;
         int column;
         int width;
         int height;
@@ -27,31 +27,30 @@ namespace Components
         GraphicManager *gfx;
 
     public:
-        Sprite() : gfx(nullptr), path(""), frame(0), column(0), width(0), height(0), multiplier(1), texture(nullptr){};
+        Sprite() : gfx(nullptr), path(""), row(0), column(0), width(0), height(0), multiplier(1), texture(nullptr){};
         ~Sprite()
         {
             SDL_DestroyTexture(texture);
             texture = nullptr;
         }
 
-        void setSprite(GraphicManager *gfxM, string p, int f, int c, int w, int h, int m = 1)
+        void setSprite(GraphicManager *gfxM, string p, int c, int r, int w, int h, int m = 1)
         {
             setGFXPointer(gfxM);
-            
+
             setPath(p);
             setTexture(p);
 
-            setFrame(f);
+            setRow(r);
             setColumn(c);
             setWidth(w);
             setHeight(h);
             setMultiplier(m);
-
         }
 
         const string getPath() const { return path; }
         const SDL_Texture *getTexture() const { return texture; }
-        const int getFrame() const { return frame; }
+        const int getRow() const { return row; }
         const int getColumn() const { return column; }
         const int getWidth() const { return width; }
         const int getHeight() const { return height; }
@@ -74,7 +73,7 @@ namespace Components
 
             texture = tx;
         }
-        void setFrame(int f) { frame = f; }
+        void setRow(int r) { row = r; }
         void setColumn(int c) { column = c; }
         void setWidth(int w) { width = w; }
         void setHeight(int h) { height = h; }
@@ -83,7 +82,7 @@ namespace Components
 
         void render(int x = 0, int y = 0)
         {
-            SDL_Rect srcRect = {column * width, frame * height, width, height};
+            SDL_Rect srcRect = {column * width, row * height, width, height};
             SDL_Rect dstRect = {x, y, width * multiplier, height * multiplier};
 
             SDL_RenderCopy(gfx->getRenderer(), texture, &srcRect, &dstRect);

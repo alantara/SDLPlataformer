@@ -1,8 +1,7 @@
 
 #pragma once
 
-#include "Obstacle.hpp"
-
+#include "Entity.hpp"
 #include <string>
 
 namespace Entities
@@ -10,7 +9,7 @@ namespace Entities
     class Plataform : public Entity
     {
     public:
-        Plataform();
+        Plataform(bool act);
         ~Plataform();
 
         void update();
