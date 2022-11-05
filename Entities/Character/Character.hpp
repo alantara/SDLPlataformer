@@ -19,6 +19,8 @@ namespace Entities
             const int getHealth() const { return health; }
             void takeDamage() { health--; }
 
+            void move() { position.setX(position.getX() + position.getVX());
+                          position.setY(position.getY() + position.getVY());}
             virtual void update() = 0;
         };
     }

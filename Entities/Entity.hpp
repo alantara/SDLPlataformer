@@ -12,6 +12,7 @@ namespace Entities
     protected:
         bool active;
         Position position;
+        bool isGrounded;
 
     public:
         Entity(GraphicManager *p_graphM) : Ente(p_graphM), active(true){};
@@ -26,7 +27,11 @@ namespace Entities
         }
         Position *getPosition() { return &position; }
 
+        void setIsGrounded(bool v){isGrounded = v;}
+        const bool getIsGrounded() const {return isGrounded;}
+
         virtual void update() = 0;
+        void applyGravity() { position.setVY(5);}
         void render()
         {
             if (!active)

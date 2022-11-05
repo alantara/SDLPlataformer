@@ -59,11 +59,13 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
         }
         else if (y1 < y2)
         {
+            ent1->setIsGrounded(true);
             ent1->getPosition()->setY(y2 - h1 - 5);
             ent1->getPosition()->setVY(0);
             return 2; // Bottom Collision
         }
     }
+    return 0;
 }
 
 void CollisionManager::enemyCollision()

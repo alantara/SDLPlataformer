@@ -22,10 +22,7 @@ namespace Components
             setJump(j);
         }
 
-        const SDL_Scancode getLeft() const
-        {
-            return left;
-        }
+        const SDL_Scancode getLeft() const {return left;}
         const SDL_Scancode getRight() const { return right; }
         const SDL_Scancode getJump() const { return jump; }
 

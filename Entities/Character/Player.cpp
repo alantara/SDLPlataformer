@@ -2,9 +2,9 @@
 using namespace Entities;
 using namespace Characters;
 
-Player::Player(GraphicManager *p_graphM, int hp) : Character(p_graphM, hp)
+Player::Player(GraphicManager *p_graphM) : Character(p_graphM, 5)
 {
-    
+    isGrounded = false;
 }
 
 Player::~Player()
@@ -20,20 +20,21 @@ void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SD
 
 void Player::update()
 {
-    position.setX(position.getX() + position.getVX());
-    position.setY(position.getY() + position.getVY());
-
+    applyGravity();    
+    
     if (event->getKeyDown(input.getLeft()))
     {
-        position.setX(position.getX() - 1);
+        position.setX(position.getX() - 2);
     }
     if (event->getKeyDown(input.getRight()))
     {
-        position.setX(position.getX() + 1);
+        position.setX(position.getX() + 2);
     }
     if (event->getKeyDown(input.getJump()))
     {
-        position.setY(position.getY() - 2);
+        if(getIsGrounded())
+            position.setVY(-100);
     }
-    position.setY(position.getY() + 1);
+    move();
+    setIsGrounded(false);
 }

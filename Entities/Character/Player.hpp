@@ -19,7 +19,7 @@ namespace Entities
             CharacterInput input;
 
         public:
-            Player(GraphicManager *p_graphM, int hp);
+            Player(GraphicManager *p_graphM);
             ~Player();
 
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j);

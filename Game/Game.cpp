@@ -4,8 +4,8 @@
 using namespace std;
 
 Game::Game() : gfx("Plataformer", 1600, 900),
-               player(&gfx, 5),
-               player2(&gfx, 5),
+               player(&gfx),
+               player2(&gfx),
                lvl1(&gfx, &evManager, &player, &player2),
                isRunning(true)
 
@@ -30,7 +30,7 @@ Game::~Game()
 void Game::init()
 {
     player.setSprite(&gfx, "assets/luke.png", 0, 0, 64, 64, 1);
-    player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_W);
+    player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE);
     
     player2.setSprite(&gfx, "assets/bobbafett.png", 0, 0, 64, 64, 1);
     player2.setInputSystem(&evManager, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_UP);
