@@ -12,7 +12,7 @@ namespace Entities
             int health;
 
         public:
-            Character(int hp) : health(hp){};
+            Character(GraphicManager *p_graphM, int hp) : Entity(p_graphM), health(hp){};
             ~Character(){};
 
             void setHealth(int hp) { health = hp; }

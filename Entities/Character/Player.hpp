@@ -8,9 +8,6 @@ using namespace Managers;
 #include "CharacterInput.hpp"
 using namespace Components;
 
-#include "EntityList.hpp"
-using namespace Lists;
-
 namespace Entities
 {
     namespace Characters
@@ -22,7 +19,7 @@ namespace Entities
             CharacterInput input;
 
         public:
-            Player(bool act, int hp);
+            Player(GraphicManager *p_graphM, int hp);
             ~Player();
 
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j);

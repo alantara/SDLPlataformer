@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Entity.hpp"
-using namespace Entities;
 
 namespace Entities
 {
@@ -9,8 +8,10 @@ namespace Entities
     {
     private:
         int damage;
+        bool isPlayerShooted;
+
     public:
-        Projectile();
+        Projectile(GraphicManager *p_graphM) : Entity(p_graphM){};
         ~Projectile();
     };
 }

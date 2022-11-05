@@ -4,18 +4,25 @@
 using namespace std;
 using namespace Levels;
 
-Level::Level(GraphicManager *graphM, EventManager *ev) : gfx(graphM), events(ev), colManager(new CollisionManager())
+Level::Level(GraphicManager *p_graphM, EventManager *ev) : Ente(p_graphM), evManager(ev)
 {
     cout << "Level Initialized " << endl;
+
+    p1 = nullptr;
+    p2 = nullptr;
 }
 
 Level::~Level()
 {
     cout << "Level Destroyed" << endl;
+
+    evManager = nullptr;
+    p1 = nullptr;
+    p2 = nullptr;
 }
 
 void Level::render()
 {
-    sprite.render();
+    sprite.render(gfx);
     entList.renderAll();
 }

@@ -30,7 +30,6 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
     {
         if (x1 < x2)
         {
-            cout << "Right" << endl;
 
             ent1->getPosition()->setX(x2 - w1 - 5);
             ent1->getPosition()->setVX(0);
@@ -39,7 +38,6 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
         }
         else if (x1 > x2)
         {
-            cout << "Left" << endl;
 
             ent1->getPosition()->setX(x2 + w2 + 5);
             ent1->getPosition()->setVX(0);
@@ -55,14 +53,12 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
     {
         if (y1 > y2)
         {
-            cout << "Top" << endl;
             ent1->getPosition()->setY(y2 + h2 + 5);
             ent1->getPosition()->setVY(0);
             return 4; // Top Collision
         }
         else if (y1 < y2)
         {
-            cout << "Bottom" << endl;
             ent1->getPosition()->setY(y2 - h1 - 5);
             ent1->getPosition()->setVY(0);
             return 2; // Bottom Collision
@@ -79,7 +75,14 @@ void CollisionManager::obsCollision()
     list<Obstacle *>::iterator it = LOs.begin();
     for (it; it != LOs.end(); it++)
     {
-        isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it));
+        if(isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && (*it)->getHarm())
+        {
+            pl->takeDamage();
+        }
+        if(isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && (*it)->getHarm())
+        {
+            pl2->takeDamage();
+        }
     }
 }
 

@@ -4,10 +4,9 @@
 using namespace Entities;
 using namespace Obstacles;
 
-Plataform::Plataform(bool act)
+Plataform::Plataform(GraphicManager *p_graphM) : Obstacle(p_graphM)
 {
-    id = 3;
-    active = act;
+
 }
 
 Plataform::~Plataform()

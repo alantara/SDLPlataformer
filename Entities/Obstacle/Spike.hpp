@@ -6,13 +6,13 @@ using namespace Obstacles;
 
 namespace Entities
 {
-namespace Obstacles
-{
-    class Spike : public Obstacle
+    namespace Obstacles
     {
-    public:
-        Spike(){}
-        ~Spike();
-    };
-}
+        class Spike : public Obstacle
+        {
+        public:
+            Spike(GraphicManager *p_graphM) : Obstacle(p_graphM, true) {}
+            ~Spike();
+        };
+    }
 }

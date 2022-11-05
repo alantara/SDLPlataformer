@@ -8,11 +8,11 @@ namespace Entities
 {
     namespace Obstacles
     {
-        class Rock : public Obstacle
+        class Barrel : public Obstacle
         {
         public:
-            Rock();
-            ~Rock();
+            Barrel(GraphicManager *p_graphM) : Obstacle(p_graphM){};
+            ~Barrel();
         };
     }
 }

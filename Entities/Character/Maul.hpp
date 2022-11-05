@@ -6,11 +6,11 @@ namespace Entities
 {
     namespace Characters
     {
-        class Skeleton : public Enemy
+        class Maul : public Enemy
         {
         public:
-            Skeleton();
-            ~Skeleton();
+            Maul(GraphicManager *p_graphM, int hp) : Enemy(p_graphM, hp){};
+            ~Maul();
 
             void update();
         };

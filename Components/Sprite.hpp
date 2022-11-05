@@ -24,10 +24,8 @@ namespace Components
         int height;
         int multiplier;
 
-        GraphicManager *gfx;
-
     public:
-        Sprite() : gfx(nullptr), path(""), row(0), column(0), width(0), height(0), multiplier(1), texture(nullptr){};
+        Sprite() : path(""), row(0), column(0), width(0), height(0), multiplier(1), texture(nullptr){};
         ~Sprite()
         {
             SDL_DestroyTexture(texture);
@@ -36,10 +34,8 @@ namespace Components
 
         void setSprite(GraphicManager *gfxM, string p, int c, int r, int w, int h, int m = 1)
         {
-            setGFXPointer(gfxM);
-
             setPath(p);
-            setTexture(p);
+            setTexture(gfxM, p);
 
             setRow(r);
             setColumn(c);
@@ -57,14 +53,14 @@ namespace Components
         const int getMultiplier() const { return multiplier; }
 
         void setPath(string p) { path = p; }
-        void setTexture(string p)
+        void setTexture(GraphicManager *gfxM, string p)
         {
             if (texture != nullptr)
             {
                 SDL_DestroyTexture(texture);
             }
 
-            SDL_Texture *tx = IMG_LoadTexture(gfx->getRenderer(), p.c_str());
+            SDL_Texture *tx = IMG_LoadTexture(gfxM->getRenderer(), p.c_str());
             if (tx == nullptr)
             {
                 std::cout << "Texture could not be loaded: " << SDL_GetError() << std::endl;
@@ -78,14 +74,13 @@ namespace Components
         void setWidth(int w) { width = w; }
         void setHeight(int h) { height = h; }
         void setMultiplier(int m) { multiplier = m; }
-        void setGFXPointer(GraphicManager *gfxM) { gfx = gfxM; }
 
-        void render(int x = 0, int y = 0)
+        void render(GraphicManager *gfxM, int x = 0, int y = 0)
         {
             SDL_Rect srcRect = {column * width, row * height, width, height};
             SDL_Rect dstRect = {x, y, width * multiplier, height * multiplier};
 
-            SDL_RenderCopy(gfx->getRenderer(), texture, &srcRect, &dstRect);
+            SDL_RenderCopy(gfxM->getRenderer(), texture, &srcRect, &dstRect);
         }
     };
 }

@@ -11,8 +11,8 @@ using namespace Characters;
 
 //#include "CollisionManager.hpp"
 #include "GraphicManager.hpp"
-#include "EventManager.hpp"
 #include "CollisionManager.hpp"
+#include "EventManager.hpp"
 using namespace Managers;
 
 namespace Levels
@@ -20,22 +20,21 @@ namespace Levels
     class Level : public Ente
     {
     protected:
-        GraphicManager *gfx;
-        EventManager *events;
-
         EntityList entList;
-        CollisionManager *colManager;
+        CollisionManager colManager;
 
-        Player *player;
-        Player *player2;
+        EventManager *evManager;
+
+        Player *p1;
+        Player *p2;
 
     public:
-        Level(GraphicManager *graphM, EventManager *ev);
+        Level(GraphicManager *p_graphM, EventManager *ev);
         ~Level();
 
         void render();
         virtual void update() = 0;
 
-        CollisionManager *getCollisionManager() { return colManager; }
+        CollisionManager getCollisionManager() { return colManager; }
     };
 }

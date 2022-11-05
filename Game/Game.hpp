@@ -1,16 +1,19 @@
 #pragma once
 
 #include "Player.hpp"
-#include "Level1.hpp"
-//#include "Level2.hpp"
-//#include "Menu.hpp"
-#include "GraphicManager.hpp"
-#include "EventManager.hpp"
-#include <string>
-
-using namespace Levels;
 using namespace Entities;
 using namespace Characters;
+
+#include "Level1.hpp"
+//#include "Level2.hpp"
+using namespace Levels;
+
+#include "GraphicManager.hpp"
+#include "EventManager.hpp"
+using namespace Managers;
+
+//#include "Menu.hpp"
+//using namespace Menus;
 
 class Game 
 {
@@ -18,7 +21,7 @@ private:
     bool isRunning;
 
     GraphicManager gfx;
-    EventManager events;
+    EventManager evManager;
 
     Player player;
     Player player2;
@@ -30,6 +33,7 @@ public:
     Game();
     ~Game();
 
+    void init();
     void update();
     void render();
 };

@@ -9,7 +9,7 @@ namespace Entities
         class Enemy : public Character
         {
         public:
-            Enemy();
+            Enemy(GraphicManager *p_graphM, int hp) : Character(p_graphM, hp){};
             ~Enemy();
 
             virtual void update() = 0;

@@ -9,12 +9,13 @@ namespace Entities
 {
     class Plataform : public Obstacle
     {
+    private:
+        bool isDefaultGround;
+
     public:
-        Plataform(bool act);
+        Plataform(GraphicManager *p_graphM);
         ~Plataform();
 
         void update();
-
-    private:
     };
 }

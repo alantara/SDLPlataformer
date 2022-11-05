@@ -2,10 +2,9 @@
 using namespace Entities;
 using namespace Characters;
 
-Player::Player(bool act, int hp) : Character(hp)
+Player::Player(GraphicManager *p_graphM, int hp) : Character(p_graphM, hp)
 {
-    id = 1;
-    active = act;
+    
 }
 
 Player::~Player()
