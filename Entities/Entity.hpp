@@ -18,29 +18,20 @@ namespace Entities
         bool active;
 
         Position position;
-        Sprite sprite;
-        SDL_Rect hitbox;
 
     public:
-        Entity(){};
+        Entity(): Ente(){};
         ~Entity(){};
 
         void Inactivate() { active = false; }
         void Activate() { active = true; }
 
-        void setPosition(int xPos, int yPos)
+        void setPosition(int xPos, int yPos, int width, int height, int vX, int vY)
         {
-            position.setPosition(xPos, yPos);
+            position.setPosition(xPos, yPos, width, height, vX, vY);
         }
-        void setSprite(GraphicManager *gfxM, string p, int f, int c, int w, int h, int m = 1)
-        {
-            sprite.setSprite(gfxM, p, f, c, w, h, m);
-        }
-        void setHitBox(SDL_Rect hb) { hitbox = hb; }
 
-        const Position *getPosition() const { return &position; }
-        const Sprite *getSprite() const { return &sprite; }
-        SDL_Rect* getHitBox() { return &hitbox; }
+        Position *getPosition() { return &position; }
 
         virtual void update() = 0;
         void render()

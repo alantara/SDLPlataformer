@@ -19,28 +19,30 @@ namespace Levels
         Level1(GraphicManager *graphM, EventManager *ev, Player *player, Player *player2) : Level(graphM, ev)
         {
             cout << "Level1 Initialized" << endl;
-            bg.setSprite(graphM, "assets/back.jpg", 0, 0, 1920, 1080);
+            sprite.setSprite(graphM, "assets/back.jpg", 0, 0, 1920, 1080);
 
             player->setInputSystem(events, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_W);
-            player->setPosition(0, 0);
+            player->setPosition(800, 450, 64, 64, 0, 0);
             player->setSprite(gfx, "assets/texture.png", 0, 0, 8, 8, 8);
-            player->setPhysics(0, 0, 0, 0, 0, 0);
 
+            colManager->setPlayer(player);
             entList.insert(static_cast<Entity *>(player));
 
             player2->setInputSystem(events, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_UP);
-            player2->setPosition(100, 100);
+            player2->setPosition(100, 100, 64, 64, 0, 0);
             player2->setSprite(gfx, "assets/texture.png", 0, 0, 8, 8, 8);
-            player2->setPhysics(0, 0, 0, 0, 0, 0);
 
             entList.insert(static_cast<Entity *>(player2));
 
             Plataform *plataform = new Plataform(true);
-            plataform->setPosition(10, 300);
+            plataform->setPosition(800, 700, 192, 64, 0, 0);
             plataform->setSprite(gfx, "assets/texture.png", 0, 0, 24, 8, 8);
 
+            colManager->insertObs(static_cast<Obstacle *>(plataform));
             entList.insert(static_cast<Entity *>(plataform));
-            colManager->getListPlataforms()->push_back(plataform);
+
+            cout << player->getPosition()->getY() << endl;
+            cout << player2->getPosition()->getY() << endl;
         }
         ~Level1()
         {
@@ -49,7 +51,7 @@ namespace Levels
 
         void update()
         {
-            colManager->handleCollision(player);
+            colManager->Execute();
             entList.updateAll();
         }
     };

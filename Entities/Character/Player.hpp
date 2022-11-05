@@ -2,13 +2,10 @@
 
 #include "Character.hpp"
 
-#include "GraphicManager.hpp"
 #include "EventManager.hpp"
 using namespace Managers;
 
 #include "CharacterInput.hpp"
-#include "Sprite.hpp"
-#include "Position.hpp"
 using namespace Components;
 
 #include "EntityList.hpp"

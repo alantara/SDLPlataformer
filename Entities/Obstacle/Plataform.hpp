@@ -1,12 +1,13 @@
 
 #pragma once
 
-#include "Entity.hpp"
-#include <string>
+#include "Obstacle.hpp"
+using namespace Entities;
+using namespace Obstacles;
 
 namespace Entities
 {
-    class Plataform : public Entity
+    class Plataform : public Obstacle
     {
     public:
         Plataform(bool act);

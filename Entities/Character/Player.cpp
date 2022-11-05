@@ -21,25 +21,20 @@ void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SD
 
 void Player::update()
 {
-    physics.update();
+    position.setX(position.getX() + position.getVX());
+    position.setY(position.getY() + position.getVY());
 
-    this->setHitBox({position.getX(), position.getY(), sprite.getWidth(), sprite.getHeight()});
-
-    physics.setXAcceleration(0);
     if (event->getKeyDown(input.getLeft()))
     {
-        physics.setXAcceleration(-1);
+        position.setX(position.getX() - 1);
     }
     if (event->getKeyDown(input.getRight()))
     {
-        physics.setXAcceleration(1);
+        position.setX(position.getX() + 1);
     }
     if (event->getKeyDown(input.getJump()))
     {
-        physics.setYAcceleration(-3);
+        position.setY(position.getY() - 2);
     }
-    physics.setYAcceleration(1); // Gravidade
-
-    position.setX(physics.getXPosition());
-    position.setY(physics.getYPosition());
+    position.setY(position.getY() + 1);
 }

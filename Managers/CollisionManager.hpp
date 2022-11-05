@@ -19,17 +19,20 @@ namespace Managers
     private:
         vector<Enemy *> LIs;
         list<Obstacle *> LOs;
-        list<Plataform *> LPs;
+        Player* pl;
 
     public:
         CollisionManager();
         ~CollisionManager();
 
-        bool isColliding(const SDL_Rect* hb1, const SDL_Rect* hb2);
-        int sideColliding(Character *ch, Entity *ent2);
+        void setPlayer(Player* player) { pl = player;}
+        void insertEnemy(Enemy* en) { LIs.push_back(en);}
+        void insertObs(Obstacle* obs) { LOs.push_back(obs);}
 
-        void handleCollision(Player *pl);
+        int isColliding(Entity* ent1, Entity* ent2);
+        void Execute();
 
-        list<Plataform *> *getListPlataforms() { return &LPs; }
+        void enemyCollision();
+        void obsCollision();
     };
 }

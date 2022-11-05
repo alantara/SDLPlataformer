@@ -24,7 +24,6 @@ namespace Levels
         EventManager *events;
 
         EntityList entList;
-        Sprite bg;
         CollisionManager *colManager;
 
         Player *player;
@@ -37,7 +36,6 @@ namespace Levels
         void render();
         virtual void update() = 0;
 
-        EntityList *getEntityList() { return &entList; }
         CollisionManager *getCollisionManager() { return colManager; }
     };
 }

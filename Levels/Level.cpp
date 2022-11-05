@@ -16,6 +16,6 @@ Level::~Level()
 
 void Level::render()
 {
-    bg.render();
+    sprite.render();
     entList.renderAll();
 }

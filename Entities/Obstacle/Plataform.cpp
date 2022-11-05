@@ -1,9 +1,8 @@
 
 #include "Plataform.hpp"
 
-#include <iostream>
-
 using namespace Entities;
+using namespace Obstacles;
 
 Plataform::Plataform(bool act)
 {
@@ -17,5 +16,5 @@ Plataform::~Plataform()
 
 void Plataform::update()
 {
-    this->setHitBox({position.getX(), position.getY(), sprite.getWidth(), sprite.getHeight()});
+
 }
