@@ -30,10 +30,10 @@ Game::~Game()
 void Game::init()
 {
     player.setSprite(&gfx, "assets/luke.png", 0, 0, 64, 64, 1);
-    player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE);
+    player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
     
     player2.setSprite(&gfx, "assets/bobbafett.png", 0, 0, 64, 64, 1);
-    player2.setInputSystem(&evManager, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_UP);
+    player2.setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
 }
 
 void Game::update()

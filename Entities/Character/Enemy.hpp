@@ -10,9 +10,10 @@ namespace Entities
         {
         protected:
             bool shooter;
+
         public:
             Enemy(GraphicManager *p_graphM, int hp) : Character(p_graphM, hp){};
-            ~Enemy();
+            ~Enemy(){};
 
             virtual void update() = 0;
         };

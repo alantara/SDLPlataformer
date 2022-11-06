@@ -10,17 +10,18 @@ namespace Entities
         {
         protected:
             int health;
+            int moveDir;
 
         public:
-            Character(GraphicManager *p_graphM, int hp) : Entity(p_graphM), health(hp){};
+            Character(GraphicManager *p_graphM, int hp) : Entity(p_graphM), health(hp), moveDir(1){};
             ~Character(){};
 
             void setHealth(int hp) { health = hp; }
             const int getHealth() const { return health; }
             void takeDamage() { health--; }
+            
+            const int getMoveDirection() const { return moveDir; }
 
-            void move() { position.setX(position.getX() + position.getVX());
-                          position.setY(position.getY() + position.getVY());}
             virtual void update() = 0;
         };
     }

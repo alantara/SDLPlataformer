@@ -2,9 +2,9 @@
 using namespace Entities;
 using namespace Characters;
 
-Player::Player(GraphicManager *p_graphM) : Character(p_graphM, 5)
+Player::Player(GraphicManager *p_graphM) : Character(p_graphM, 5), bullet(new Projectile(p_graphM, static_cast<Character*>(this)))
 {
-    isGrounded = false;
+
 }
 
 Player::~Player()
@@ -12,28 +12,42 @@ Player::~Player()
     event = nullptr;
 }
 
-void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j)
+void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f)
 {
     event = ev;
-    input.setCharacterInput(l, r, j);
+    input.setCharacterInput(l, r, j, f);
 }
 
 void Player::update()
 {
-    applyGravity();    
-    
+    if (!isActive)
+        return;
+
+    if (health <= 0)
+    {
+        Deactivate();
+    }
+
+    physics.setXVelocity(0);
+
     if (event->getKeyDown(input.getLeft()))
     {
-        position.setX(position.getX() - 2);
+        moveDir = -1;
+        physics.setXVelocity(-4);
     }
     if (event->getKeyDown(input.getRight()))
     {
-        position.setX(position.getX() + 2);
+        moveDir = 1;
+        physics.setXVelocity(4);
     }
     if (event->getKeyDown(input.getJump()))
     {
-        if(getIsGrounded())
-            position.setVY(-100);
+        if (getIsGrounded())
+            physics.setYVelocity(-35);
+    }
+    if(event->getKeyDown(input.getFire()))
+    {
+        bullet->fire(physics.getXPosition(), physics.getYPosition(), moveDir);
     }
     move();
     setIsGrounded(false);
