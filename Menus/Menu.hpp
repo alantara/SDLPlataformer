@@ -1,14 +1,18 @@
 #pragma once
 
+#include "Ente.hpp"
+#include "GraphicManager.hpp"
+using namespace Managers;
+
 namespace Menus
 {
-    class Menu
+    class Menu : public Ente
     {
     public:
-        Menu(/* args */);
-        ~Menu();
+        Menu(GraphicManager *gfxM) : Ente(gfxM){};
+        ~Menu(){};
 
-        void init();
-        void update();
+        virtual void update() = 0;
+        virtual void render() = 0;
     };
 }

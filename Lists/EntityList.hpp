@@ -16,6 +16,7 @@ namespace Lists
         EntityList() : entList(){};
         ~EntityList(){};
 
+        void clean();
         void renderAll();
         void updateAll();
         void insert(Entity *entity);

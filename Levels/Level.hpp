@@ -9,11 +9,13 @@ using namespace Lists;
 using namespace Entities;
 using namespace Characters;
 
-//#include "CollisionManager.hpp"
 #include "GraphicManager.hpp"
 #include "CollisionManager.hpp"
 #include "EventManager.hpp"
 using namespace Managers;
+
+#include <string>
+using namespace std;
 
 namespace Levels
 {
@@ -34,6 +36,10 @@ namespace Levels
 
         void render();
         virtual void update() = 0;
+
+        void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void groundInitialize();
 
         CollisionManager getCollisionManager() { return colManager; }
     };

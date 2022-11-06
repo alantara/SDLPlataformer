@@ -14,8 +14,10 @@ namespace Managers
         void keyUpdate();
 
         bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }
+        bool getMBDown() { return mouseClick; }
 
     private:
+        bool mouseClick;
         SDL_Event outputEvent;
         const Uint8 *keyStates;
     };

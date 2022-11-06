@@ -32,3 +32,13 @@ void EntityList::insert(Entity *entity)
 {
     entList.insert(entity);
 }
+
+void EntityList::clean()
+{
+    List<Entity*>::Element<Entity*> *aux = entList.begin();
+    while (aux != nullptr)
+    {
+        delete (aux->getData());
+        aux = aux->getNext();
+    }
+}

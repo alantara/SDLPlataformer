@@ -117,8 +117,27 @@ void CollisionManager::obsCollision()
     }
 }
 
+void CollisionManager::groundCollision()
+{
+    vector<Enemy *>::iterator it;
+    list<Obstacle *>::iterator it2;
+
+    for (it = LIs.begin(); it != LIs.end(); it++)
+    {
+        isColliding(static_cast<Entity *>(*it), static_cast<Entity *>(gnd));
+    }
+    for (it2 = LOs.begin(); it2 != LOs.end(); it2++)
+    {
+        isColliding(static_cast<Entity *>(*it2), static_cast<Entity *>(gnd));
+    }
+
+    isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(gnd));
+    isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(gnd));
+}
+
 void CollisionManager::Execute()
 {
     obsCollision();
     enemyCollision();
+    groundCollision();
 }

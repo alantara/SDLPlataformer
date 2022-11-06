@@ -4,6 +4,8 @@
 using namespace std;
 using namespace Levels;
 
+#include "Spike.hpp"
+
 Level::Level(GraphicManager *p_graphM, EventManager *ev) : Ente(p_graphM), evManager(ev)
 {
     cout << "Level Initialized " << endl;
@@ -25,4 +27,43 @@ void Level::render()
 {
     sprite.render(gfx);
     entList.renderAll();
+}
+
+void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
+{
+    while (n--)
+    {
+        Spike *spk = new Spike(gfx);
+
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
+
+        spk->setPhysics(xRnd, yRnd, 64, 43, 0, 0, 0, 0);
+        colManager.insertObs(static_cast<Obstacle *>(spk));
+        entList.insert(static_cast<Entity *>(spk));
+    }
+}
+
+void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf)
+{
+    while (n--)
+    {
+        Plataform *plat = new Plataform(gfx);
+
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
+
+        plat->setPhysics(xRnd, yRnd, 64, 43, 0, 0, 0, 0);
+        colManager.insertObs(static_cast<Obstacle *>(plat));
+        entList.insert(static_cast<Entity *>(plat));
+    }
+}
+
+void Level::groundInitialize()
+{
+    Ground *gnd = new Ground(gfx);
+
+    gnd->setPhysics(0, gfx->getHeight(), gfx->getWidth(), 100, 0, 0, 0, 0);
+    colManager.setGND(gnd);
+    entList.insert(static_cast<Entity *>(gnd));
 }

@@ -12,10 +12,10 @@ using namespace Levels;
 #include "EventManager.hpp"
 using namespace Managers;
 
-//#include "Menu.hpp"
-//using namespace Menus;
+#include "LevelMenu.hpp"
+using namespace Menus;
 
-class Game 
+class Game
 {
 private:
     bool isRunning;
@@ -27,9 +27,11 @@ private:
     Player player2;
     Level1 lvl1;
     // Level2 lvl2;
-    // Menu menu;
+    LevelMenu menu;
 
 public:
+    int gameState;
+
     Game();
     ~Game();
 

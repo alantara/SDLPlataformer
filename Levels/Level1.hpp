@@ -31,6 +31,7 @@ namespace Levels
         {
             cout << "Level1 Initialized" << endl;
             sprite.setSprite(graphM, "assets/back.png", 0, 0, 1920, 1080);
+            groundInitialize();
 
             entList.insert(static_cast<Entity *>(player));
             entList.insert(static_cast<Entity *>(player2));
@@ -47,11 +48,7 @@ namespace Levels
             entList.insert(static_cast<Entity *>(trp));
             colManager.insertEnemy(static_cast<Enemy *>(trp));
 
-            Spike *spk = new Spike(gfx);
-            spk->setPhysics(0, 400, 64, 43, 0, 0, 0, 0);
-
-            colManager.insertObs(static_cast<Obstacle *>(spk));
-            entList.insert(static_cast<Entity *>(spk));
+            spikeBulkInitialize(3, 0, 200, 600, 600);
 
             Plataform *plataform = new Plataform(gfx);
             plataform->setPhysics(0, 700, 257, 87, 0, 0, 0, 0);

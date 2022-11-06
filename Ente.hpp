@@ -15,7 +15,6 @@ protected:
     GraphicManager *gfx;
 
 public:
-    Ente(){};
     Ente(GraphicManager *p_graphM) : gfx(p_graphM), id(0)
     {
         cout << "Ente Created! id: " << id << endl;
@@ -26,7 +25,6 @@ public:
         gfx = nullptr;
     }
 
-    const Sprite getSprite() const { return sprite; }
     void setSprite(GraphicManager *gfxM, string p, int f, int c, int w, int h, int m = 1)
     {
         gfx = gfxM;

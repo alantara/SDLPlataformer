@@ -16,7 +16,8 @@ namespace Entities
             Obstacle(GraphicManager *p_graphM, bool harm = false) : Entity(p_graphM), isHarmful(harm) {}
             ~Obstacle(){};
 
-            const bool getHarm() const {return isHarmful;}
+            const bool getHarm() const { return isHarmful; }
+            virtual void update() = 0;
         };
     }
 }

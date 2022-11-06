@@ -10,7 +10,6 @@ namespace Entities
     class Plataform : public Obstacle
     {
     private:
-        bool isDefaultGround;
 
     public:
         Plataform(GraphicManager *p_graphM);
