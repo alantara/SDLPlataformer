@@ -49,3 +49,11 @@ void Sprite::render(GraphicManager *gfxM, int x, int y)
 
     SDL_RenderCopy(gfxM->getRenderer(), texture, &srcRect, &dstRect);
 }
+
+void Sprite::renderFlip(GraphicManager *gfxM, int x, int y)
+{
+    SDL_Rect srcRect = {column * width, row * height, width, height};
+    SDL_Rect dstRect = {x, y, width * multiplier, height * multiplier};
+
+    SDL_RenderCopyEx(gfxM->getRenderer(), texture, &srcRect, &dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+}

@@ -14,6 +14,14 @@ namespace Entities
             ~Vader();
 
             void update();
+            void render() override
+            {
+                if (isActive)
+                    if(moveDir == 1)
+                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                    else
+                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+            }
         };
     }
 }

@@ -32,6 +32,7 @@ namespace Entities
             Projectile *getBullet() { return bullet; }
 
             void update();
+            void render() override;
         };
     }
 }

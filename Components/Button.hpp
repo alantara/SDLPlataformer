@@ -14,7 +14,10 @@ namespace Components
 
         void setButton(int xPos, int yPos, int w, int h)
         {
-            
+            setX(xPos);
+            setY(yPos);
+            setWidth(w);
+            setHeight(h);
         }
 
         const int getX() const { return x; }

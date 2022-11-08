@@ -57,12 +57,10 @@ namespace Entities
             physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
             physics.setYPosition(physics.getYPosition() + physics.getYVelocity());
         }
-        void render()
+        virtual void render()
         {
-            if (!isActive)
-                return;
-
-            sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+            if (isActive)
+                sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
         }
     };
 }

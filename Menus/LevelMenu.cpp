@@ -1,7 +1,9 @@
 #include "LevelMenu.hpp"
 using namespace Menus;
 
-LevelMenu::LevelMenu(GraphicManager *gfxM, EventManager *ev) : Menu(gfxM), events(ev)
+#include "Game.hpp"
+
+LevelMenu::LevelMenu(GraphicManager *gfxM, EventManager *ev, Game*gm) : Menu(gfxM), events(ev), game(gm)
 {
     lvl1.setButton(0, 0, 300, 300);
 }
@@ -12,7 +14,10 @@ LevelMenu::~LevelMenu()
 
 void LevelMenu::update()
 {
-    if(events->getMBDown()){
+    int x, y;
+    SDL_GetMouseState(&x,&y);
+    if(events->getMBDown() && x < lvl1.getX() + lvl1.getWidth() && x > lvl1.getX() && y > lvl1.getY() && y < lvl1.getY() +lvl1.getHeight()){
+        game->gameState = 1;
     }
 
 }

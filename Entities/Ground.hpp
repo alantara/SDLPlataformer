@@ -13,6 +13,6 @@ namespace Entities
         Ground(GraphicManager *p_graphM) : Entity(p_graphM){};
         ~Ground(){};
 
-        void update(){};
+        void update(){};    
     };
 }

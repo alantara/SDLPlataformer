@@ -47,5 +47,7 @@ namespace Components
         void setMultiplier(int m) { multiplier = m; }
 
         void render(GraphicManager *gfxM, int x = 0, int y = 0);
+        void renderFlip(GraphicManager *gfxM, int x = 0, int y = 0);
+
     };
 }

@@ -4,7 +4,7 @@ using namespace Managers;
 #include <iostream>
 using namespace std;
 
-EventManager::EventManager() : keyStates(SDL_GetKeyboardState(nullptr))
+EventManager::EventManager() : keyStates(SDL_GetKeyboardState(nullptr)), mouseClick(false)
 {
     cout << "Event Manager Initialized" << endl;
 }

@@ -25,9 +25,18 @@ namespace Entities
             {
                 pursue(player);
                 pursue(player2);
-                if(rand()%20 == 0)
+                if(rand()%50 == 0)
                     bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, moveDir);
                 move();
+            }
+            
+            void render() override
+            {
+                if (isActive)
+                    if(moveDir == 1)
+                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                    else
+                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
             }
         };
     }

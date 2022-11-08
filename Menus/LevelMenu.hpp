@@ -7,6 +7,8 @@ using namespace Managers;
 #include "Button.hpp"
 using namespace Components;
 
+class Game;
+
 namespace Menus
 {
     class LevelMenu : public Menu
@@ -16,8 +18,10 @@ namespace Menus
         Button lvl1;
         Button lvl2;
 
+        Game *game;
+
     public:
-        LevelMenu(GraphicManager *gfxM, EventManager *ev);
+        LevelMenu(GraphicManager *gfxM, EventManager *ev, Game*gm);
         ~LevelMenu();
 
         void update();

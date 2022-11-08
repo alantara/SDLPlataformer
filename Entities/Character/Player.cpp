@@ -52,3 +52,12 @@ void Player::update()
     move();
     setIsGrounded(false);
 }
+
+void Player::render()
+{
+    if (isActive)
+        if(moveDir == 1)
+            sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+        else
+            sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+}
