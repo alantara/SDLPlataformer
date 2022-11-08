@@ -15,7 +15,7 @@ protected:
     GraphicManager *gfx;
 
 public:
-    Ente(GraphicManager *p_graphM) : gfx(p_graphM), id(0)
+    Ente() : gfx(GraphicManager::getInstance()), id(0)
     {
         cout << "Ente Created! id: " << id << endl;
     }

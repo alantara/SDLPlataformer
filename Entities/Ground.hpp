@@ -10,7 +10,7 @@ namespace Entities
     {
     private:
     public:
-        Ground(GraphicManager *p_graphM) : Entity(p_graphM){};
+        Ground(GraphicManager *p_graphM){};
         ~Ground(){};
 
         void update(){};    

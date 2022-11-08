@@ -21,7 +21,7 @@ namespace Menus
         Game *game;
 
     public:
-        LevelMenu(GraphicManager *gfxM, EventManager *ev, Game*gm);
+        LevelMenu(EventManager *ev, Game*gm);
         ~LevelMenu();
 
         void update();

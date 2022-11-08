@@ -6,7 +6,7 @@ using namespace Levels;
 
 #include "Spike.hpp"
 
-Level::Level(GraphicManager *p_graphM, EventManager *ev) : Ente(p_graphM), evManager(ev)
+Level::Level(EventManager *ev) : evManager(ev)
 {
     cout << "Level Initialized " << endl;
 
@@ -33,7 +33,7 @@ void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
     while (n--)
     {
-        Spike *spk = new Spike(gfx);
+        Spike *spk = new Spike();
 
         int xRnd = rand() % (xf - xi) + xi;
         int yRnd = rand() % (yf - yi) + yi;
@@ -48,7 +48,7 @@ void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
     while (n--)
     {
-        Plataform *plat = new Plataform(gfx);
+        Plataform *plat = new Plataform();
 
         int xRnd = rand() % (xf - xi) + xi;
         int yRnd = rand() % (yf - yi) + yi;

@@ -15,7 +15,7 @@ namespace Entities
             Player* player2;
 
         public:
-            Enemy(GraphicManager *p_graphM, int hp, Player* pl, Player* pl2);
+            Enemy(int hp, Player* pl, Player* pl2);
             ~Enemy();
 
             virtual void update() = 0;

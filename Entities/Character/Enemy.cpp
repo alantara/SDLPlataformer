@@ -2,7 +2,7 @@
 using namespace Entities;
 using namespace Characters;
 
-Enemy::Enemy(GraphicManager *p_graphM, int hp, Player* pl, Player* pl2) : Character(p_graphM, hp), player(pl), player2(pl2)
+Enemy::Enemy(int hp, Player* pl, Player* pl2) : Character(hp), player(pl), player2(pl2)
 {
 
 }

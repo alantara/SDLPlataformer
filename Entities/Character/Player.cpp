@@ -2,7 +2,7 @@
 using namespace Entities;
 using namespace Characters;
 
-Player::Player(GraphicManager *p_graphM) : Character(p_graphM, 5), bullet(new Projectile(p_graphM, static_cast<Character*>(this)))
+Player::Player() : Character(5), bullet(new Projectile(static_cast<Character*>(this)))
 {
 
 }

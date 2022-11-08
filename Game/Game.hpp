@@ -20,7 +20,7 @@ class Game
 private:
     bool isRunning;
 
-    GraphicManager gfx;
+    GraphicManager *gfx;
     EventManager evManager;
 
     Player player;
@@ -38,4 +38,5 @@ public:
     void init();
     void update();
     void render();
+    void clean();
 };

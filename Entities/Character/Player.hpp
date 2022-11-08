@@ -23,7 +23,7 @@ namespace Entities
             Projectile *bullet;
 
         public:
-            Player(GraphicManager *p_graphM);
+            Player();
             ~Player();
 
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f);

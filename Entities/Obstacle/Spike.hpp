@@ -11,7 +11,7 @@ namespace Entities
         class Spike : public Obstacle
         {
         public:
-            Spike(GraphicManager *p_graphM) : Obstacle(p_graphM, true) 
+            Spike() : Obstacle(true) 
             {
                 setSprite(gfx, "assets/spike.png", 0, 0, 64, 43, 1);
             }

@@ -12,7 +12,7 @@ namespace Entities
         bool isPlayerShooted;
 
     public:
-        Projectile(GraphicManager *p_graphM, bool ips) : Entity(p_graphM), isPlayerShooted(ips)
+        Projectile(bool ips) : isPlayerShooted(ips)
         {
             sprite.setSprite(gfx, "assets/laser.png", 0, 0, 64, 13, 1);
         }

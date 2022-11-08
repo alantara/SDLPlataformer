@@ -12,7 +12,7 @@ namespace Entities
     private:
 
     public:
-        Plataform(GraphicManager *p_graphM);
+        Plataform();
         ~Plataform();
 
         void update();

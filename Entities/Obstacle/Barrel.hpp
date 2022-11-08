@@ -11,7 +11,7 @@ namespace Entities
         class Barrel : public Obstacle
         {
         public:
-            Barrel(GraphicManager *p_graphM) : Obstacle(p_graphM){};
+            Barrel(){};
             ~Barrel();
         };
     }

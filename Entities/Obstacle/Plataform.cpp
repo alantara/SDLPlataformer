@@ -4,7 +4,7 @@
 using namespace Entities;
 using namespace Obstacles;
 
-Plataform::Plataform(GraphicManager *p_graphM) : Obstacle(p_graphM)
+Plataform::Plataform()
 {
 }
 

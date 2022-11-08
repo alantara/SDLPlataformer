@@ -3,7 +3,7 @@ using namespace Menus;
 
 #include "Game.hpp"
 
-LevelMenu::LevelMenu(GraphicManager *gfxM, EventManager *ev, Game*gm) : Menu(gfxM), events(ev), game(gm)
+LevelMenu::LevelMenu(EventManager *ev, Game*gm) : events(ev), game(gm)
 {
     lvl1.setButton(0, 0, 300, 300);
 }

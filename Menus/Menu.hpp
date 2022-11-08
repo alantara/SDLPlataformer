@@ -9,7 +9,7 @@ namespace Menus
     class Menu : public Ente
     {
     public:
-        Menu(GraphicManager *gfxM) : Ente(gfxM){};
+        Menu() {};
         ~Menu(){};
 
         virtual void update() = 0;

@@ -16,7 +16,7 @@ namespace Entities
         Physics physics;
 
     public:
-        Entity(GraphicManager *p_graphM) : Ente(p_graphM), isActive(true), isGrounded(false){};
+        Entity() : isActive(true), isGrounded(false){};
         ~Entity(){};
 
         void Deactivate() { isActive = false; }

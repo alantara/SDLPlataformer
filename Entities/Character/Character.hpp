@@ -13,7 +13,7 @@ namespace Entities
             int moveDir;
 
         public:
-            Character(GraphicManager *p_graphM, int hp) : Entity(p_graphM), health(hp), moveDir(1){};
+            Character(int hp) : health(hp), moveDir(1){};
             ~Character(){};
 
             void setHealth(int hp) { health = hp; }

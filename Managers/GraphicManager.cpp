@@ -5,7 +5,9 @@ using namespace Managers;
 #include <iostream>
 using namespace std;
 
-GraphicManager::GraphicManager(std::string title, int width, int height, Uint32 flags) : window(nullptr), renderer(nullptr)
+GraphicManager *GraphicManager::instance = nullptr;
+
+GraphicManager::GraphicManager() : window(nullptr), renderer(nullptr)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
@@ -13,7 +15,7 @@ GraphicManager::GraphicManager(std::string title, int width, int height, Uint32 
         exit(1);
     }
 
-    window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
+    window = SDL_CreateWindow("Star Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, 0);
     if (window == nullptr)
     {
         std::cout << "Failed to Initialize Window" << std::endl;
@@ -27,8 +29,8 @@ GraphicManager::GraphicManager(std::string title, int width, int height, Uint32 
         exit(1);
     }
 
-    sWidth = width;
-    sHeight = height;
+    sWidth = 1600;
+    sHeight = 900;
 
     cout << "Graphic Manager Initialized " << endl;
 }
@@ -38,6 +40,7 @@ GraphicManager::~GraphicManager()
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+    instance = nullptr;
 
     cout << "Graphic Manager Deleted" << endl;
 }

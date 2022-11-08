@@ -10,7 +10,7 @@ namespace Entities
         class Maul : public Enemy
         {
         public:
-            Maul(GraphicManager *p_graphM, int hp, Player* pl, Player* pl2) : Enemy(p_graphM, hp, pl, pl2){};
+            Maul(int hp, Player* pl, Player* pl2) : Enemy(hp, pl, pl2){};
             ~Maul();
 
             void update();

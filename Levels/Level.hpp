@@ -31,7 +31,7 @@ namespace Levels
         Player *p2;
 
     public:
-        Level(GraphicManager *p_graphM, EventManager *ev);
+        Level(EventManager *ev);
         ~Level();
 
         void render();
@@ -40,7 +40,5 @@ namespace Levels
         void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void groundInitialize();
-
-        CollisionManager getCollisionManager() { return colManager; }
     };
 }
