@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Game::Game() : gfx("Plataformer", 1600, 900), player(&gfx), player2(&gfx), lvl1(&gfx, &evManager, &player, &player2), isRunning(true), gameState(0), menu(&gfx, &evManager)
+Game::Game() : gfx("Plataformer", 1600, 900), player(&gfx), player2(&gfx), lvl1(&gfx, &evManager, &player, &player2), isRunning(true), gameState(1), menu(&gfx, &evManager)
 {
     cout << "Game Initialized" << endl;
 

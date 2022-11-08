@@ -36,6 +36,7 @@ namespace Levels
             entList.insert(static_cast<Entity *>(player));
             entList.insert(static_cast<Entity *>(player2));
             entList.insert(static_cast<Entity *>(player->getBullet()));
+            entList.insert(static_cast<Entity*>(player2->getBullet()));
 
             player->setPhysics(800, 450, 64, 64, 0, 0, 0, 0);
             player2->setPhysics(900, 450, 64, 64, 0, 0, 0, 0);
@@ -43,12 +44,13 @@ namespace Levels
             colManager.setPlayer(player);
             colManager.setPlayer2(player2);
 
-            Trooper *trp = new Trooper(gfx);
+            Trooper *trp = new Trooper(gfx, player, player2);
             trp->setPhysics(400, 450, 64, 64, 2, 0, 0, 0);
             entList.insert(static_cast<Entity *>(trp));
+            entList.insert(static_cast<Entity*>(trp->getBullet()));
             colManager.insertEnemy(static_cast<Enemy *>(trp));
 
-            spikeBulkInitialize(3, 0, 200, 600, 600);
+            //spikeBulkInitialize(3, 0, 200, 1700, 600);
 
             Plataform *plataform = new Plataform(gfx);
             plataform->setPhysics(0, 700, 257, 87, 0, 0, 0, 0);

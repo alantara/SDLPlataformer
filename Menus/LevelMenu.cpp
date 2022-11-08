@@ -13,7 +13,6 @@ LevelMenu::~LevelMenu()
 void LevelMenu::update()
 {
     if(events->getMBDown()){
-        //COMO PASSAR O GAMESTATE DAQUI
     }
 
 }

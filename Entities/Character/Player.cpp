@@ -33,12 +33,12 @@ void Player::update()
     if (event->getKeyDown(input.getLeft()))
     {
         moveDir = -1;
-        physics.setXVelocity(-4);
+        physics.setXVelocity(-5);
     }
     if (event->getKeyDown(input.getRight()))
     {
         moveDir = 1;
-        physics.setXVelocity(4);
+        physics.setXVelocity(5);
     }
     if (event->getKeyDown(input.getJump()))
     {
@@ -47,7 +47,7 @@ void Player::update()
     }
     if(event->getKeyDown(input.getFire()))
     {
-        bullet->fire(physics.getXPosition(), physics.getYPosition(), moveDir);
+        bullet->fire(physics.getXPosition(), physics.getYPosition()+30, moveDir);
     }
     move();
     setIsGrounded(false);
