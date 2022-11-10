@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Ente.hpp"
+
 namespace Components
 {
-    class Button
+    class Button : public Ente
     {
     private:
         int x, y;
@@ -29,5 +31,11 @@ namespace Components
         void setY(int yPos) { y= yPos; }
         void setWidth(int w) {width = w; }
         void setHeight(int h) {height = h; }
+
+        void update(){};
+        void render()
+        {
+            sprite.render(gfx, x, y);
+        }
     };
 }

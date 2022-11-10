@@ -13,7 +13,7 @@ namespace Entities
         public:
             Spike() : Obstacle(true) 
             {
-                setSprite(gfx, "assets/spike.png", 0, 0, 64, 43, 1);
+                setSprite("assets/spike.png", 0, 0, 64, 43, 1);
             }
             ~Spike();
 

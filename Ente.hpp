@@ -25,10 +25,9 @@ public:
         gfx = nullptr;
     }
 
-    void setSprite(GraphicManager *gfxM, string p, int f, int c, int w, int h, int m = 1)
+    void setSprite(string p, int f, int c, int w, int h, int m = 1)
     {
-        gfx = gfxM;
-        sprite.setSprite(gfxM, p, f, c, w, h, m);
+        sprite.setSprite(gfx, p, f, c, w, h, m);
     }
 
     virtual void update() = 0;

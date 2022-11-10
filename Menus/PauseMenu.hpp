@@ -2,6 +2,8 @@
 
 #include "Menu.hpp"
 
+#include "EventManager.hpp"
+using namespace Managers;
 #include "Button.hpp"
 using namespace Components;
 
@@ -9,15 +11,15 @@ class Game;
 
 namespace Menus
 {
-    class LevelMenu : public Menu
+    class PauseMenu : public Menu
     {
     private:
-        Button lvl1;
-        Button lvl2;
+        Button menu;
+        Button save;
 
     public:
-        LevelMenu(EventManager *ev, Game*gm);
-        ~LevelMenu();
+        PauseMenu(EventManager *ev, Game *gm);
+        ~PauseMenu();
 
         void update();
         void render();

@@ -15,7 +15,7 @@ GraphicManager::GraphicManager() : window(nullptr), renderer(nullptr)
         exit(1);
     }
 
-    window = SDL_CreateWindow("Star Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1600, 900, 0);
+    window = SDL_CreateWindow("Star Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, 0);
     if (window == nullptr)
     {
         std::cout << "Failed to Initialize Window" << std::endl;

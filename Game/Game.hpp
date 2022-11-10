@@ -5,7 +5,7 @@ using namespace Entities;
 using namespace Characters;
 
 #include "Level1.hpp"
-//#include "Level2.hpp"
+#include "Level2.hpp"
 using namespace Levels;
 
 #include "GraphicManager.hpp"
@@ -13,6 +13,7 @@ using namespace Levels;
 using namespace Managers;
 
 #include "LevelMenu.hpp"
+#include "PauseMenu.hpp"
 using namespace Menus;
 
 class Game
@@ -26,8 +27,9 @@ private:
     Player player;
     Player player2;
     Level1 lvl1;
-    // Level2 lvl2;
+    Level2 lvl2;
     LevelMenu menu;
+    PauseMenu pause;
 
 public:
     int gameState;
