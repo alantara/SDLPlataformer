@@ -17,8 +17,10 @@ namespace Components
         int w;
         int h;
 
+        int moveDir;
+
     public:
-        Physics() : xPosition(0), yPosition(0), xVelocity(0), yVelocity(0), xAcceleration(0), yAcceleration(0), mass(10), xForce(0), yForce(0), w(0), h(0){};
+        Physics() : xPosition(0), yPosition(0), xVelocity(0), yVelocity(0), xAcceleration(0), yAcceleration(0), mass(10), xForce(0), yForce(0), w(0), h(0), moveDir(1){};
         ~Physics(){};
 
         void setPhysics(int xPos, int yPos, int width, int height, int xVel, int yVel, int xAcc, int yAcc)
@@ -30,6 +32,9 @@ namespace Components
             setW(width);
             setH(height);
         }
+        
+        const int getMoveDirection() const { return moveDir; }
+        void setMoveDirection(int dir) {moveDir = dir;}
 
         const float getXPosition() const { return xPosition; }
         const float getYPosition() const { return yPosition; }

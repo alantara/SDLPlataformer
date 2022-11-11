@@ -10,9 +10,10 @@ namespace Entities
     class Plataform : public Obstacle
     {
     private:
-
+        bool floating;
+        int type;
     public:
-        Plataform();
+        Plataform(int tp = 1, bool fl = false);
         ~Plataform();
 
         void update();

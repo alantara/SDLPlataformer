@@ -12,10 +12,12 @@ namespace Entities
             Projectile* bullet;
 
         public:
-            Trooper(Player* pl, Player* pl2) : Enemy(4, pl, pl2), bullet(new Projectile(false))
+            Trooper(Player* pl, Player* pl2) : Enemy(1, pl, pl2), bullet(new Projectile(false))
             {
-                physics.setXVelocity(2);
-                sprite.setSprite(gfx, "assets/trooper.png", 0, 0, 64, 43);
+                physics.setXVelocity(1);
+                physics.setW(64);
+                physics.setH(53);
+                sprite.setSprite(gfx, "assets/trooper.png", 0, 0, 64, 53);
             }
             ~Trooper();
 
@@ -23,20 +25,19 @@ namespace Entities
 
             void update()
             {
-                pursue(player);
-                pursue(player2);
+                //pursue(player);
+                //pursue(player2);
                 if(rand()%50 == 0)
-                    bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, moveDir);
+                    bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, physics.getMoveDirection());
                 move();
             }
             
             void render() override
             {
-                if (isActive)
-                    if(moveDir == 1)
-                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
-                    else
-                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+                if(physics.getMoveDirection() == 1)
+                    sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                else
+                    sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
             }
         };
     }

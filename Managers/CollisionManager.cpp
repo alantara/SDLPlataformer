@@ -30,14 +30,14 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
     {
         if (y1 > y2)
         {
-            ent1->getPhysics()->setYPosition(y2 + h2 + 5);
+            ent1->getPhysics()->setYPosition(y2 + h2 + 6);
             ent1->getPhysics()->setYVelocity(0);
             return 4; // Top Collision
         }
         else if (y1 < y2)
         {
             ent1->setIsGrounded(true);
-            ent1->getPhysics()->setYPosition(y2 - h1 - 5);
+            ent1->getPhysics()->setYPosition(y2 - h1 - 6);
             ent1->getPhysics()->setYVelocity(0);
             return 2; // Bottom Collision
         }
@@ -51,16 +51,14 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
         if (x1 < x2)
         {
 
-            ent1->getPhysics()->setXPosition(x2 - w1 - 5);
-            ent1->getPhysics()->setXVelocity(0);
+            ent1->getPhysics()->setXPosition(x2 - w1 - 6);
 
             return 1; // Right Collision
         }
         else if (x1 > x2)
         {
 
-            ent1->getPhysics()->setXPosition(x2 + w2 + 5);
-            ent1->getPhysics()->setXVelocity(0);
+            ent1->getPhysics()->setXPosition(x2 + w2 + 6);
 
             return 3; // Left Collision
         }
@@ -78,7 +76,11 @@ void CollisionManager::enemyCollision()
     {
         for (it2 = LOs.begin(); it2 != LOs.end(); it2++)
         {
-            isColliding(static_cast<Entity *>(*it), static_cast<Entity *>(*it2));
+            if (isColliding(static_cast<Entity *>(*it), static_cast<Entity *>(*it2)) % 2 == 1)
+            {
+                (*it)->getPhysics()->setMoveDirection(-(*it)->getPhysics()->getMoveDirection());
+                (*it)->getPhysics()->setXVelocity(-(*it)->getPhysics()->getXVelocity());
+            }
         }
     }
 }
@@ -93,7 +95,7 @@ void CollisionManager::obsCollision()
         if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && (*it)->getHarm())
         {
             pl->takeDamage();
-            pl->getPhysics()->setXVelocity(-45 * pl->getMoveDirection());
+            pl->getPhysics()->setXVelocity(45 * pl->getPhysics()->getMoveDirection());
             pl->getPhysics()->setXPosition(pl->getPhysics()->getXPosition() + pl->getPhysics()->getXVelocity());
             pl->getPhysics()->setYVelocity(-15);
             pl->getPhysics()->setYPosition(pl->getPhysics()->getYPosition() + pl->getPhysics()->getYVelocity());
@@ -101,7 +103,7 @@ void CollisionManager::obsCollision()
         if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && (*it)->getHarm())
         {
             pl2->takeDamage();
-            pl2->getPhysics()->setXVelocity(-45 * pl2->getMoveDirection());
+            pl2->getPhysics()->setXVelocity(-45 * pl2->getPhysics()->getMoveDirection());
             pl2->getPhysics()->setXPosition(pl2->getPhysics()->getXPosition() + pl2->getPhysics()->getXVelocity());
             pl2->getPhysics()->setYVelocity(-15);
             pl2->getPhysics()->setYPosition(pl2->getPhysics()->getYPosition() + pl2->getPhysics()->getYVelocity());

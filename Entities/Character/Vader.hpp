@@ -10,17 +10,28 @@ namespace Entities
         class Vader : public Enemy
         {
         public:
-            Vader(int hp, Player* pl, Player* pl2) : Enemy(hp, pl, pl2){};
+            Vader(Player* pl, Player* pl2) : Enemy(3, pl, pl2)
+            {
+                physics.setXVelocity(3);
+                physics.setW(64);
+                physics.setH(51);
+                sprite.setSprite(GraphicManager::getInstance(), "assets/vader.png", 0, 0, 64, 51);
+            }
             ~Vader();
 
-            void update();
+            void update()
+            {
+                //pursue(player);
+                //pursue(player2);
+                move();
+            }
+
             void render() override
             {
-                if (isActive)
-                    if(moveDir == 1)
-                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
-                    else
-                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+                if(physics.getMoveDirection() == 1)
+                    sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                else
+                    sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
             }
         };
     }

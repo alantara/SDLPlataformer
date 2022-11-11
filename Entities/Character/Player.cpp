@@ -2,9 +2,10 @@
 using namespace Entities;
 using namespace Characters;
 
-Player::Player() : Character(5), bullet(new Projectile(static_cast<Character*>(this)))
+Player::Player() : Character(5), bullet(new Projectile(true))
 {
-
+    physics.setH(64);
+    physics.setW(64);
 }
 
 Player::~Player()
@@ -32,22 +33,22 @@ void Player::update()
 
     if (event->getKeyDown(input.getLeft()))
     {
-        moveDir = -1;
+        physics.setMoveDirection(-1);
         physics.setXVelocity(-5);
     }
     if (event->getKeyDown(input.getRight()))
     {
-        moveDir = 1;
+        physics.setMoveDirection(1);
         physics.setXVelocity(5);
     }
     if (event->getKeyDown(input.getJump()))
     {
         if (getIsGrounded())
-            physics.setYVelocity(-35);
+            physics.setYVelocity(-25);
     }
     if(event->getKeyDown(input.getFire()))
     {
-        bullet->fire(physics.getXPosition(), physics.getYPosition()+30, moveDir);
+        bullet->fire(physics.getXPosition() - physics.getMoveDirection()*15, physics.getYPosition()+25, physics.getMoveDirection());
     }
     move();
     setIsGrounded(false);
@@ -55,9 +56,10 @@ void Player::update()
 
 void Player::render()
 {
-    if (isActive)
-        if(moveDir == 1)
+    if(isActive){
+        if(physics.getMoveDirection() == 1)
             sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
         else
             sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+    }
 }

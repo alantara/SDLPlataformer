@@ -27,6 +27,7 @@ namespace Levels
 
         EventManager *evManager;
 
+        Ground* gnd;
         Player *p1;
         Player *p2;
 

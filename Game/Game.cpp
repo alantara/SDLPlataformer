@@ -26,10 +26,10 @@ Game::~Game()
 
 void Game::init()
 {
-    player.setSprite("assets/luke.png", 0, 0, 64, 64, 1);
+    player.setSprite("assets/solo.png", 0, 0, 64, 59, 1);
     player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
 
-    player2.setSprite("assets/bobbafett.png", 0, 0, 64, 64, 1);
+    player2.setSprite("assets/chew.png", 0, 0, 44, 64, 1);
     player2.setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
 }
 
@@ -54,7 +54,7 @@ void Game::update()
         lvl2.update();
         break;
     default:
-        exit(1);
+        isRunning = false;
         break;
     }
 }
@@ -77,7 +77,7 @@ void Game::render()
         lvl2.render();
         break;
     default:
-        exit(1);
+        isRunning = false;
         break;
     }
     SDL_RenderPresent(gfx->getRenderer());

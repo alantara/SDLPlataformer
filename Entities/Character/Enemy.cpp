@@ -19,28 +19,24 @@ void Enemy::pursue(Player* player)
     int plTop = player->getPhysics()->getYPosition();
     int plBottom = player->getPhysics()->getYPosition() + player->getPhysics()->getH();
             
-    int enRight = this->getPhysics()->getXPosition() + this->getPhysics()->getW() + 400;
-    int enLeft = this->getPhysics()->getXPosition() - 400;
-    int enTop = this->getPhysics()->getYPosition() - 200;
-    int enBottom = this->getPhysics()->getYPosition() + this->getPhysics()->getH() + 200;
+    int enRight = this->getPhysics()->getXPosition() + this->getPhysics()->getW() + 128;
+    int enLeft = this->getPhysics()->getXPosition() - 128;
+    int enTop = this->getPhysics()->getYPosition() - 90;
+    int enBottom = this->getPhysics()->getYPosition() + this->getPhysics()->getH() + 90;
 
     if( plRight > enLeft &&
         plLeft < enRight &&
         plTop < enBottom &&
         plBottom > enTop)
     {
-        if(plLeft < enLeft + 400)
+        if(plLeft < enLeft + 128)
         {
-            this->getPhysics()->setXVelocity(-3);
-            moveDir = -1;
+            getPhysics()->setMoveDirection(-1);
+            this->getPhysics()->setXVelocity(physics.getMoveDirection()*physics.getXVelocity());
         }
         else{
-            this->getPhysics()->setXVelocity(3);
-            moveDir = 1;
-        }
-        if(plBottom < enTop + 200)
-        {
-            this->getPhysics()->setYVelocity(-30);
-        }                       
+            getPhysics()->setMoveDirection(1);
+            this->getPhysics()->setXVelocity(physics.getMoveDirection()*physics.getXVelocity());
+        }                      
     }
 }

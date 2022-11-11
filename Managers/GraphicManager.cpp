@@ -6,6 +6,8 @@ using namespace Managers;
 using namespace std;
 
 GraphicManager *GraphicManager::instance = nullptr;
+int GraphicManager::sHeight = 1080;
+int GraphicManager::sWidth = 1920;
 
 GraphicManager::GraphicManager() : window(nullptr), renderer(nullptr)
 {
@@ -15,7 +17,7 @@ GraphicManager::GraphicManager() : window(nullptr), renderer(nullptr)
         exit(1);
     }
 
-    window = SDL_CreateWindow("Star Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, 0);
+    window = SDL_CreateWindow("Star Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, sWidth, sHeight, SDL_WINDOW_FULLSCREEN);
     if (window == nullptr)
     {
         std::cout << "Failed to Initialize Window" << std::endl;
@@ -28,9 +30,6 @@ GraphicManager::GraphicManager() : window(nullptr), renderer(nullptr)
         std::cout << "Failed to Initialize Renderer" << std::endl;
         exit(1);
     }
-
-    sWidth = 1600;
-    sHeight = 900;
 
     cout << "Graphic Manager Initialized " << endl;
 }

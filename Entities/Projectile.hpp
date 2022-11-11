@@ -14,7 +14,9 @@ namespace Entities
     public:
         Projectile(bool ips) : isPlayerShooted(ips)
         {
-            sprite.setSprite(gfx, "assets/laser.png", 0, 0, 64, 13, 1);
+            physics.setW(48);
+            physics.setH(10);
+            sprite.setSprite(gfx, "assets/laser.png", 0, 0, 48, 10, 1);
         }
         ~Projectile(){};
 

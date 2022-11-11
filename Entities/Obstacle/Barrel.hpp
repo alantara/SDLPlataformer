@@ -10,9 +10,23 @@ namespace Entities
     {
         class Barrel : public Obstacle
         {
+        private:
+
         public:
-            Barrel(){};
+            Barrel()
+            {
+                physics.setW(45);
+                physics.setH(64);
+                sprite.setSprite(gfx, "assets/barrel.png", 0, 0, 45, 64);
+            }
             ~Barrel();
+
+            void update()
+            {
+                applyGravity();
+
+                move();
+            }
         };
     }
 }
