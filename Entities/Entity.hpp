@@ -21,6 +21,7 @@ namespace Entities
 
         void Deactivate() { isActive = false; }
         void Activate() { isActive = true; }
+        bool getIsActive() {return isActive;}
 
         void setPhysics(int xPos, int yPos, int width, int height, int vX, int vY, int aX, int aY){physics.setPhysics(xPos, yPos, width, height, vX, vY, aX, aY);}
         Physics *getPhysics() { return &physics; }

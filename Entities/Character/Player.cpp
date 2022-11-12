@@ -21,7 +21,7 @@ void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SD
 
 void Player::update()
 {
-    if (!isActive)
+    if(!isActive)
         return;
 
     if (health <= 0)
@@ -34,12 +34,12 @@ void Player::update()
     if (event->getKeyDown(input.getLeft()))
     {
         physics.setMoveDirection(-1);
-        physics.setXVelocity(-5);
+        physics.setXVelocity(-6);
     }
     if (event->getKeyDown(input.getRight()))
     {
         physics.setMoveDirection(1);
-        physics.setXVelocity(5);
+        physics.setXVelocity(6);
     }
     if (event->getKeyDown(input.getJump()))
     {

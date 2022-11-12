@@ -22,13 +22,15 @@ namespace Entities
 
         void fire(int x, int y, int dir)
         {
+            Activate();
             physics.setPosition(x, y);
             physics.setVelocity(80 * dir, -2);
         }
 
         void update()
         {
-            move(3);
+            if(isActive)
+                move(3);
         }
     };
 }

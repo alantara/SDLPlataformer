@@ -21,6 +21,11 @@ namespace Entities
 
             void update()
             {
+                if(!isActive)
+                    return;
+
+                if(health <= 0)
+                    Deactivate();
                 //pursue(player);
                 //pursue(player2);
                 move();
@@ -28,10 +33,12 @@ namespace Entities
 
             void render() override
             {
-                if(physics.getMoveDirection() == 1)
-                    sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
-                else
-                    sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+                if(isActive){
+                    if(physics.getMoveDirection() == 1)
+                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                    else
+                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+                }
             }
         };
     }

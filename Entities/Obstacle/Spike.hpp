@@ -13,9 +13,9 @@ namespace Entities
         public:
             Spike() : Obstacle(true) 
             {
-                physics.setW(64);
-                physics.setH(43);
-                setSprite("assets/spike.png", 0, 0, 64, 43, 1);
+                physics.setW(32);
+                physics.setH(22);
+                setSprite("assets/spike.png", 0, 0, 32, 22, 1);
             }
             ~Spike();
 

@@ -48,17 +48,18 @@ namespace Levels
             colManager.setPlayer2(player2);
         //-------------------------------------------------------------------------
         //Enemies Initialize
-            Trooper *trp = new Trooper(player, player2);
-            trp->getPhysics()->setPosition(900, 950);
-            entList.insert(static_cast<Entity *>(trp));
-            entList.insert(static_cast<Entity*>(trp->getBullet()));
-            colManager.insertEnemy(static_cast<Enemy *>(trp));
             
             Trooper *trp2 = new Trooper(player, player2);
             trp2->getPhysics()->setPosition(379, 920);
             entList.insert(static_cast<Entity *>(trp2));
             entList.insert(static_cast<Entity*>(trp2->getBullet()));
             colManager.insertEnemy(static_cast<Enemy *>(trp2));
+
+            Trooper *trp = new Trooper(player, player2);
+            trp->getPhysics()->setPosition(900, 950);
+            entList.insert(static_cast<Entity *>(trp));
+            entList.insert(static_cast<Entity*>(trp->getBullet()));
+            colManager.insertEnemy(static_cast<Enemy *>(trp));
 
             Vader *vader = new Vader(player, player2);
             vader->getPhysics()->setPosition(1500, 450);

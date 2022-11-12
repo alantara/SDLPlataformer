@@ -39,5 +39,6 @@ void Entity::move(int id)
 
 void Entity::render()
 {
-    sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+    if(isActive)
+        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
 }

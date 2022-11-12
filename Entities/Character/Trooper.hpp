@@ -12,7 +12,7 @@ namespace Entities
             Projectile* bullet;
 
         public:
-            Trooper(Player* pl, Player* pl2) : Enemy(1, pl, pl2), bullet(new Projectile(false))
+            Trooper(Player* pl, Player* pl2) : Enemy(1, pl, pl2, true), bullet(new Projectile(false))
             {
                 physics.setXVelocity(1);
                 physics.setW(64);
@@ -21,23 +21,31 @@ namespace Entities
             }
             ~Trooper();
 
-            Projectile* getBullet() {return bullet;}
+            Projectile* getBullet() override {return bullet;}
 
             void update()
             {
+                if(!isActive)
+                    return;
+
+                if(health <= 0)
+                    Deactivate();
                 //pursue(player);
                 //pursue(player2);
-                if(rand()%50 == 0)
+                if(rand()%50 == 0){
                     bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, physics.getMoveDirection());
+                }
                 move();
             }
             
             void render() override
-            {
-                if(physics.getMoveDirection() == 1)
-                    sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
-                else
-                    sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+            {   
+                if(isActive){
+                    if(physics.getMoveDirection() == 1)
+                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+                    else
+                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
+                }
             }
         };
     }

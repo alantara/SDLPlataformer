@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Projectile.hpp"
 #include "Character.hpp"
 #include "Player.hpp"
 
@@ -15,8 +16,11 @@ namespace Entities
             Player* player2;
 
         public:
-            Enemy(int hp, Player* pl, Player* pl2);
+            Enemy(int hp, Player* pl, Player* pl2, bool sh = false);
             ~Enemy();
+
+            virtual Projectile* getBullet() {return nullptr;}
+            bool getIsShooter() {return shooter;}
 
             virtual void update() = 0;
             void pursue(Player* player);
