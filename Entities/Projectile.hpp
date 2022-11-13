@@ -16,7 +16,7 @@ namespace Entities
         {
             physics.setW(48);
             physics.setH(10);
-            sprite.setSprite(gfx, "assets/laser.png", 0, 0, 48, 10, 1);
+            sprite.setSprite("assets/laser.png", 0, 0, 48, 10, 1);
         }
         ~Projectile(){};
 
@@ -30,7 +30,7 @@ namespace Entities
         void update()
         {
             if(isActive)
-                move(3);
+                move();
         }
     };
 }

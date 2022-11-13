@@ -34,7 +34,7 @@ namespace Levels
         void initialize(Player *player, Player *player2)
         {
             cout << "Level1 Initialized" << endl;
-            sprite.setSprite(gfx, "assets/back.png", 0, 0, 1920, 1080);
+            sprite.setSprite("assets/back.png", 0, 0, 1920, 1080);
             groundInitialize();
         //------------------------------------------------------------------------
         //Player initialize

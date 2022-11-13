@@ -35,7 +35,7 @@ namespace Components
         void update(){};
         void render()
         {
-            sprite.render(gfx, x, y);
+            sprite.render(x, y);
         }
     };
 }

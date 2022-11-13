@@ -1,10 +1,11 @@
 #include "Level.hpp"
+using namespace Levels;
 
 #include <iostream>
 using namespace std;
-using namespace Levels;
 
 #include "Spike.hpp"
+#include "Plataform.hpp"
 
 Level::Level(EventManager *ev) : evManager(ev)
 {
@@ -12,6 +13,7 @@ Level::Level(EventManager *ev) : evManager(ev)
 
     p1 = nullptr;
     p2 = nullptr;
+    gnd = nullptr;
 }
 
 Level::~Level()
@@ -21,13 +23,24 @@ Level::~Level()
     evManager = nullptr;
     p1 = nullptr;
     p2 = nullptr;
+    gnd = nullptr;
 }
 
 void Level::render()
 {
-    sprite.render(gfx);
+    sprite.render();
     entList.renderAll();
 }
+
+void createSpike() {}
+
+void createPlataform() {}
+
+void createTrooper() {}
+
+void createVader() {}
+
+void createMaul() {}
 
 void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
@@ -62,16 +75,15 @@ void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf)
 void Level::groundInitialize()
 {
     gnd = new Ground();
-    Plataform* leftWall = new Plataform();
-    Plataform* rightWall = new Plataform();
+    Plataform *leftWall = new Plataform();
+    Plataform *rightWall = new Plataform();
 
     leftWall->setPhysics(-129, GraphicManager::getHeight() - 88, 129, 44, 0, 0, 0, 0);
     rightWall->setPhysics(GraphicManager::getWidth(), GraphicManager::getHeight() - 88, 129, 44, 0, 0, 0, 0);
     entList.insert(static_cast<Entity *>(leftWall));
     entList.insert(static_cast<Entity *>(rightWall));
-    colManager.insertObs(static_cast<Obstacle*>(leftWall));
-    colManager.insertObs(static_cast<Obstacle*>(rightWall));
-
+    colManager.insertObs(static_cast<Obstacle *>(leftWall));
+    colManager.insertObs(static_cast<Obstacle *>(rightWall));
 
     gnd->setPhysics(-129, gfx->getHeight() - 44, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
     colManager.setGND(gnd);

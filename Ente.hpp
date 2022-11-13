@@ -8,27 +8,21 @@ using namespace Components;
 
 class Ente
 {
-protected:
+private:
+    static int enteSize;
     int id;
+
+protected:
+    static GraphicManager *gfx;
     Sprite sprite;
 
-    GraphicManager *gfx;
-
 public:
-    Ente() : gfx(GraphicManager::getInstance()), id(0)
-    {
-        cout << "Ente Created! id: " << id << endl;
-    }
-    ~Ente()
-    {
-        cout << "Ente Destroyed! id: " << id << endl;
-        gfx = nullptr;
-    }
+    Ente();
+    ~Ente();
 
-    void setSprite(string p, int f, int c, int w, int h, int m = 1)
-    {
-        sprite.setSprite(gfx, p, f, c, w, h, m);
-    }
+    int getEnteSize() { return enteSize; }
+    int getID() { return id; }
+    void setSprite(string p, int f, int c, int w, int h, int m = 1);
 
     virtual void update() = 0;
     virtual void render() = 0;

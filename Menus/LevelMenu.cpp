@@ -5,7 +5,7 @@ using namespace Menus;
 
 LevelMenu::LevelMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
-    sprite.setSprite(gfx, "assets/bg.jpg", 0, 0, 1920, 1080, 1);
+    sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
 
     lvl1.setButton(635, 700, 225, 225);
     lvl1.setSprite("assets/lvl1.png", 0, 0, 225, 225, 1);
@@ -34,7 +34,7 @@ void LevelMenu::update()
 }
 void LevelMenu::render()
 {
-    sprite.render(gfx, 0, 0);
+    sprite.render();
     lvl1.render();
     lvl2.render();
 }

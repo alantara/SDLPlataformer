@@ -17,7 +17,7 @@ namespace Entities
                 physics.setXVelocity(1);
                 physics.setW(64);
                 physics.setH(53);
-                sprite.setSprite(gfx, "assets/trooper.png", 0, 0, 64, 53);
+                sprite.setSprite("assets/trooper.png", 0, 0, 64, 53);
             }
             ~Trooper();
 
@@ -36,16 +36,6 @@ namespace Entities
                     bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, physics.getMoveDirection());
                 }
                 move();
-            }
-            
-            void render() override
-            {   
-                if(isActive){
-                    if(physics.getMoveDirection() == 1)
-                        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
-                    else
-                        sprite.renderFlip(gfx, physics.getXPosition(), physics.getYPosition());
-                }
             }
         };
     }

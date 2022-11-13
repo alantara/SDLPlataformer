@@ -2,7 +2,6 @@
 
 #include "Ente.hpp"
 
-#include "GraphicManager.hpp"
 #include "EventManager.hpp"
 using namespace Managers;
 

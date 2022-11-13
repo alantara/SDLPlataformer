@@ -9,13 +9,9 @@ using namespace Lists;
 using namespace Entities;
 using namespace Characters;
 
-#include "GraphicManager.hpp"
 #include "CollisionManager.hpp"
 #include "EventManager.hpp"
 using namespace Managers;
-
-#include <string>
-using namespace std;
 
 namespace Levels
 {
@@ -27,7 +23,7 @@ namespace Levels
 
         EventManager *evManager;
 
-        Ground* gnd;
+        Ground *gnd;
         Player *p1;
         Player *p2;
 
@@ -37,6 +33,13 @@ namespace Levels
 
         void render();
         virtual void update() = 0;
+        void clean();
+
+        void createSpike();
+        void createPlataform();
+        void createTrooper();
+        void createVader();
+        void createMaul();
 
         void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf);

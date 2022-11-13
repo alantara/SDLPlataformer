@@ -17,7 +17,7 @@ namespace Entities
             {
                 physics.setW(45);
                 physics.setH(64);
-                sprite.setSprite(gfx, "assets/barrel.png", 0, 0, 45, 64);
+                sprite.setSprite("assets/barrel.png", 0, 0, 45, 64);
             }
             ~Barrel();
 

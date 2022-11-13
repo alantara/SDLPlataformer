@@ -3,12 +3,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <iostream>
 #include <string>
 using namespace std;
-
-#include "GraphicManager.hpp"
-using namespace Managers;
 
 namespace Components
 {
@@ -28,7 +24,7 @@ namespace Components
         Sprite();
         ~Sprite();
 
-        void setSprite(GraphicManager *gfxM, string p, int c, int r, int w, int h, int m = 1);
+        void setSprite(string p, int c, int r, int w, int h, int m = 1);
 
         const string getPath() const { return path; }
         const SDL_Texture *getTexture() const { return texture; }
@@ -39,15 +35,14 @@ namespace Components
         const int getMultiplier() const { return multiplier; }
 
         void setPath(string p) { path = p; }
-        void setTexture(GraphicManager *gfxM, string p);
+        void setTexture(string p);
         void setRow(int r) { row = r; }
         void setColumn(int c) { column = c; }
         void setWidth(int w) { width = w; }
         void setHeight(int h) { height = h; }
         void setMultiplier(int m) { multiplier = m; }
 
-        void render(GraphicManager *gfxM, int x = 0, int y = 0);
-        void renderFlip(GraphicManager *gfxM, int x = 0, int y = 0);
+        void render(int x = 0, int y = 0, int moveDir = 1);
 
     };
 }

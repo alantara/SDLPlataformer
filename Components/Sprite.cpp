@@ -1,10 +1,13 @@
 #include "Sprite.hpp"
-
 using namespace Components;
+
+#include <iostream>
+
+#include "GraphicManager.hpp"
+using namespace Managers;
 
 Sprite::Sprite() : path(""), row(0), column(0), width(0), height(0), multiplier(1), texture(nullptr)
 {
-
 }
 
 Sprite::~Sprite()
@@ -13,10 +16,10 @@ Sprite::~Sprite()
     texture = nullptr;
 }
 
-void Sprite::setSprite(GraphicManager *gfxM, string p, int c, int r, int w, int h, int m)
+void Sprite::setSprite(string p, int c, int r, int w, int h, int m)
 {
     setPath(p);
-    setTexture(gfxM, p);
+    setTexture(p);
 
     setRow(r);
     setColumn(c);
@@ -25,14 +28,14 @@ void Sprite::setSprite(GraphicManager *gfxM, string p, int c, int r, int w, int 
     setMultiplier(m);
 }
 
-void Sprite::setTexture(GraphicManager *gfxM, string p)
+void Sprite::setTexture(string p)
 {
     if (texture != nullptr)
     {
         SDL_DestroyTexture(texture);
     }
 
-    SDL_Texture *tx = IMG_LoadTexture(gfxM->getRenderer(), p.c_str());
+    SDL_Texture *tx = IMG_LoadTexture(GraphicManager::getInstance()->getRenderer(), p.c_str());
     if (tx == nullptr)
     {
         std::cout << "Texture could not be loaded: " << SDL_GetError() << std::endl;
@@ -42,18 +45,16 @@ void Sprite::setTexture(GraphicManager *gfxM, string p)
     texture = tx;
 }
 
-void Sprite::render(GraphicManager *gfxM, int x, int y)
+void Sprite::render(int x, int y, int moveDir)
 {
     SDL_Rect srcRect = {column * width, row * height, width, height};
     SDL_Rect dstRect = {x, y, width * multiplier, height * multiplier};
 
-    SDL_RenderCopy(gfxM->getRenderer(), texture, &srcRect, &dstRect);
-}
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+    if(moveDir == -1)
+    {
+        flip = SDL_FLIP_HORIZONTAL;
+    }
 
-void Sprite::renderFlip(GraphicManager *gfxM, int x, int y)
-{
-    SDL_Rect srcRect = {column * width, row * height, width, height};
-    SDL_Rect dstRect = {x, y, width * multiplier, height * multiplier};
-
-    SDL_RenderCopyEx(gfxM->getRenderer(), texture, &srcRect, &dstRect, 0, NULL, SDL_FLIP_HORIZONTAL);
+    SDL_RenderCopyEx(GraphicManager::getInstance()->getRenderer(), texture, &srcRect, &dstRect, 0, NULL, flip);
 }

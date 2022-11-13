@@ -1,44 +1,36 @@
 #include "Entity.hpp"
 using namespace Entities;
 
-Entity::Entity(): isActive(true), isGrounded(false)
+Entity::Entity() : isActive(true), isGrounded(false)
 {
-
 }
 
 Entity::~Entity()
 {
-
 }
 
-void Entity::applyGravity(int id)
+void Entity::applyGravity()
 {
-    if (id == 3)
-    {
-        physics.setYAcceleration(1);
-    }
+    if (physics.getYVelocity() <= 0)
+        physics.setYAcceleration(3);
     else
-    {
-        if (physics.getYVelocity() <= 0)
-            physics.setYAcceleration(3);
-        else
-            physics.setYAcceleration(10);
-    }
+        physics.setYAcceleration(7);
 }
-void Entity::move(int id)
+
+void Entity::move()
 {
-    applyGravity(id);
+    applyGravity();
 
     physics.setYVelocity(physics.getYVelocity() + physics.getYAcceleration());
     if (physics.getYVelocity() > 15)
         physics.setYVelocity(15);
 
-        physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
-        physics.setYPosition(physics.getYPosition() + physics.getYVelocity());
+    physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
+    physics.setYPosition(physics.getYPosition() + physics.getYVelocity());
 }
 
 void Entity::render()
 {
-    if(isActive)
-        sprite.render(gfx, physics.getXPosition(), physics.getYPosition());
+    if (isActive)
+        sprite.render(physics.getXPosition(), physics.getYPosition(), physics.getMoveDirection());
 }

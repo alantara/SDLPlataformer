@@ -5,7 +5,7 @@ using namespace Menus;
 
 PauseMenu::PauseMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
-    sprite.setSprite(gfx, "assets/bg.jpg", 0, 0, 1920, 1080, 1);
+    sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
 
     menu.setButton(40, 40, 225, 225);
     menu.setSprite("assets/menu.png", 0, 0, 225, 225, 1);
@@ -34,7 +34,7 @@ void PauseMenu::update()
 }
 void PauseMenu::render()
 {
-    sprite.render(gfx, 0, 0);
+    sprite.render();
     menu.render();
     save.render();
 }
