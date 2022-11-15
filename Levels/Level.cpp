@@ -6,6 +6,10 @@ using namespace std;
 
 #include "Spike.hpp"
 #include "Plataform.hpp"
+#include "Barrel.hpp"
+#include "Trooper.hpp"
+#include "Vader.hpp"
+#include "Maul.hpp"
 
 Level::Level(EventManager *ev) : evManager(ev)
 {
@@ -32,60 +36,126 @@ void Level::render()
     entList.renderAll();
 }
 
-void createSpike() {}
+void Level::groundInitialize()
+{
+    gnd = new Ground();
 
-void createPlataform() {}
+    createPlataform(-129, GraphicManager::getHeight() - 88);
+    createPlataform(GraphicManager::getWidth(), GraphicManager::getHeight() - 88);
 
-void createTrooper() {}
+    gnd->setPhysics(-129, gfx->getHeight() - 44, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
+    colManager.setGND(gnd);
+    entList.insert(static_cast<Entity *>(gnd));
+}
 
-void createVader() {}
+void Level::createSpike(int x, int y)
+{
+    Spike *spike = new Spike();
+    spike->getPhysics()->setPosition(x, y);
+    colManager.insertObs(static_cast<Obstacle *>(spike));
+    entList.insert(static_cast<Entity *>(spike));
+}
 
-void createMaul() {}
+void Level::createPlataform(int x, int y, int type)
+{
+    Plataform *plataform = new Plataform(type);
+    plataform->getPhysics()->setPosition(x, y);
+    colManager.insertObs(static_cast<Obstacle *>(plataform));
+    entList.insert(static_cast<Entity *>(plataform));
+}
+
+void Level::createBarrel(int x, int y)
+{
+    Barrel *barrel = new Barrel();
+    barrel->getPhysics()->setPosition(x, y);
+    colManager.insertObs(static_cast<Obstacle *>(barrel));
+    entList.insert(static_cast<Entity *>(barrel));
+}
+
+void Level::createTrooper(int x, int y)
+{
+    Trooper *trp = new Trooper(p1, p2);
+    trp->getPhysics()->setPosition(x, y);
+    entList.insert(static_cast<Entity *>(trp));
+    entList.insert(static_cast<Entity *>(trp->getBullet()));
+    colManager.insertEnemy(static_cast<Enemy *>(trp));
+}
+
+void Level::createVader(int x, int y)
+{
+    Vader *vader = new Vader(p1, p2);
+    vader->getPhysics()->setPosition(x, y);
+    entList.insert(static_cast<Entity *>(vader));
+    colManager.insertEnemy(static_cast<Enemy *>(vader));
+}
+
+void Level::createMaul(int x, int y)
+{
+    Maul *maul = new Maul(p1, p2);
+    maul->getPhysics()->setPosition(x, y);
+    entList.insert(static_cast<Entity *>(maul));
+    colManager.insertEnemy(static_cast<Enemy *>(maul));
+}
 
 void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
     while (n--)
     {
-        Spike *spk = new Spike();
-
         int xRnd = rand() % (xf - xi) + xi;
         int yRnd = rand() % (yf - yi) + yi;
 
-        spk->setPhysics(xRnd, yRnd, 64, 43, 0, 0, 0, 0);
-        colManager.insertObs(static_cast<Obstacle *>(spk));
-        entList.insert(static_cast<Entity *>(spk));
+        createSpike(xRnd, yRnd);
     }
 }
 
-void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf)
+void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type)
 {
     while (n--)
     {
-        Plataform *plat = new Plataform();
-
         int xRnd = rand() % (xf - xi) + xi;
         int yRnd = rand() % (yf - yi) + yi;
 
-        plat->setPhysics(xRnd, yRnd, 64, 43, 0, 0, 0, 0);
-        colManager.insertObs(static_cast<Obstacle *>(plat));
-        entList.insert(static_cast<Entity *>(plat));
+        createPlataform(xRnd, yRnd, type);
     }
 }
 
-void Level::groundInitialize()
+void Level::barrelBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
-    gnd = new Ground();
-    Plataform *leftWall = new Plataform();
-    Plataform *rightWall = new Plataform();
+    while (n--)
+    {
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
 
-    leftWall->setPhysics(-129, GraphicManager::getHeight() - 88, 129, 44, 0, 0, 0, 0);
-    rightWall->setPhysics(GraphicManager::getWidth(), GraphicManager::getHeight() - 88, 129, 44, 0, 0, 0, 0);
-    entList.insert(static_cast<Entity *>(leftWall));
-    entList.insert(static_cast<Entity *>(rightWall));
-    colManager.insertObs(static_cast<Obstacle *>(leftWall));
-    colManager.insertObs(static_cast<Obstacle *>(rightWall));
+        createBarrel(xRnd, yRnd);
+    }
+}
+void Level::trooperBulkInitialize(int n, int xi, int yi, int xf, int yf)
+{
+    while (n--)
+    {
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
 
-    gnd->setPhysics(-129, gfx->getHeight() - 44, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
-    colManager.setGND(gnd);
-    entList.insert(static_cast<Entity *>(gnd));
+        createTrooper(xRnd, yRnd);
+    }
+}
+void Level::vaderBulkInitialize(int n, int xi, int yi, int xf, int yf)
+{
+    while (n--)
+    {
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
+
+        createVader(xRnd, yRnd);
+    }
+}
+void Level::maulBulkInitialize(int n, int xi, int yi, int xf, int yf)
+{
+    while (n--)
+    {
+        int xRnd = rand() % (xf - xi) + xi;
+        int yRnd = rand() % (yf - yi) + yi;
+
+        createMaul(xRnd, yRnd);
+    }
 }

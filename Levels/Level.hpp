@@ -35,14 +35,20 @@ namespace Levels
         virtual void update() = 0;
         void clean();
 
-        void createSpike();
-        void createPlataform();
-        void createTrooper();
-        void createVader();
-        void createMaul();
+        void createSpike(int x, int y);
+        void createPlataform(int x, int y, int type = 1);
+        void createBarrel(int x, int y);
+        void createTrooper(int x, int y);
+        void createVader(int x, int y);
+        void createMaul(int x, int y);
 
         void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
-        void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type = 1);
+        void barrelBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void trooperBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void vaderBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void maulBulkInitialize(int n, int xi, int yi, int xf, int yf);
+
         void groundInitialize();
     };
 }

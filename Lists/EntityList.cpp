@@ -2,11 +2,12 @@
 using namespace Lists;
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 void EntityList::renderAll()
 {
-    List<Entity*>::Element<Entity*> *aux = nullptr;
+    List<Entity *>::Element<Entity *> *aux = nullptr;
     aux = entList.begin();
 
     while (aux != nullptr)
@@ -35,10 +36,29 @@ void EntityList::insert(Entity *entity)
 
 void EntityList::clean()
 {
-    List<Entity*>::Element<Entity*> *aux = entList.begin();
+    List<Entity *>::Element<Entity *> *aux = entList.begin();
     while (aux != nullptr)
     {
         delete (aux->getData());
         aux = aux->getNext();
     }
+}
+
+void EntityList::save(string name)
+{
+    List<Entity *>::Element<Entity *> *aux = nullptr;
+    aux = entList.begin();
+    
+    ofstream arq;
+    arq.open(name);
+
+    while (aux != nullptr)
+    {
+        Physics *phy = aux->getData()->getPhysics();
+
+        arq << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        aux = aux->getNext();
+    }
+
+    arq.close();
 }

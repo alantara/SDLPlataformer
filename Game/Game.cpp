@@ -37,6 +37,7 @@ void Game::update()
 {
     if(evManager.getKeyDown(SDL_SCANCODE_ESCAPE) && (gameState == 1 || gameState == 2))
     {
+        lvl1.save();
         gameState = -1;
     }
     switch (gameState)
