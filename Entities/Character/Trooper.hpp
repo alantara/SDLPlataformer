@@ -19,7 +19,10 @@ namespace Entities
                 physics.setH(53);
                 sprite.setSprite("assets/trooper.png", 0, 0, 64, 53);
             }
-            ~Trooper();
+            ~Trooper()
+            {
+                delete bullet;
+            }
 
             Projectile* getBullet() override {return bullet;}
 

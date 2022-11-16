@@ -5,6 +5,16 @@ using namespace Lists;
 #include <fstream>
 using namespace std;
 
+EntityList::EntityList(): entList()
+{
+
+}
+
+EntityList::~EntityList()
+{
+    clean();
+}
+
 void EntityList::renderAll()
 {
     List<Entity *>::Element<Entity *> *aux = nullptr;

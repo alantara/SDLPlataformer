@@ -16,8 +16,8 @@ namespace Lists
         List<Entity*> entList;
 
     public:
-        EntityList() : entList(){};
-        ~EntityList(){};
+        EntityList();
+        ~EntityList();
 
         void clean();
         void renderAll();
