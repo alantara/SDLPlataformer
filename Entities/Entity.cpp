@@ -11,10 +11,7 @@ Entity::~Entity()
 
 void Entity::applyGravity()
 {
-    if (physics.getYVelocity() <= 0)
-        physics.setYAcceleration(3);
-    else
-        physics.setYAcceleration(7);
+    physics.setYAcceleration(5);
 }
 
 void Entity::move()

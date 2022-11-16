@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 namespace Lists
 {
     template <class TL>
@@ -28,14 +31,7 @@ namespace Lists
         List() : first(nullptr), last(nullptr) {}
         ~List()
         {
-            Element<TL> *aux = nullptr;
-            aux = first;
-            while (aux != nullptr)
-            {
-                first = first->getNext();
-                delete aux;
-                aux = first;
-            }
+            
         }
 
         Element<TL> *begin() { return first; }

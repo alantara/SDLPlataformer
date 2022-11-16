@@ -74,6 +74,7 @@ namespace Levels
         void save()
         {
             entList.save("da.txt");
+            entList.clean();
         }
     };
 }

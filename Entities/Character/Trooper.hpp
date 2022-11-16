@@ -14,6 +14,7 @@ namespace Entities
         public:
             Trooper(Player* pl, Player* pl2) : Enemy(1, pl, pl2, true), bullet(new Projectile(false))
             {
+                cout << "Trooper" << getID() << endl;
                 physics.setXVelocity(1);
                 physics.setW(64);
                 physics.setH(53);
@@ -21,7 +22,6 @@ namespace Entities
             }
             ~Trooper()
             {
-                delete bullet;
             }
 
             Projectile* getBullet() override {return bullet;}

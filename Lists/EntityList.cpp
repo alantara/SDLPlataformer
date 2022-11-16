@@ -5,14 +5,12 @@ using namespace Lists;
 #include <fstream>
 using namespace std;
 
-EntityList::EntityList(): entList()
+EntityList::EntityList() : entList()
 {
-
 }
 
 EntityList::~EntityList()
 {
-    clean();
 }
 
 void EntityList::renderAll()
@@ -46,10 +44,14 @@ void EntityList::insert(Entity *entity)
 
 void EntityList::clean()
 {
-    List<Entity *>::Element<Entity *> *aux = entList.begin();
+    List<Entity *>::Element<Entity *> *aux = nullptr;
+    List<Entity *>::Element<Entity *> *aux2 = nullptr;
+    aux = entList.begin();
     while (aux != nullptr)
     {
-        delete (aux->getData());
+        cout << "EID: " << aux->getData()->getID() << endl;
+        if (aux->getData() != nullptr)
+            delete (aux->getData());
         aux = aux->getNext();
     }
 }
@@ -58,7 +60,7 @@ void EntityList::save(string name)
 {
     List<Entity *>::Element<Entity *> *aux = nullptr;
     aux = entList.begin();
-    
+
     ofstream arq;
     arq.open(name);
 

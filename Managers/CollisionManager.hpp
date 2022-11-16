@@ -37,6 +37,7 @@ namespace Managers
         bool intersect(Entity *ent1, Entity *ent2);
         int isColliding(Entity *ent1, Entity *ent2);
         void Execute();
+        void PlEnemyCollision();
 
         void projCollision();
         void enemyCollision();

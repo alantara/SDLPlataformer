@@ -210,8 +210,25 @@ void CollisionManager::projCollision()
     }
 }
 
+void CollisionManager::PlEnemyCollision()
+{
+    vector<Enemy*>::iterator it = LIs.begin();
+
+    while(it != LIs.end())
+    {
+        if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && !(*it)->getIsShooter() && (*it)->getIsActive())
+            pl->takeDamage();
+        
+        if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && !(*it)->getIsShooter() && (*it)->getIsActive())
+            pl2->takeDamage();
+
+        it++;
+    }
+}
+
 void CollisionManager::Execute()
 {
+    PlEnemyCollision();
     projCollision();
     obsCollision();
     enemyCollision();
