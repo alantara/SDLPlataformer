@@ -20,25 +20,29 @@ class Game
 {
 private:
     bool isRunning;
+    bool multiplayer;
+    int gameState;
 
-    GraphicManager *gfx;
+    static GraphicManager *gfx;
     EventManager evManager;
 
-    Player player;
-    Player player2;
+    Player *player;
+    Player *player2;
     Level1 lvl1;
     Level2 lvl2;
     LevelMenu menu;
     PauseMenu pause;
 
 public:
-    int gameState;
-
     Game();
     ~Game();
+
+    int getGameState() { return gameState; }
+    void setGameState(int g) { gameState = g; }
+
+    void resetLevels();
 
     void init();
     void update();
     void render();
-    void clean();
 };

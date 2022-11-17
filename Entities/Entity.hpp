@@ -13,6 +13,7 @@ namespace Entities
     protected:
         bool isActive;
         bool isGrounded;
+        bool deletable;
 
         Physics physics;
 
@@ -26,6 +27,9 @@ namespace Entities
 
         void setPhysics(int xPos, int yPos, int width, int height, int vX, int vY, int aX, int aY) { physics.setPhysics(xPos, yPos, width, height, vX, vY, aX, aY); }
         Physics *getPhysics() { return &physics; }
+
+        bool getDeletable() { return deletable; }
+        void setDeletable(bool b) { deletable = b; }
 
         void setIsGrounded(bool v) { isGrounded = v; }
         const bool getIsGrounded() const { return isGrounded; }

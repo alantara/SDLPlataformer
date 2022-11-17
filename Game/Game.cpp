@@ -3,10 +3,10 @@
 #include <iostream>
 using namespace std;
 
-Game::Game() : gfx(GraphicManager::getInstance()), lvl1(&evManager, &player, &player2), lvl2(&evManager, &player, &player2), isRunning(true), gameState(0), menu(&evManager, this), pause(&evManager, this)
-{
-    cout << "Game Initialized" << endl;
+GraphicManager *Game::gfx = GraphicManager::getInstance();
 
+Game::Game() : player(new Player()), player2(new Player()), lvl1(&evManager, player, player2), lvl2(&evManager, player, player2), isRunning(true), gameState(0), menu(&evManager, this), pause(&evManager, this)
+{
     init();
 
     while (isRunning)
@@ -15,29 +15,32 @@ Game::Game() : gfx(GraphicManager::getInstance()), lvl1(&evManager, &player, &pl
         update();
         render();
     }
-
-    clean();
 }
 
 Game::~Game()
 {
-    cout << "Game Deleted" << endl;
+    resetLevels();
+    GraphicManager::getInstance()->deleteInstance();
+
+    delete player;
+    delete player2;
 }
 
 void Game::init()
 {
-    player.setSprite("assets/solo.png", 0, 0, 64, 59, 1);
-    player.setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
+    player->setSprite("assets/solo.png", 0, 0, 64, 59, 1);
+    player->setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
+    player->setDeletable(false);
 
-    player2.setSprite("assets/chew.png", 0, 0, 44, 64, 1);
-    player2.setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
+    player2->setSprite("assets/chew.png", 0, 0, 44, 64, 1);
+    player2->setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
+    player2->setDeletable(false);
 }
 
 void Game::update()
 {
     if(evManager.getKeyDown(SDL_SCANCODE_ESCAPE) && (gameState == 1 || gameState == 2))
     {
-        lvl1.save();
         gameState = -1;
     }
     switch (gameState)
@@ -84,7 +87,7 @@ void Game::render()
     SDL_RenderPresent(gfx->getRenderer());
 }
 
-void Game::clean()
+void Game::resetLevels()
 {
-    GraphicManager::getInstance()->deleteInstance();
+    lvl1.clean();
 }

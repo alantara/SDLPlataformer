@@ -24,12 +24,13 @@ void PauseMenu::update()
     SDL_GetMouseState(&x, &y);
     if (events->getMBDown() && x < menu.getX() + menu.getWidth() && x > menu.getX() && y > menu.getY() && y < menu.getY() + menu.getHeight())
     {
-        game->gameState = 0;
+        game->setGameState(0);
+        game->resetLevels();
     }
 
     if (events->getMBDown() && x < save.getX() + save.getWidth() && x > save.getX() && y > save.getY() && y < save.getY() + save.getHeight())
     {
-        game->gameState = -2;
+        game->setGameState(-2);
     }
 }
 void PauseMenu::render()

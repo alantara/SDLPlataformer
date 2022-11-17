@@ -24,12 +24,12 @@ void LevelMenu::update()
     SDL_GetMouseState(&x, &y);
     if (events->getMBDown() && x < lvl1.getX() + lvl1.getWidth() && x > lvl1.getX() && y > lvl1.getY() && y < lvl1.getY() + lvl1.getHeight())
     {
-        game->gameState = 1;
+        game->setGameState(1);
     }
 
     if (events->getMBDown() && x < lvl2.getX() + lvl2.getWidth() && x > lvl2.getX() && y > lvl2.getY() && y < lvl2.getY() + lvl2.getHeight())
     {
-        game->gameState = 2;
+        game->setGameState(2);
     }
 }
 void LevelMenu::render()

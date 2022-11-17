@@ -1,7 +1,7 @@
 #include "Entity.hpp"
 using namespace Entities;
 
-Entity::Entity() : isActive(true), isGrounded(false)
+Entity::Entity() : isActive(true), isGrounded(false), deletable(true)
 {
 }
 

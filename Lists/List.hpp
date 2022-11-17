@@ -16,6 +16,10 @@ namespace Lists
 
         public:
             Element(TE info) : data(info), next(nullptr) {}
+            ~Element()
+            {
+                next = nullptr;
+            }
 
             Element<TE> *getNext() { return next; }
             void setNext(Element<TE> *el) { next = el; }
@@ -35,6 +39,18 @@ namespace Lists
         }
 
         Element<TL> *begin() { return first; }
+
+        void clean()
+        {
+            Element<TL> *aux = first;
+            Element<TL> *aux2;
+            while (aux != nullptr)
+            {
+                aux2 = aux->getNext();
+                delete aux;
+                aux = aux2;
+            }
+        }
 
         void insert(TL element)
         {

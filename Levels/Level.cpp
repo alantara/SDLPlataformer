@@ -36,6 +36,11 @@ void Level::render()
     entList.renderAll();
 }
 
+void Level::clean()
+{
+    entList.clean();
+}
+
 void Level::groundInitialize()
 {
     gnd = new Ground();

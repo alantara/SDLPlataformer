@@ -45,15 +45,14 @@ void EntityList::insert(Entity *entity)
 void EntityList::clean()
 {
     List<Entity *>::Element<Entity *> *aux = nullptr;
-    List<Entity *>::Element<Entity *> *aux2 = nullptr;
     aux = entList.begin();
     while (aux != nullptr)
     {
-        cout << "EID: " << aux->getData()->getID() << endl;
-        if (aux->getData() != nullptr)
+        if (aux->getData()->getDeletable())
             delete (aux->getData());
         aux = aux->getNext();
     }
+    entList.clean();
 }
 
 void EntityList::save(string name)
