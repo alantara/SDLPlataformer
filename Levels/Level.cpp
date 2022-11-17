@@ -39,18 +39,19 @@ void Level::render()
 void Level::clean()
 {
     entList.clean();
+    colManager.clean();
 }
 
 void Level::groundInitialize()
 {
     gnd = new Ground();
+    gnd->setDeletable(false);
 
     createPlataform(-129, GraphicManager::getHeight() - 88);
     createPlataform(GraphicManager::getWidth(), GraphicManager::getHeight() - 88);
 
     gnd->setPhysics(-129, gfx->getHeight() - 44, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
     colManager.setGND(gnd);
-    entList.insert(static_cast<Entity *>(gnd));
 }
 
 void Level::createSpike(int x, int y)

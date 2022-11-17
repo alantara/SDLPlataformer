@@ -14,8 +14,9 @@ namespace Menus
     class PauseMenu : public Menu
     {
     private:
-        Button menu;
-        Button save;
+        Button mainMenu;
+        Button levelMenu;
+        Button saveLevel;
 
     public:
         PauseMenu(EventManager *ev, Game *gm);

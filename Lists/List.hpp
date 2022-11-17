@@ -33,23 +33,14 @@ namespace Lists
 
     public:
         List() : first(nullptr), last(nullptr) {}
-        ~List()
-        {
-            
-        }
+        ~List(){}
 
         Element<TL> *begin() { return first; }
 
         void clean()
         {
-            Element<TL> *aux = first;
-            Element<TL> *aux2;
-            while (aux != nullptr)
-            {
-                aux2 = aux->getNext();
-                delete aux;
-                aux = aux2;
-            }
+            first = nullptr;
+            last = nullptr;
         }
 
         void insert(TL element)

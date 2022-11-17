@@ -9,7 +9,7 @@ using namespace Components;
 class Ente
 {
 private:
-    static int enteSize;
+    static int enteSize; // Total Number of Entes
     int id;
 
 protected:

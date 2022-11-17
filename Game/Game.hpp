@@ -14,6 +14,7 @@ using namespace Managers;
 
 #include "LevelMenu.hpp"
 #include "PauseMenu.hpp"
+#include "MainMenu.hpp"
 using namespace Menus;
 
 class Game
@@ -30,6 +31,8 @@ private:
     Player *player2;
     Level1 lvl1;
     Level2 lvl2;
+
+    MainMenu mainMenu;
     LevelMenu menu;
     PauseMenu pause;
 
@@ -37,10 +40,14 @@ public:
     Game();
     ~Game();
 
+    void setMultiplayer(bool b) { multiplayer = b; }
+    bool getMultiplayer() { return multiplayer; }
+
     int getGameState() { return gameState; }
     void setGameState(int g) { gameState = g; }
 
     void resetLevels();
+    void Level1Initialize();
 
     void init();
     void update();

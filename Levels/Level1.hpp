@@ -24,28 +24,35 @@ namespace Levels
     public:
         Level1(EventManager *ev, Player *player, Player *player2) : Level(ev)
         {
-            initialize(player, player2);
+            sprite.setSprite("assets/back.png", 0, 0, 1920, 1080);
+            groundInitialize();
         }
         ~Level1()
         {
             cout << "Level1 Destroyed" << endl;
         }
 
-        void initialize(Player *player, Player *player2)
+        void initialize(Player *player, Player *player2, bool multi)
         {
             cout << "Level1 Initialized" << endl;
-            sprite.setSprite("assets/back.png", 0, 0, 1920, 1080);
-            groundInitialize();
+            entList.insert(static_cast<Entity *>(gnd));
+
             //------------------------------------------------------------------------
             // Player initialize
             player->getPhysics()->setPosition(150, 450);
-            player2->getPhysics()->setPosition(80, 450);
             entList.insert(static_cast<Entity *>(player));
-            entList.insert(static_cast<Entity *>(player2));
             entList.insert(static_cast<Entity *>(player->getBullet()));
-            entList.insert(static_cast<Entity *>(player2->getBullet()));
             colManager.setPlayer(player);
+
+            player2->getPhysics()->setPosition(80, 450);
+            entList.insert(static_cast<Entity *>(player2));
+            entList.insert(static_cast<Entity *>(player2->getBullet()));
             colManager.setPlayer2(player2);
+
+            player2->Activate();
+            if (!multi)
+                player2->Deactivate();
+
             //-------------------------------------------------------------------------
             // Enemies Initialize
 

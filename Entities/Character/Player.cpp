@@ -6,6 +6,7 @@ Player::Player() : Character(5), bullet(new Projectile(true))
 {
     physics.setH(64);
     physics.setW(64);
+    bullet->setDeletable(false);
 }
 
 Player::~Player()
@@ -21,7 +22,7 @@ void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SD
 
 void Player::update()
 {
-    if(!isActive)
+    if (!isActive)
         return;
 
     if (health <= 0)
@@ -44,11 +45,11 @@ void Player::update()
     if (event->getKeyDown(input.getJump()))
     {
         if (getIsGrounded())
-            physics.setYVelocity(-25);
+            physics.setYVelocity(-35);
     }
-    if(event->getKeyDown(input.getFire()))
+    if (event->getKeyDown(input.getFire()))
     {
-        bullet->fire(physics.getXPosition() - physics.getMoveDirection()*15, physics.getYPosition()+25, physics.getMoveDirection());
+        bullet->fire(physics.getXPosition() - physics.getMoveDirection() * 15, physics.getYPosition() + 25, physics.getMoveDirection());
     }
     move();
     setIsGrounded(false);

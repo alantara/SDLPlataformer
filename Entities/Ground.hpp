@@ -32,6 +32,7 @@ namespace Entities
                 delete platvector[i];
                 platvector[i] = nullptr;
             }
+            free(platvector);
         }
 
         void update(){};

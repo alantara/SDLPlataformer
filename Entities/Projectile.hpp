@@ -14,6 +14,7 @@ namespace Entities
     public:
         Projectile(bool ips) : isPlayerShooted(ips)
         {
+            Deactivate();
             physics.setW(48);
             physics.setH(10);
             sprite.setSprite("assets/laser.png", 0, 0, 48, 10, 1);
@@ -22,14 +23,17 @@ namespace Entities
 
         void fire(int x, int y, int dir)
         {
-            Activate();
-            physics.setPosition(x, y);
-            physics.setVelocity(80 * dir, -2);
+            if (!isActive)
+            {
+                Activate();
+                physics.setPosition(x, y);
+                physics.setVelocity(80 * dir, -2);
+            }
         }
 
         void update()
         {
-            if(isActive)
+            if (isActive)
                 move();
         }
     };

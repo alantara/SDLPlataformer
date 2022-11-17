@@ -5,7 +5,7 @@ using namespace std;
 
 GraphicManager *Game::gfx = GraphicManager::getInstance();
 
-Game::Game() : player(new Player()), player2(new Player()), lvl1(&evManager, player, player2), lvl2(&evManager, player, player2), isRunning(true), gameState(0), menu(&evManager, this), pause(&evManager, this)
+Game::Game() : player(new Player()), player2(new Player()), lvl1(&evManager, player, player2), lvl2(&evManager, player, player2), isRunning(true), gameState(-2), menu(&evManager, this), pause(&evManager, this), mainMenu(&evManager, this)
 {
     init();
 
@@ -45,6 +45,9 @@ void Game::update()
     }
     switch (gameState)
     {
+    case -2:
+        mainMenu.update();
+        break;
     case -1:
         pause.update();
         break;
@@ -68,6 +71,9 @@ void Game::render()
     SDL_RenderClear(gfx->getRenderer());
     switch (gameState)
     {
+    case -2:
+        mainMenu.render();
+        break;
     case -1:
         pause.render();
         break;
@@ -90,4 +96,9 @@ void Game::render()
 void Game::resetLevels()
 {
     lvl1.clean();
+}
+
+void Game::Level1Initialize()
+{
+    lvl1.initialize(player, player2, multiplayer);
 }

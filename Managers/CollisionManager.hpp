@@ -27,6 +27,7 @@ namespace Managers
     public:
         CollisionManager();
         ~CollisionManager();
+        void clean();
 
         void setPlayer(Player *player) { pl = player; }
         void setPlayer2(Player *player) { pl2 = player; }

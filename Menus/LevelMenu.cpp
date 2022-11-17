@@ -7,11 +7,11 @@ LevelMenu::LevelMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
     sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
 
-    lvl1.setButton(635, 700, 225, 225);
-    lvl1.setSprite("assets/lvl1.png", 0, 0, 225, 225, 1);
+    lvl1.setButton(10, 750, 400, 100);
+    lvl1.setSprite("assets/Menu/level1.png", 0, 0, 400, 100, 1);
 
-    lvl2.setButton(1060, 700, 225, 225);
-    lvl2.setSprite("assets/lvl2.png", 0, 0, 225, 225, 1);
+    lvl2.setButton(10, 850, 400, 100);
+    lvl2.setSprite("assets/Menu/level2.png", 0, 0, 400, 100, 1);
 }
 LevelMenu::~LevelMenu()
 {
@@ -20,15 +20,15 @@ LevelMenu::~LevelMenu()
 
 void LevelMenu::update()
 {
-    int x, y;
-    SDL_GetMouseState(&x, &y);
-    if (events->getMBDown() && x < lvl1.getX() + lvl1.getWidth() && x > lvl1.getX() && y > lvl1.getY() && y < lvl1.getY() + lvl1.getHeight())
+    if (isButtonClicked(lvl1))
     {
+        game->Level1Initialize();
         game->setGameState(1);
     }
 
-    if (events->getMBDown() && x < lvl2.getX() + lvl2.getWidth() && x > lvl2.getX() && y > lvl2.getY() && y < lvl2.getY() + lvl2.getHeight())
+    if (isButtonClicked(lvl2))
     {
+        game->Level1Initialize();
         game->setGameState(2);
     }
 }

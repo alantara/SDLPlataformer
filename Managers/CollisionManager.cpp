@@ -11,6 +11,12 @@ CollisionManager::~CollisionManager()
 {
 }
 
+void CollisionManager::clean()
+{
+    LIs.clear();
+    LOs.clear();
+}
+
 bool CollisionManager::intersect(Entity *ent1, Entity *ent2)
 {
     int x1 = ent1->getPhysics()->getXPosition();
