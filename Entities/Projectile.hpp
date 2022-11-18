@@ -34,7 +34,11 @@ namespace Entities
         void update()
         {
             if (isActive)
+            {
                 move();
+                if(physics.getXPosition() < -100 || physics.getXPosition() > GraphicManager::getWidth() + 100)
+                    Deactivate();
+            }
         }
     };
 }

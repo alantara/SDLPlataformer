@@ -124,7 +124,7 @@ void CollisionManager::obsCollision()
         if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && (*it)->getHarm())
         {
             pl2->takeDamage();
-            pl2->getPhysics()->setXVelocity(-45 * pl2->getPhysics()->getMoveDirection());
+            pl2->getPhysics()->setXVelocity(45 * pl2->getPhysics()->getMoveDirection());
             pl2->getPhysics()->setXPosition(pl2->getPhysics()->getXPosition() + pl2->getPhysics()->getXVelocity());
             pl2->getPhysics()->setYVelocity(-15);
             pl2->getPhysics()->setYPosition(pl2->getPhysics()->getYPosition() + pl2->getPhysics()->getYVelocity());
@@ -222,12 +222,14 @@ void CollisionManager::PlEnemyCollision()
 
     while(it != LIs.end())
     {
-        if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && !(*it)->getIsShooter() && (*it)->getIsActive())
-            pl->takeDamage();
-        
-        if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && !(*it)->getIsShooter() && (*it)->getIsActive())
-            pl2->takeDamage();
-
+        if((*it)->getIsActive())
+        {
+            if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && !(*it)->getIsShooter())
+                pl->takeDamage();
+            
+            if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && !(*it)->getIsShooter())
+                pl2->takeDamage();
+        }
         it++;
     }
 }
