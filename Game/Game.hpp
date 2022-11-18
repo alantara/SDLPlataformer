@@ -48,6 +48,8 @@ public:
 
     void resetLevels();
     void Level1Initialize();
+    void Level2Initialize();
+    void saveLevel();
 
     void init();
     void update();

@@ -96,9 +96,20 @@ void Game::render()
 void Game::resetLevels()
 {
     lvl1.clean();
+    lvl2.clean();
 }
 
 void Game::Level1Initialize()
 {
     lvl1.initialize(player, player2, multiplayer);
+}
+
+void Game::Level2Initialize()
+{
+    lvl2.initialize(player, player2, multiplayer);
+}
+
+void Game::saveLevel()
+{
+    lvl1.save();
 }

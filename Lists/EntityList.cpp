@@ -70,9 +70,10 @@ void EntityList::save(string name)
 
     while (aux != nullptr)
     {
+
         Physics *phy = aux->getData()->getPhysics();
 
-        arq << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        arq << aux->getData()->getEntId() << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
         aux = aux->getNext();
     }
 

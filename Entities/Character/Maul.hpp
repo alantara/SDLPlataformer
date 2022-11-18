@@ -12,6 +12,8 @@ namespace Entities
         public:
             Maul(Player* pl, Player* pl2) : Enemy(1, pl, pl2)
             {
+                entityID = 3;
+
                 physics.setXVelocity(2);
                 physics.setW(61);
                 physics.setH(64);

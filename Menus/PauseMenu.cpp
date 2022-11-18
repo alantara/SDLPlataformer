@@ -36,7 +36,7 @@ void PauseMenu::update()
 
     if (isButtonClicked(saveLevel))
     {
-        //SaveLevel
+        game->saveLevel();
     }
 }
 void PauseMenu::render()

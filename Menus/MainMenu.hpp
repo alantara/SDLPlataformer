@@ -14,6 +14,7 @@ namespace Menus
     private:
         Button singleplayer;
         Button multiplayer;
+        Button load;
         Button exit;
 
     public:

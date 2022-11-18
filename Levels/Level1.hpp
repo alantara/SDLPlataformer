@@ -53,14 +53,11 @@ namespace Levels
             if (!multi)
                 player2->Deactivate();
 
-            //-------------------------------------------------------------------------
-            // Enemies Initialize
 
             vaderBulkInitialize(3, 300, 0, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
 
             trooperBulkInitialize(3, 300, 0, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
 
-            maulBulkInitialize(3, 300, 0, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
             //-------------------------------------------------------------------------
             // Obstacles Initialize
             barrelBulkInitialize(3, 300, GraphicManager::getInstance()->getHeight() * 1 / 5, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);

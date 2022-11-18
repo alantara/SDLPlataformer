@@ -15,7 +15,6 @@ Ente::Ente()
 
 Ente::~Ente()
 {
-    enteSize--; //Update Number of Entes
     gfx = nullptr; //Unset Pointer to Graphic Manager
 
     cout << "Ente Destroyed! id: " << id << endl;

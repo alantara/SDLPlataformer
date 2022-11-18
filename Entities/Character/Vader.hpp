@@ -12,6 +12,8 @@ namespace Entities
         public:
             Vader(Player* pl, Player* pl2) : Enemy(3, pl, pl2)
             {
+                entityID = 4;
+
                 physics.setXVelocity(3);
                 physics.setW(64);
                 physics.setH(51);

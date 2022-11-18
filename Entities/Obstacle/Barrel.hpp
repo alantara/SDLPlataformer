@@ -15,6 +15,8 @@ namespace Entities
         public:
             Barrel()
             {
+                entityID = 5;
+
                 physics.setW(45);
                 physics.setH(64);
                 sprite.setSprite("assets/barrel.png", 0, 0, 45, 64);

@@ -4,6 +4,8 @@ using namespace Characters;
 
 Player::Player() : Character(5), bullet(new Projectile(true))
 {
+    entityID = 1;
+    
     physics.setH(64);
     physics.setW(64);
     bullet->setDeletable(false);

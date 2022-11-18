@@ -15,6 +15,8 @@ namespace Entities
         bool isGrounded;
         bool deletable;
 
+        int entityID;
+
         Physics physics;
 
     public:
@@ -33,6 +35,8 @@ namespace Entities
 
         void setIsGrounded(bool v) { isGrounded = v; }
         const bool getIsGrounded() const { return isGrounded; }
+
+        int getEntId() { return entityID; }
 
         virtual void update() = 0;
         void applyGravity();

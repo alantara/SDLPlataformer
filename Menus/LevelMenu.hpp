@@ -14,6 +14,7 @@ namespace Menus
     private:
         Button lvl1;
         Button lvl2;
+        Button mainMenu;
 
     public:
         LevelMenu(EventManager *ev, Game*gm);

@@ -13,6 +13,8 @@ namespace Entities
         public:
             Spike() : Obstacle(true) 
             {
+                entityID = 6;
+
                 physics.setW(32);
                 physics.setH(22);
                 setSprite("assets/spike.png", 0, 0, 32, 22, 1);
