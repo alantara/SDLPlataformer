@@ -35,6 +35,8 @@ namespace Levels
         virtual void update() = 0;
         void clean();
 
+        int getEnemySize() { return entList.getEnemySize(); }
+
         void createSpike(int x, int y);
         void createPlataform(int x, int y, int type = 1);
         void createBarrel(int x, int y);

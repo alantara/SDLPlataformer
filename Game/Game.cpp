@@ -39,10 +39,19 @@ void Game::init()
 
 void Game::update()
 {
-    if(evManager.getKeyDown(SDL_SCANCODE_ESCAPE) && (gameState == 1 || gameState == 2))
+    if (evManager.getKeyDown(SDL_SCANCODE_ESCAPE) && (gameState == 1 || gameState == 2))
     {
         gameState = -1;
     }
+
+    if (!player->getIsActive() && !player2->getIsActive())
+    {
+        gameState = 0;
+        player->reset();
+        player2->reset();
+        resetLevels();
+    }
+
     switch (gameState)
     {
     case -2:
@@ -56,9 +65,13 @@ void Game::update()
         break;
     case 1:
         lvl1.update();
+        if (lvl1.getEnemySize() == 0)
+            gameState = 0;
         break;
     case 2:
         lvl2.update();
+        if (lvl2.getEnemySize() == 0)
+            gameState = 0;
         break;
     default:
         isRunning = false;

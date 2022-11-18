@@ -26,6 +26,8 @@ namespace Entities
             Player();
             ~Player();
 
+            void reset();
+
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f);
             CharacterInput getInputSystem() { return input; };
 

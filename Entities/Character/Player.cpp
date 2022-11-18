@@ -5,7 +5,7 @@ using namespace Characters;
 Player::Player() : Character(5), bullet(new Projectile(true))
 {
     entityID = 1;
-    
+
     physics.setH(64);
     physics.setW(64);
     bullet->setDeletable(false);
@@ -14,6 +14,12 @@ Player::Player() : Character(5), bullet(new Projectile(true))
 Player::~Player()
 {
     event = nullptr;
+}
+
+void Player::reset()
+{
+    Activate();
+    health = 5;
 }
 
 void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f)

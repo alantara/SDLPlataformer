@@ -79,3 +79,18 @@ void EntityList::save(string name)
 
     arq.close();
 }
+
+int EntityList::getEnemySize()
+{
+    int i = 0;
+    List<Entity *>::Element<Entity *> *aux = nullptr;
+    aux = entList.begin();
+
+    while (aux != nullptr)
+    {
+        if (aux->getData()->getIsActive() && (aux->getData()->getEntId() == 2 || aux->getData()->getEntId() == 3 || aux->getData()->getEntId() == 4))
+            i++;
+        aux = aux->getNext();
+    }
+    return i;
+}

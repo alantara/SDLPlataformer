@@ -24,5 +24,7 @@ namespace Lists
         void updateAll();
         void insert(Entity *entity);
         void save(string name);
+
+        int getEnemySize();
     };
 }
