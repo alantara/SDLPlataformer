@@ -33,7 +33,10 @@ namespace Entities
                     return;
 
                 if(health <= 0)
+                {
                     Deactivate();
+                    player->addScorePoints(10);
+                }
                 //pursue(player);
                 //pursue(player2);
                 if(rand()%50 == 0){

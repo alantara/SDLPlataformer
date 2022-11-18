@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Ente.hpp"
+#include "Font.hpp"
 
 #include "EntityList.hpp"
 using namespace Lists;
@@ -26,6 +27,7 @@ namespace Levels
         Ground *gnd;
         Player *p1;
         Player *p2;
+        Font ST;
 
     public:
         Level(EventManager *ev);

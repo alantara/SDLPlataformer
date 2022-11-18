@@ -1,3 +1,5 @@
+#include <SDL2/SDL_ttf.h>
+
 #include "Level.hpp"
 using namespace Levels;
 
@@ -34,6 +36,7 @@ void Level::render()
 {
     sprite.render();
     entList.renderAll();
+    ST.render();
 }
 
 void Level::clean()

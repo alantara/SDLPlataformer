@@ -22,11 +22,16 @@ namespace Entities
 
             Projectile *bullet;
 
+            static int points;
+
         public:
             Player();
             ~Player();
 
             void reset();
+
+            static void addScorePoints(int i) { points += i; }
+            static int getScorePoints() { return points; }
 
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f);
             CharacterInput getInputSystem() { return input; };

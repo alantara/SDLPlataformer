@@ -6,6 +6,9 @@ namespace Levels
 {
     class Level2 : public Level
     {
+    private:
+        int maxTroopers;
+
     public:
         Level2(EventManager *ev, Player *player, Player *player2) : Level(ev)
         {
@@ -76,6 +79,7 @@ namespace Levels
             gnd->render();
             colManager.Execute();
             entList.updateAll();
+            ST.update();
         };
     };
 }

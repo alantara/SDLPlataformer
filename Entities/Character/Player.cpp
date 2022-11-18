@@ -2,6 +2,8 @@
 using namespace Entities;
 using namespace Characters;
 
+int Player::points = 0;
+
 Player::Player() : Character(5), bullet(new Projectile(true))
 {
     entityID = 1;
@@ -18,6 +20,7 @@ Player::~Player()
 
 void Player::reset()
 {
+    points = 0;
     Activate();
     health = 5;
 }

@@ -21,6 +21,9 @@ namespace Levels
 {
     class Level1 : public Level
     {
+    private:
+        int maxMauls;
+
     public:
         Level1(EventManager *ev, Player *player, Player *player2) : Level(ev)
         {
@@ -92,6 +95,7 @@ namespace Levels
             gnd->render();
             colManager.Execute();
             entList.updateAll();
+            ST.update();
         }
 
         void save()

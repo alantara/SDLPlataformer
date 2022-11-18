@@ -9,8 +9,11 @@ namespace Entities
     {
         class Maul : public Enemy
         {
+        private:
+            int darkness;
+
         public:
-            Maul(Player* pl, Player* pl2) : Enemy(1, pl, pl2)
+            Maul(Player *pl, Player *pl2) : Enemy(1, pl, pl2)
             {
                 entityID = 3;
 
@@ -23,13 +26,16 @@ namespace Entities
 
             void update()
             {
-                if(!isActive)
+                if (!isActive)
                     return;
 
-                if(health <= 0)
+                if (health <= 0)
+                {
                     Deactivate();
-                //pursue(player);
-                //pursue(player2);
+                    player->addScorePoints(10);
+                }
+                // pursue(player);
+                // pursue(player2);
                 move();
             }
         };
