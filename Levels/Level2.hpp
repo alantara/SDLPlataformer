@@ -37,20 +37,38 @@ namespace Levels
             if (!multi)
                 player2->Deactivate();
 
-            //-------------------------------------------------------------------------
-            // Enemies Initialize
+            vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            vaderBulkInitialize(3, 300, 0, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
+            trooperBulkInitialize(3, 900, 500, 1400, 600);
 
-            maulBulkInitialize(3, 300, 0, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
             //-------------------------------------------------------------------------
             // Obstacles Initialize
-            barrelBulkInitialize(3, 300, GraphicManager::getInstance()->getHeight() * 1 / 5, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 2 / 5);
+            barrelBulkInitialize(3, 200, 700, 1600, 800);
 
-            spikeBulkInitialize(3, 300, GraphicManager::getInstance()->getHeight() * 1 / 5, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 3 / 5);
+            spikeBulkInitialize(3, 500, 700, 800, 800);
 
-            plataformBulkInitialize(4, 300, GraphicManager::getInstance()->getHeight() * 3 / 5, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() * 4 / 5, 5);
-            plataformBulkInitialize(4, 300, GraphicManager::getInstance()->getHeight() * 4 / 5, GraphicManager::getInstance()->getWidth(), GraphicManager::getInstance()->getHeight() - 100);
+            //"Static" plataforms
+
+            createPlataform(0, 100, 5);
+            createPlataform(0, 200, 5);
+            createPlataform(0, 300, 5);
+            createPlataform(0, 400, 5);
+            createPlataform(0, 500, 5);
+
+            createPlataform(GraphicManager::getInstance()->getWidth() - 50, 100, 5);
+            createPlataform(GraphicManager::getInstance()->getWidth() - 50, 200, 5);
+            createPlataform(GraphicManager::getInstance()->getWidth() - 50, 300, 5);
+            createPlataform(GraphicManager::getInstance()->getWidth() - 50, 400, 5);
+            createPlataform(GraphicManager::getInstance()->getWidth() - 50, 500, 5);
+
+            createPlataform(900, 900, 4);
+            createPlataform(950, 900, 6);
+            createPlataform(450, 900, 5);
+
+            createPlataform(400, 1000);
+            createPlataform(900, 1000);
+            createPlataform(1500, 1000);
+            createPlataform(1600, 1000);
         }
 
         void update()

@@ -18,6 +18,7 @@ namespace Entities
             physics.setW(48);
             physics.setH(10);
             sprite.setSprite("assets/laser.png", 0, 0, 48, 10, 1);
+            entityID = 8;
         }
         ~Projectile(){};
 
@@ -36,7 +37,7 @@ namespace Entities
             if (isActive)
             {
                 move();
-                if(physics.getXPosition() < -100 || physics.getXPosition() > GraphicManager::getWidth() + 100)
+                if (physics.getXPosition() < -100 || physics.getXPosition() > GraphicManager::getWidth() + 100)
                     Deactivate();
             }
         }
