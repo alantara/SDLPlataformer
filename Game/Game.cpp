@@ -31,10 +31,12 @@ void Game::init()
     player->setSprite("assets/solo.png", 0, 0, 64, 59, 1);
     player->setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
     player->setDeletable(false);
+    player->setEntID(10);
 
     player2->setSprite("assets/chew.png", 0, 0, 44, 64, 1);
     player2->setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
     player2->setDeletable(false);
+    player2->setEntID(11);
 }
 
 void Game::update()
@@ -125,4 +127,9 @@ void Game::Level2Initialize()
 void Game::saveLevel()
 {
     lvl1.save();
+}
+
+int Game::loadLVL1()
+{
+    return lvl1.load();
 }

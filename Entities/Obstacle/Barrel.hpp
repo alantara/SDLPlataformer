@@ -11,9 +11,10 @@ namespace Entities
         class Barrel : public Obstacle
         {
         private:
+            float weight;
 
         public:
-            Barrel()
+            Barrel() : weight(((rand() % 1000) / 1000.0f) + 1)
             {
                 entityID = 5;
 
@@ -26,7 +27,7 @@ namespace Entities
             void update()
             {
                 applyGravity();
-
+                physics.setYVelocity(physics.getYVelocity() * weight);
                 move();
             }
         };

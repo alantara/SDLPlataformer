@@ -50,6 +50,7 @@ public:
     void Level1Initialize();
     void Level2Initialize();
     void saveLevel();
+    int loadLVL1();
 
     void init();
     void update();

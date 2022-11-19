@@ -10,8 +10,11 @@ namespace Entities
     {
         class Spike : public Obstacle
         {
+        private:
+            int damage;
+
         public:
-            Spike() : Obstacle(true) 
+            Spike() : Obstacle(true), damage(1)
             {
                 entityID = 6;
 

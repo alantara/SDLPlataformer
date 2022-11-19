@@ -15,6 +15,8 @@ using namespace Characters;
 using namespace Obstacles;
 
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 namespace Levels
@@ -27,6 +29,9 @@ namespace Levels
     public:
         Level1(EventManager *ev, Player *player, Player *player2) : Level(ev)
         {
+            p1 = player;
+            p2 = player2;
+
             sprite.setSprite("assets/back.png", 0, 0, 1920, 1080);
             groundInitialize();
         }
@@ -88,6 +93,95 @@ namespace Levels
             createPlataform(900, 1000);
             createPlataform(1500, 1000);
             createPlataform(1600, 1000);
+        }
+
+        int load()
+        {
+            ifstream arq;
+            arq.open("da.txt", ios::in);
+
+            entList.insert(static_cast<Entity *>(gnd));
+            int x, y;
+            int id, active;
+            while (!arq.eof())
+            {
+
+                arq >> id;
+
+                switch (id)
+                {
+                case 2:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createTrooper(x, y);
+                    break;
+                case 3:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createMaul(x, y);
+                    break;
+                case 4:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createVader(x, y);
+                    break;
+                case 5:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createBarrel(x, y);
+                    break;
+                case 6:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createSpike(x, y);
+                    break;
+                case 7:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createPlataform(x, y);
+                    break;
+                case 10:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+
+                    p1->getPhysics()->setPosition(x, y);
+                    entList.insert(static_cast<Entity *>(p1));
+                    entList.insert(static_cast<Entity *>(p1->getBullet()));
+                    colManager.setPlayer(p1);
+                    if (active)
+                        p1->Activate();
+
+                    break;
+                case 11:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+
+                    p2->getPhysics()->setPosition(x, y);
+                    entList.insert(static_cast<Entity *>(p2));
+                    entList.insert(static_cast<Entity *>(p2->getBullet()));
+                    colManager.setPlayer2(p2);
+                    if (active)
+                        p2->Activate();
+
+                    break;
+
+                default:
+                    break;
+                }
+            }
+
+            arq.close();
+            if (p1 == nullptr)
+                return 1;
+            return 0;
         }
 
         void update()

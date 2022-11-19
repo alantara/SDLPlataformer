@@ -66,14 +66,14 @@ void EntityList::save(string name)
     aux = entList.begin();
 
     ofstream arq;
-    arq.open(name);
+    arq.open(name, ios::out | ios::trunc);
 
     while (aux != nullptr)
     {
 
         Physics *phy = aux->getData()->getPhysics();
 
-        arq << aux->getData()->getEntId() << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        arq << aux->getData()->getEntId() << " " << (aux->getData()->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
         aux = aux->getNext();
     }
 

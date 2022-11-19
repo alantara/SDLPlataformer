@@ -12,7 +12,7 @@ PauseMenu::PauseMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 
     levelMenu.setButton(10, 800, 400, 100);
     levelMenu.setSprite("assets/Menu/levelmenu.png", 0, 0, 400, 100, 1);
-    
+
     saveLevel.setButton(10, 700, 400, 100);
     saveLevel.setSprite("assets/Menu/savelevel.png", 0, 0, 400, 100, 1);
 }
@@ -37,6 +37,8 @@ void PauseMenu::update()
     if (isButtonClicked(saveLevel))
     {
         game->saveLevel();
+        game->resetLevels();
+        game->setGameState(-2);
     }
 }
 void PauseMenu::render()

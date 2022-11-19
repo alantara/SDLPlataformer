@@ -3,6 +3,7 @@ using namespace Entities;
 
 Entity::Entity() : isActive(true), isGrounded(false), deletable(true)
 {
+    entityID = 105;
 }
 
 Entity::~Entity()

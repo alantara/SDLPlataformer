@@ -42,7 +42,7 @@ namespace Levels
 
             vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            trooperBulkInitialize(3, 900, 500, 1400, 600);
+            maulBulkInitialize(3, 900, 500, 1400, 600);
 
             //-------------------------------------------------------------------------
             // Obstacles Initialize

@@ -37,6 +37,7 @@ namespace Entities
         const bool getIsGrounded() const { return isGrounded; }
 
         int getEntId() { return entityID; }
+        void setEntID(int i) { entityID = i; }
 
         virtual void update() = 0;
         void applyGravity();

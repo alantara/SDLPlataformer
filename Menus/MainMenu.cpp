@@ -32,7 +32,7 @@ void MainMenu::update()
         game->setGameState(0);
     }
 
-    if(isButtonClicked(multiplayer))
+    if (isButtonClicked(multiplayer))
     {
         game->setMultiplayer(true);
         game->setGameState(0);
@@ -40,10 +40,13 @@ void MainMenu::update()
 
     if (isButtonClicked(load))
     {
-        //Load Saved
+        if (game->loadLVL1() == 0)
+        {
+            game->setGameState(1);
+        }
     }
 
-    if(isButtonClicked(exit))
+    if (isButtonClicked(exit))
     {
         game->setGameState(-10);
     }
