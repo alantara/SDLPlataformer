@@ -12,9 +12,12 @@ namespace Entities
     private:
         bool floating;
         int type;
+
     public:
         Plataform(int tp = 1, bool fl = false);
         ~Plataform();
+
+        int getType() { return type; }
 
         void update();
     };

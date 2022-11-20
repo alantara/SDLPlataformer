@@ -97,12 +97,14 @@ namespace Levels
 
         int load()
         {
+            
             ifstream arq;
             arq.open("da.txt", ios::in);
 
             entList.insert(static_cast<Entity *>(gnd));
             int x, y;
             int id, active;
+            int type;
             while (!arq.eof())
             {
 
@@ -141,10 +143,12 @@ namespace Levels
                     createSpike(x, y);
                     break;
                 case 7:
+                    arq >> type;
                     arq >> active;
                     arq >> x;
                     arq >> y;
-                    createPlataform(x, y);
+                    cout << type << endl;
+                    createPlataform(x, y, type);
                     break;
                 case 10:
                     arq >> active;
@@ -156,8 +160,9 @@ namespace Levels
                     entList.insert(static_cast<Entity *>(p1->getBullet()));
                     colManager.setPlayer(p1);
                     if (active)
+                    {
                         p1->Activate();
-
+                    }
                     break;
                 case 11:
                     arq >> active;
@@ -168,9 +173,9 @@ namespace Levels
                     entList.insert(static_cast<Entity *>(p2));
                     entList.insert(static_cast<Entity *>(p2->getBullet()));
                     colManager.setPlayer2(p2);
-                    if (active)
+                    if (active){
                         p2->Activate();
-
+                    }
                     break;
 
                 default:

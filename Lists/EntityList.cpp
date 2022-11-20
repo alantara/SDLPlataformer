@@ -5,6 +5,8 @@ using namespace Lists;
 #include <fstream>
 using namespace std;
 
+#include "Plataform.hpp"
+
 EntityList::EntityList() : entList()
 {
 }
@@ -67,13 +69,16 @@ void EntityList::save(string name)
 
     ofstream arq;
     arq.open(name, ios::out | ios::trunc);
-
+    
     while (aux != nullptr)
     {
 
         Physics *phy = aux->getData()->getPhysics();
 
-        arq << aux->getData()->getEntId() << " " << (aux->getData()->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        arq << aux->getData()->getEntId();
+        if (aux->getData()->getEntId() == 7)
+            arq << " " << static_cast<Plataform *>(aux->getData())->getType();
+        arq << " " << (aux->getData()->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
         aux = aux->getNext();
     }
 
