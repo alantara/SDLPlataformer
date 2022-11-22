@@ -20,5 +20,10 @@ namespace Entities
         int getType() { return type; }
 
         void update();
+        void save(ofstream &arq)
+        {
+            Physics *phy = this->getPhysics();
+            arq << "7" << " " << this->getType() << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        }
     };
 }

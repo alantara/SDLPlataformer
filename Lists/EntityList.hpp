@@ -23,7 +23,7 @@ namespace Lists
         void renderAll();
         void updateAll();
         void insert(Entity *entity);
-        void save(string name);
+        void save(string name, int lvlnum);
 
         int getEnemySize();
     };

@@ -16,7 +16,6 @@ namespace Entities
         public:
             Spike() : Obstacle(true), damage(1)
             {
-                entityID = 6;
 
                 physics.setW(32);
                 physics.setH(22);
@@ -29,6 +28,11 @@ namespace Entities
                 applyGravity();
 
                 move();
+            }
+            void save(ofstream &arq)
+            {
+                Physics *phy = this->getPhysics();
+                arq << "6" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
             }
         };
     }

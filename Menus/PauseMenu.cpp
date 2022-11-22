@@ -6,6 +6,7 @@ using namespace Menus;
 PauseMenu::PauseMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
     sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
+    lastLevel = 0;
 
     mainMenu.setButton(760, 900, 400, 100);
     mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 400, 100, 1);
@@ -23,6 +24,11 @@ PauseMenu::~PauseMenu()
 
 void PauseMenu::update()
 {
+    if (events->getKeyDown(SDL_SCANCODE_Q))
+    {
+        game->setGameState(lastLevel);
+    }
+
     if (isButtonClicked(mainMenu))
     {
         game->setGameState(-2);
@@ -36,7 +42,11 @@ void PauseMenu::update()
 
     if (isButtonClicked(saveLevel))
     {
-        game->saveLevel1();
+        if (lastLevel == 1)
+            game->saveLevel1();
+        if (lastLevel == 2)
+            game->saveLevel2();
+
         game->resetLevels();
         game->setGameState(-2);
     }

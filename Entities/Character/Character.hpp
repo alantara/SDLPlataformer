@@ -20,6 +20,7 @@ namespace Entities
             void takeDamage() { health--; }
 
             virtual void update() = 0;
+            virtual void save(ofstream &arq){};
         };
     }
 }

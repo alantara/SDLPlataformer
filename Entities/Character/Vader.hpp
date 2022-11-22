@@ -15,7 +15,6 @@ namespace Entities
         public:
             Vader(Player* pl, Player* pl2) : Enemy(3, pl, pl2)
             {
-                entityID = 4;
 
                 sprite.setSprite("assets/vader.png", 0, 0, 64, 51, 1);
                 physics.setXVelocity(3);
@@ -37,6 +36,11 @@ namespace Entities
                 //pursue(player);
                 //pursue(player2);
                 move();
+            }
+            virtual void save(ofstream &arq)
+            {
+                Physics *phy = this->getPhysics();
+                arq << "4" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
             }
         };
     }

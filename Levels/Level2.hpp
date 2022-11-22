@@ -12,6 +12,9 @@ namespace Levels
     public:
         Level2(EventManager *ev, Player *player, Player *player2) : Level(ev)
         {
+            p1 = player;
+            p2 = player2;
+            
             sprite.setSprite("assets/bglvl2.jpg", 0, 0, 1920, 1080);
             groundInitialize();
             maxTroopers = 10;
@@ -63,7 +66,7 @@ namespace Levels
 
             vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            trooperBulkInitialize(rand()%(maxTroopers-2)+3, 900, 500, 1400, 600);
+            trooperBulkInitialize(rand() % (maxTroopers - 2) + 3, 900, 500, 1400, 600);
 
             //-------------------------------------------------------------------------
             // Obstacles Initialize
@@ -102,5 +105,104 @@ namespace Levels
             entList.updateAll();
             ST.update(to_string(Player::getScorePoints()));
         };
+
+        int load()
+        {
+            ifstream arq;
+            arq.open("da.txt", ios::in);
+
+            entList.insert(static_cast<Entity *>(gnd));
+            int lvlnum;
+            int x, y;
+            int id, active;
+            int type;
+
+            arq >> lvlnum;
+
+            while (!arq.eof())
+            {
+                arq >> id;
+                cout << id << endl;
+
+                switch (id)
+                {
+                case 2:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createTrooper(x, y);
+                    break;
+                case 4:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createVader(x, y);
+                    break;
+                case 5:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createBarrel(x, y);
+                    break;
+                case 6:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createSpike(x, y);
+                    break;
+                case 7:
+                    arq >> type;
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+                    createPlataform(x, y, type);
+                    break;
+                case 10:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+
+                    p1->getPhysics()->setPosition(x, y);
+                    entList.insert(static_cast<Entity *>(p1));
+                    entList.insert(static_cast<Entity *>(p1->getBullet()));
+
+                    colManager.setPlayer(p1);
+                    p1->Deactivate();
+                    if (active)
+                    {
+                        p1->Activate();
+                    }
+                    break;
+                case 11:
+                    arq >> active;
+                    arq >> x;
+                    arq >> y;
+
+                    p2->getPhysics()->setPosition(x, y);
+                    entList.insert(static_cast<Entity *>(p2));
+                    entList.insert(static_cast<Entity *>(p2->getBullet()));
+                    colManager.setPlayer2(p2);
+                    p2->Deactivate();
+                    if (active)
+                    {
+                        p2->Activate();
+                    }
+                    break;
+
+                default:
+                    break;
+                }
+            }
+
+            arq.close();
+            if (p1 == nullptr)
+                return 0;
+            return lvlnum;
+        }
+
+        void save()
+        {
+            entList.save("da.txt", 2);
+        }
     };
 }

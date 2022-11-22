@@ -6,7 +6,6 @@ using namespace Obstacles;
 
 Plataform::Plataform(int tp, bool fl): floating(fl), type(tp)
 {
-    entityID = 7;
 
     if(type == 1){
         sprite.setSprite("assets/129x44plat.jpg", 0, 0, 129, 44);

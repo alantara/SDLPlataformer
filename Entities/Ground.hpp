@@ -42,6 +42,7 @@ namespace Entities
             {
                 platvector[i]->render();
             }
-        }  
+        }
+        void save(ofstream &arq){};
     };
 }

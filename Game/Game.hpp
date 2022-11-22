@@ -55,7 +55,7 @@ public:
     void Level2Initialize();
     void saveLevel1();
     void saveLevel2();
-    int loadLVL1();
+    int loadLVL();
     void upLeaderboard();
 
     void init();

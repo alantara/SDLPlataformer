@@ -15,7 +15,6 @@ namespace Entities
         public:
             Maul(Player *pl, Player *pl2) : Enemy(1, pl, pl2)
             {
-                entityID = 3;
 
                 physics.setXVelocity(2);
                 physics.setW(61);
@@ -37,6 +36,11 @@ namespace Entities
                 // pursue(player);
                 // pursue(player2);
                 move();
+            }
+            virtual void save(ofstream &arq)
+            {
+                Physics *phy = this->getPhysics();
+                arq << "3" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
             }
         };
     }

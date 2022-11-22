@@ -61,5 +61,7 @@ namespace Levels
         void vaderBulkInitialize(int n, int xi, int yi, int xf, int yf);
 
         void groundInitialize();
+
+        virtual void save() = 0;
     };
 }

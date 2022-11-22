@@ -62,23 +62,18 @@ void EntityList::clean()
     entList.clean();
 }
 
-void EntityList::save(string name)
+void EntityList::save(string name, int lvlnum)
 {
     List<Entity *>::Element<Entity *> *aux = nullptr;
     aux = entList.begin();
 
     ofstream arq;
     arq.open(name, ios::out | ios::trunc);
-    
+    arq << lvlnum << endl;
     while (aux != nullptr)
     {
 
-        Physics *phy = aux->getData()->getPhysics();
-
-        arq << aux->getData()->getEntId();
-        if (aux->getData()->getEntId() == 7)
-            arq << " " << static_cast<Plataform *>(aux->getData())->getType();
-        arq << " " << (aux->getData()->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+        aux->getData()->save(arq);
         aux = aux->getNext();
     }
 
@@ -93,7 +88,7 @@ int EntityList::getEnemySize()
 
     while (aux != nullptr)
     {
-        if (aux->getData()->getIsActive() && (aux->getData()->getEntId() == 2 || aux->getData()->getEntId() == 3 || aux->getData()->getEntId() == 4))
+        if (aux->getData()->getIsActive() && (aux->getData()->getType() == "Enemy"))
             i++;
         aux = aux->getNext();
     }

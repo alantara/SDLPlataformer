@@ -32,24 +32,25 @@ void Game::init()
     player->setSprite("assets/solo.png", 0, 0, 64, 59, 1);
     player->setInputSystem(&evManager, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_SPACE, SDL_SCANCODE_Q);
     player->setDeletable(false);
-    player->setEntID(10);
+    player->setType("Player1");
 
     player2->setSprite("assets/chew.png", 0, 0, 44, 64, 1);
     player2->setInputSystem(&evManager, SDL_SCANCODE_J, SDL_SCANCODE_L, SDL_SCANCODE_I, SDL_SCANCODE_U);
     player2->setDeletable(false);
-    player2->setEntID(11);
+    player2->setType("Player2");
 }
 
 void Game::update()
 {
     if (evManager.getKeyDown(SDL_SCANCODE_ESCAPE) && (gameState == 1 || gameState == 2))
     {
+        pause.setLastLevel(gameState);
         gameState = -1;
     }
 
-    if(player->getPhysics()->getYPosition() > 2000)
+    if (player->getPhysics()->getYPosition() > 2000)
         player->Deactivate();
-    if(player2->getPhysics()->getYPosition() > 2000)
+    if (player2->getPhysics()->getYPosition() > 2000)
         player2->Deactivate();
 
     if (!player->getIsActive() && !player2->getIsActive())
@@ -158,12 +159,20 @@ void Game::saveLevel1()
 
 void Game::saveLevel2()
 {
-    //lvl2.save();
+    lvl2.save();
 }
 
-int Game::loadLVL1()
+int Game::loadLVL()
 {
-    return lvl1.load();
+    int l;
+    ifstream arq;
+    arq.open("da.txt", ios::in);
+    arq >> l;
+    arq.close();
+
+    if (l == 1)
+        return lvl1.load();
+    return lvl2.load();
 }
 
 void Game::upLeaderboard()
@@ -202,7 +211,7 @@ void Game::getInput()
                 {
                     inputText.pop_back();
                     renderText = true;
-                } 
+                }
             }
             else if(e.type == SDL_TEXTINPUT)
             {

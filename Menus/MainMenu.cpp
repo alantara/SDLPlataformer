@@ -43,10 +43,7 @@ void MainMenu::update()
 
     if (isButtonClicked(load))
     {
-        if (game->loadLVL1() == 0)
-        {
-            game->setGameState(1);
-        }
+        game->setGameState(game->loadLVL());
     }
 
     if (isButtonClicked(exit))
@@ -54,7 +51,7 @@ void MainMenu::update()
         game->setGameState(-10);
     }
 
-    if(isButtonClicked(ld))
+    if (isButtonClicked(ld))
     {
         game->upLeaderboard();
         game->setGameState(4);

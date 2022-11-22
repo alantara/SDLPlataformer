@@ -69,7 +69,7 @@ namespace Levels
 
             vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            maulBulkInitialize(rand()%(maxMauls-2) + 3, 900, 500, 1400, 600);
+            maulBulkInitialize(rand() % (maxMauls - 2) + 3, 900, 500, 1400, 600);
 
             //-------------------------------------------------------------------------
             // Obstacles Initialize
@@ -103,27 +103,24 @@ namespace Levels
 
         int load()
         {
-            
+
             ifstream arq;
             arq.open("da.txt", ios::in);
 
             entList.insert(static_cast<Entity *>(gnd));
+            int lvlnum;
             int x, y;
             int id, active;
             int type;
+
+            arq >> lvlnum;
+
             while (!arq.eof())
             {
-
                 arq >> id;
 
                 switch (id)
                 {
-                case 2:
-                    arq >> active;
-                    arq >> x;
-                    arq >> y;
-                    //createTrooper(x, y);
-                    break;
                 case 3:
                     arq >> active;
                     arq >> x;
@@ -165,6 +162,7 @@ namespace Levels
                     entList.insert(static_cast<Entity *>(p1));
                     entList.insert(static_cast<Entity *>(p1->getBullet()));
                     colManager.setPlayer(p1);
+                    p1->Deactivate();
                     if (active)
                     {
                         p1->Activate();
@@ -179,7 +177,9 @@ namespace Levels
                     entList.insert(static_cast<Entity *>(p2));
                     entList.insert(static_cast<Entity *>(p2->getBullet()));
                     colManager.setPlayer2(p2);
-                    if (active){
+                    p2->Deactivate();
+                    if (active)
+                    {
                         p2->Activate();
                     }
                     break;
@@ -191,8 +191,8 @@ namespace Levels
 
             arq.close();
             if (p1 == nullptr)
-                return 1;
-            return 0;
+                return 0;
+            return lvlnum;
         }
 
         void update()
@@ -205,7 +205,7 @@ namespace Levels
 
         void save()
         {
-            entList.save("da.txt");
+            entList.save("da.txt", 1);
         }
     };
 }

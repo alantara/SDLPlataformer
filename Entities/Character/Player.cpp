@@ -6,8 +6,7 @@ int Player::points = 0;
 
 Player::Player() : Character(5), bullet(new Projectile(true))
 {
-    entityID = 1;
-
+    type = "Player";
     physics.setH(64);
     physics.setW(64);
     bullet->setDeletable(false);

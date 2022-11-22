@@ -9,12 +9,11 @@ namespace Entities
         class Trooper : public Enemy
         {
         private:
-            Projectile* bullet;
+            Projectile *bullet;
 
         public:
-            Trooper(Player* pl, Player* pl2) : Enemy(1, pl, pl2, true), bullet(new Projectile(false))
+            Trooper(Player *pl, Player *pl2) : Enemy(1, pl, pl2, true), bullet(new Projectile(false))
             {
-                entityID = 2;
 
                 physics.setXVelocity(1);
                 physics.setW(64);
@@ -25,24 +24,31 @@ namespace Entities
             {
             }
 
-            Projectile* getBullet() override {return bullet;}
+            Projectile *getBullet() override { return bullet; }
 
             void update()
             {
-                if(!isActive)
+                if (!isActive)
                     return;
 
-                if(health <= 0)
+                if (health <= 0)
                 {
                     Deactivate();
                     player->addScorePoints(10);
                 }
-                //pursue(player);
-                //pursue(player2);
-                if(rand()%50 == 0){
-                    bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition()+20, physics.getMoveDirection());
+                // pursue(player);
+                // pursue(player2);
+                if (rand() % 50 == 0)
+                {
+                    bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition() + 20, physics.getMoveDirection());
                 }
                 move();
+            }
+            virtual void save(ofstream &arq)
+            {
+                Physics *phy = this->getPhysics();
+                arq << "2"
+                    << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
             }
         };
     }

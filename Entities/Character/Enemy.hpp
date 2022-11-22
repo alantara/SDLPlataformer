@@ -24,6 +24,7 @@ namespace Entities
 
             virtual void update() = 0;
             void pursue(Player* player);
+            virtual void save(ofstream &arq){};
         };
     }
 }

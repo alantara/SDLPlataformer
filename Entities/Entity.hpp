@@ -5,6 +5,9 @@
 #include "Physics.hpp"
 using namespace Components;
 
+#include <fstream>
+#include <string>
+
 namespace Entities
 {
     class Entity : public Ente
@@ -15,9 +18,9 @@ namespace Entities
         bool isGrounded;
         bool deletable;
 
-        int entityID;
-
         Physics physics;
+
+        string type;
 
     public:
         Entity();
@@ -36,12 +39,13 @@ namespace Entities
         void setIsGrounded(bool v) { isGrounded = v; }
         const bool getIsGrounded() const { return isGrounded; }
 
-        int getEntId() { return entityID; }
-        void setEntID(int i) { entityID = i; }
+        string getType() { return type; }
+        void setType(string t) { type = t; }
 
         virtual void update() = 0;
         void applyGravity();
         void move();
         virtual void render();
+        virtual void save(ofstream &arq) = 0;
     };
 }
