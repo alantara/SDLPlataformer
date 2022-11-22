@@ -15,6 +15,7 @@ namespace Menus
         Button singleplayer;
         Button multiplayer;
         Button load;
+        Button ld;
         Button exit;
 
     public:

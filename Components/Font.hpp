@@ -14,27 +14,41 @@ class Font
 {
 private:
     TTF_Font *ST;
-    SDL_Color White;
+    SDL_Color Yellow;
     SDL_Surface *surfaceMessage;
     SDL_Texture *Message;
     SDL_Rect Message_rect;
 
 public:
-    Font()
+    Font(int x, int y, int w = 100, int h = 100)
     {
         TTF_Init();
         ST = TTF_OpenFont("assets/STJEDISE.TTF", 24);
-        White = {255, 255, 255};
-        surfaceMessage = TTF_RenderText_Solid(ST, "0", White);
+        Yellow = {255, 191, 0};
+        surfaceMessage = TTF_RenderText_Solid(ST, "", Yellow);
         Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
 
-        Message_rect.x = 910;
-        Message_rect.y = 30;
-        Message_rect.w = 100;
-        Message_rect.h = 100;
+        Message_rect.x = x;
+        Message_rect.y = y;
+        Message_rect.w = w;
+        Message_rect.h = h;
     }
     ~Font()
     {
+    }
+
+    void setRect(int x, int y, int w, int h)
+    {
+        Message_rect.x = x;
+        Message_rect.y = y;
+        Message_rect.w = w;
+        Message_rect.h = h;
+    }
+
+    void setMessage(string s)
+    {
+        surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), Yellow);
+        Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
     }
 
     void clean()
@@ -48,10 +62,10 @@ public:
         SDL_RenderCopy(GraphicManager::getInstance()->getRenderer(), Message, NULL, &Message_rect);
     }
 
-    void update()
+    void update(string s)
     {
         clean();
-        surfaceMessage = TTF_RenderText_Solid(ST, to_string(Player::getScorePoints()).c_str(), White);
+        surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), Yellow);
         Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
     }
 };

@@ -14,6 +14,7 @@ namespace Levels
         {
             sprite.setSprite("assets/bglvl2.jpg", 0, 0, 1920, 1080);
             groundInitialize();
+            maxTroopers = 10;
         };
         ~Level2()
         {
@@ -42,7 +43,7 @@ namespace Levels
 
             vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            maulBulkInitialize(3, 900, 500, 1400, 600);
+            trooperBulkInitialize(rand()%(maxTroopers-2)+3, 900, 500, 1400, 600);
 
             //-------------------------------------------------------------------------
             // Obstacles Initialize
@@ -79,7 +80,7 @@ namespace Levels
             gnd->render();
             colManager.Execute();
             entList.updateAll();
-            ST.update();
+            ST.update(to_string(Player::getScorePoints()));
         };
     };
 }

@@ -31,6 +31,7 @@ namespace Levels
         {
             p1 = player;
             p2 = player2;
+            maxMauls = 10;
 
             sprite.setSprite("assets/back.png", 0, 0, 1920, 1080);
             groundInitialize();
@@ -63,7 +64,7 @@ namespace Levels
 
             vaderBulkInitialize(3, 400, 500, 800, 600);
 
-            trooperBulkInitialize(3, 900, 500, 1400, 600);
+            maulBulkInitialize(rand()%(maxMauls-2) + 3, 900, 500, 1400, 600);
 
             //-------------------------------------------------------------------------
             // Obstacles Initialize
@@ -194,7 +195,7 @@ namespace Levels
             gnd->render();
             colManager.Execute();
             entList.updateAll();
-            ST.update();
+            ST.update(to_string(Player::getScorePoints()));
         }
 
         void save()

@@ -13,7 +13,7 @@ using namespace std;
 #include "Vader.hpp"
 #include "Maul.hpp"
 
-Level::Level(EventManager *ev) : evManager(ev)
+Level::Level(EventManager *ev) : evManager(ev), ST(910, 30)
 {
     cout << "Level Initialized " << endl;
 

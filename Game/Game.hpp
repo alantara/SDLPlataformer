@@ -15,6 +15,8 @@ using namespace Managers;
 #include "LevelMenu.hpp"
 #include "PauseMenu.hpp"
 #include "MainMenu.hpp"
+#include "GameOver.hpp"
+#include "Leaderboard.hpp"
 using namespace Menus;
 
 class Game
@@ -35,6 +37,8 @@ private:
     MainMenu mainMenu;
     LevelMenu menu;
     PauseMenu pause;
+    GameOver over;
+    Leaderboard ld;
 
 public:
     Game();
@@ -49,8 +53,10 @@ public:
     void resetLevels();
     void Level1Initialize();
     void Level2Initialize();
-    void saveLevel();
+    void saveLevel1();
+    void saveLevel2();
     int loadLVL1();
+    void upLeaderboard();
 
     void init();
     void update();
