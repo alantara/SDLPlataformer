@@ -1,5 +1,9 @@
 #pragma once
 
+#include <SDL2/SDL_ttf.h>
+#include <iostream>
+using namespace std;
+
 #include "Ente.hpp"
 #include "Font.hpp"
 
@@ -7,8 +11,15 @@
 using namespace Lists;
 
 #include "Player.hpp"
+#include "Spike.hpp"
+#include "Barrel.hpp"
+#include "Plataform.hpp"
+#include "Vader.hpp"
+#include "Trooper.hpp"
+#include "Maul.hpp"
 using namespace Entities;
 using namespace Characters;
+using namespace Obstacles;
 
 #include "CollisionManager.hpp"
 #include "EventManager.hpp"
@@ -42,16 +53,12 @@ namespace Levels
         void createSpike(int x, int y);
         void createPlataform(int x, int y, int type = 1);
         void createBarrel(int x, int y);
-        void createTrooper(int x, int y);
         void createVader(int x, int y);
-        void createMaul(int x, int y);
 
         void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type = 1);
         void barrelBulkInitialize(int n, int xi, int yi, int xf, int yf);
-        void trooperBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void vaderBulkInitialize(int n, int xi, int yi, int xf, int yf);
-        void maulBulkInitialize(int n, int xi, int yi, int xf, int yf);
 
         void groundInitialize();
     };

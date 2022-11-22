@@ -83,7 +83,10 @@ void Game::update()
     case 2:
         lvl2.update();
         if (lvl2.getEnemySize() == 0 || player->getPhysics()->getXPosition() > 1790 || player2->getPhysics()->getXPosition() > 1790)
+        {
             gameState = 3;
+            over.setPoints(Player::getScorePoints());
+        }
         break;
     case 3:
         over.update();

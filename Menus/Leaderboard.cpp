@@ -15,6 +15,7 @@ Leaderboard::Leaderboard(EventManager *ev, Game *gm) : Menu(ev, gm)
 }
 Leaderboard::~Leaderboard()
 {
+    //clean();
     events = nullptr;
 }
 
@@ -26,49 +27,32 @@ void Leaderboard::update()
     }
 }
 
-void Leaderboard::clean()
-{
-    vector<Font*>::iterator it = names.begin();
-
-    while( it != names.end())
-    {
-        delete (*it);
-        it++;
-    }
-    names.clear();
-}
-
 void Leaderboard::setNames()
 {
-    clean();
-
     ifstream arq;
     arq.open("lb.txt", ios::in);
 
     string name, points;
 
-    int i = 1;
     while(!arq.eof())
     {
-        if(i  > 10)
-            continue;
-            
-        Font* namei = new Font(560, 100*i, 800, 100);
         arq >> points >> name;
-        namei->setMessage(name + "......." + points);
-        names.push_back(namei);
-        i++;
+        names.insert(pair<int, string>(atoi(points.c_str()), name + ".........." + points));
     }
 }
 
 void Leaderboard::renderNames()
 {
-    vector<Font*>::iterator it = names.begin();
+    map<int, string>::reverse_iterator it = names.rbegin();
 
-    while(it != names.end())
+    int i = 1;
+    while(it != names.rend())
     {
-        (*it)->render();
+        Font atual(560, 100*i, 800, 100);
+        atual.setMessage(it->second);
+        atual.render();
         it++;
+        i++;
     }
 }
 

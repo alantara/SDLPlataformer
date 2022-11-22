@@ -2,21 +2,7 @@
 
 #include "Level.hpp"
 
-#include "Plataform.hpp"
-
-#include "Player.hpp"
-#include "Trooper.hpp"
-#include "Vader.hpp"
-#include "Maul.hpp"
-#include "Spike.hpp"
-#include "Barrel.hpp"
-using namespace Entities;
-using namespace Characters;
-using namespace Obstacles;
-
-#include <iostream>
 #include <fstream>
-
 using namespace std;
 
 namespace Levels
@@ -39,6 +25,25 @@ namespace Levels
         ~Level1()
         {
             cout << "Level1 Destroyed" << endl;
+        }
+
+        void createMaul(int x, int y)
+        {
+            Maul *maul = new Maul(p1, p2);
+            maul->getPhysics()->setPosition(x, y);
+            entList.insert(static_cast<Entity *>(maul));
+            colManager.insertEnemy(static_cast<Enemy *>(maul));
+        }
+
+        void maulBulkInitialize(int n, int xi, int yi, int xf, int yf)
+        {
+            while (n--)
+            {
+                int xRnd = rand() % (xf - xi) + xi;
+                int yRnd = rand() % (yf - yi) + yi;
+
+                createMaul(xRnd, yRnd);
+            }
         }
 
         void initialize(Player *player, Player *player2, bool multi)
@@ -117,7 +122,7 @@ namespace Levels
                     arq >> active;
                     arq >> x;
                     arq >> y;
-                    createTrooper(x, y);
+                    //createTrooper(x, y);
                     break;
                 case 3:
                     arq >> active;

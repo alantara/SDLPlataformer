@@ -20,6 +20,26 @@ namespace Levels
         {
         }
 
+        void createTrooper(int x, int y)
+        {
+            Trooper *trp = new Trooper(p1, p2);
+            trp->getPhysics()->setPosition(x, y);
+            entList.insert(static_cast<Entity *>(trp));
+            entList.insert(static_cast<Entity *>(trp->getBullet()));
+            colManager.insertEnemy(static_cast<Enemy *>(trp));
+        }
+
+        void trooperBulkInitialize(int n, int xi, int yi, int xf, int yf)
+        {
+            while (n--)
+            {
+                int xRnd = rand() % (xf - xi) + xi;
+                int yRnd = rand() % (yf - yi) + yi;
+
+                createTrooper(xRnd, yRnd);
+            }
+        }
+
         void initialize(Player *player, Player *player2, bool multi)
         {
             cout << "Level1 Initialized" << endl;

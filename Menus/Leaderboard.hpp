@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Menu.hpp"
-#include <vector>
+#include <map>
 using namespace std;
 
 #include "Button.hpp"
@@ -16,7 +16,7 @@ namespace Menus
     {
     private:
         Button mainMenu;
-        vector<Font*> names;
+        map<int, string> names;
 
     public:
         Leaderboard(EventManager *ev, Game*gm);

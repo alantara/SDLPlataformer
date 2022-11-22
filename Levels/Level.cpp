@@ -1,17 +1,5 @@
-#include <SDL2/SDL_ttf.h>
-
 #include "Level.hpp"
 using namespace Levels;
-
-#include <iostream>
-using namespace std;
-
-#include "Spike.hpp"
-#include "Plataform.hpp"
-#include "Barrel.hpp"
-#include "Trooper.hpp"
-#include "Vader.hpp"
-#include "Maul.hpp"
 
 Level::Level(EventManager *ev) : evManager(ev), ST(910, 30)
 {
@@ -81,29 +69,12 @@ void Level::createBarrel(int x, int y)
     entList.insert(static_cast<Entity *>(barrel));
 }
 
-void Level::createTrooper(int x, int y)
-{
-    Trooper *trp = new Trooper(p1, p2);
-    trp->getPhysics()->setPosition(x, y);
-    entList.insert(static_cast<Entity *>(trp));
-    entList.insert(static_cast<Entity *>(trp->getBullet()));
-    colManager.insertEnemy(static_cast<Enemy *>(trp));
-}
-
 void Level::createVader(int x, int y)
 {
     Vader *vader = new Vader(p1, p2);
     vader->getPhysics()->setPosition(x, y);
     entList.insert(static_cast<Entity *>(vader));
     colManager.insertEnemy(static_cast<Enemy *>(vader));
-}
-
-void Level::createMaul(int x, int y)
-{
-    Maul *maul = new Maul(p1, p2);
-    maul->getPhysics()->setPosition(x, y);
-    entList.insert(static_cast<Entity *>(maul));
-    colManager.insertEnemy(static_cast<Enemy *>(maul));
 }
 
 void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
@@ -138,16 +109,7 @@ void Level::barrelBulkInitialize(int n, int xi, int yi, int xf, int yf)
         createBarrel(xRnd, yRnd);
     }
 }
-void Level::trooperBulkInitialize(int n, int xi, int yi, int xf, int yf)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
 
-        createTrooper(xRnd, yRnd);
-    }
-}
 void Level::vaderBulkInitialize(int n, int xi, int yi, int xf, int yf)
 {
     while (n--)
@@ -158,13 +120,4 @@ void Level::vaderBulkInitialize(int n, int xi, int yi, int xf, int yf)
         createVader(xRnd, yRnd);
     }
 }
-void Level::maulBulkInitialize(int n, int xi, int yi, int xf, int yf)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
 
-        createMaul(xRnd, yRnd);
-    }
-}
