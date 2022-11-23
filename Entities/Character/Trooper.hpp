@@ -36,14 +36,13 @@ namespace Entities
                     Deactivate();
                     player->addScorePoints(10);
                 }
-                // pursue(player);
-                // pursue(player2);
                 if (rand() % 50 == 0)
                 {
                     bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition() + 20, physics.getMoveDirection());
                 }
                 move();
             }
+            //Precisa ser virtual?? Ainda vai ser redefinida?
             virtual void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();

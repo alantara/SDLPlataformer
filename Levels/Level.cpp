@@ -1,7 +1,7 @@
 #include "Level.hpp"
 using namespace Levels;
 
-Level::Level(EventManager *ev) : evManager(ev), ST(910, 30)
+Level::Level(EventManager *ev) : evManager(ev), Score(910, 30), p1Life(100, 30), p2Life(1720, 30)
 {
     cout << "Level Initialized " << endl;
 
@@ -24,7 +24,10 @@ void Level::render()
 {
     sprite.render();
     entList.renderAll();
-    ST.render();
+    Score.render();
+    p1Life.render();
+    if(p2->getIsActive())
+        p2Life.render();
 }
 
 void Level::clean()

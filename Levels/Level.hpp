@@ -38,7 +38,9 @@ namespace Levels
         Ground *gnd;
         Player *p1;
         Player *p2;
-        Font ST;
+        Font Score;
+        Font p1Life;
+        Font p2Life;
 
     public:
         Level(EventManager *ev);

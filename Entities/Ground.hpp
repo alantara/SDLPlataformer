@@ -16,33 +16,12 @@ namespace Entities
         int size;
 
     public:
-        Ground(): size(17)
-        {
-            platvector = (Plataform**)malloc(size*sizeof(Plataform*));
-            for(int i = 0 ; i < size ; i++)
-            {
-                platvector[i] = new Plataform();
-                platvector[i]->getPhysics()->setPosition(i*129-129, GraphicManager::getInstance()->getHeight() - 44);
-            }
-        }
-        ~Ground()
-        {
-            for(int i = 0; i < size ; i++)
-            {
-                delete platvector[i];
-                platvector[i] = nullptr;
-            }
-            free(platvector);
-        }
+        Ground();
+        ~Ground();
 
-        void update(){};
-        void render() override
-        {
-            for(int i = 0 ; i < size ; i++)
-            {
-                platvector[i]->render();
-            }
-        }
-        void save(ofstream &arq){};
+        void update();
+        void render() override;
+        
+        void save(ofstream &arq);
     };
 }

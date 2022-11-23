@@ -15,13 +15,18 @@ namespace Entities
         public:
             Vader(Player* pl, Player* pl2) : Enemy(3, pl, pl2)
             {
-
+                force = (rand()%3)+3;
                 sprite.setSprite("assets/vader.png", 0, 0, 64, 51, 1);
-                physics.setXVelocity(3);
+                physics.setXVelocity(2);
                 physics.setW(64 * sprite.getMultiplier());
                 physics.setH(51 * sprite.getMultiplier());
             }
             ~Vader();
+
+            void doDamage(Player* pl) override
+            {
+                pl->takeDamage(force);
+            }
 
             void update()
             {
@@ -31,10 +36,8 @@ namespace Entities
                 if(health <= 0)
                 {
                     Deactivate();
-                    player->addScorePoints(50);
+                    player->addScorePoints(50 + force);
                 }
-                //pursue(player);
-                //pursue(player2);
                 move();
             }
             virtual void save(ofstream &arq)

@@ -106,6 +106,18 @@ void CollisionManager::enemyCollision()
     }
 }
 
+void CollisionManager::knockback(Player *pl, bool isSpike)
+{
+    if(isSpike)
+        pl->getPhysics()->setXVelocity(30 * pl->getPhysics()->getMoveDirection());
+    else
+        pl->getPhysics()->setXVelocity(-30 * pl->getPhysics()->getMoveDirection());
+    
+    pl->getPhysics()->setXPosition(pl->getPhysics()->getXPosition() + pl->getPhysics()->getXVelocity());
+    pl->getPhysics()->setYVelocity(-15);
+    pl->getPhysics()->setYPosition(pl->getPhysics()->getYPosition() + pl->getPhysics()->getYVelocity());
+}
+
 void CollisionManager::obsCollision()
 {
     list<Obstacle *>::iterator it;
@@ -115,19 +127,13 @@ void CollisionManager::obsCollision()
     {
         if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && (*it)->getHarm())
         {
-            pl->takeDamage();
-            pl->getPhysics()->setXVelocity(45 * pl->getPhysics()->getMoveDirection());
-            pl->getPhysics()->setXPosition(pl->getPhysics()->getXPosition() + pl->getPhysics()->getXVelocity());
-            pl->getPhysics()->setYVelocity(-15);
-            pl->getPhysics()->setYPosition(pl->getPhysics()->getYPosition() + pl->getPhysics()->getYVelocity());
+            pl->takeDamage((*it)->getDamage());
+            knockback(pl);
         }
         if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && (*it)->getHarm())
         {
-            pl2->takeDamage();
-            pl2->getPhysics()->setXVelocity(45 * pl2->getPhysics()->getMoveDirection());
-            pl2->getPhysics()->setXPosition(pl2->getPhysics()->getXPosition() + pl2->getPhysics()->getXVelocity());
-            pl2->getPhysics()->setYVelocity(-15);
-            pl2->getPhysics()->setYPosition(pl2->getPhysics()->getYPosition() + pl2->getPhysics()->getYVelocity());
+            pl2->takeDamage((*it)->getDamage());
+            knockback(pl2);
         }
     }
 
@@ -160,54 +166,56 @@ void CollisionManager::groundCollision()
 
 void CollisionManager::projCollision()
 {
-    vector<Enemy*>::iterator it = LIs.begin();
-    list<Obstacle*>::iterator it2 = LOs.begin();
+    vector<Enemy *>::iterator it = LIs.begin();
+    list<Obstacle *>::iterator it2 = LOs.begin();
 
-    while(it2 != LOs.end())
+    while (it2 != LOs.end())
     {
-        if(intersect(static_cast<Entity*>(pl->getBullet()), static_cast<Entity*>(*it2)) && pl->getBullet()->getIsActive())
+        if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(*it2)) && pl->getBullet()->getIsActive())
             pl->getBullet()->Deactivate();
-            
-        if(intersect(static_cast<Entity*>(pl2->getBullet()), static_cast<Entity*>(*it2)) && pl2->getBullet()->getIsActive())
+
+        if (intersect(static_cast<Entity *>(pl2->getBullet()), static_cast<Entity *>(*it2)) && pl2->getBullet()->getIsActive())
             pl2->getBullet()->Deactivate();
 
         it2++;
     }
 
     it2 = LOs.begin();
-    while(it != LIs.end())
+    while (it != LIs.end())
     {
-        if((*it)->getIsShooter()){
+        if ((*it)->getIsShooter())
+        {
             it2 = LOs.begin();
-            while(it2 != LOs.end())
+            while (it2 != LOs.end())
             {
-                if(intersect(static_cast<Entity*>((*it)->getBullet()), static_cast<Entity*>(*it2)) && (*it)->getBullet()->getIsActive()){
+                if (intersect(static_cast<Entity *>((*it)->getBullet()), static_cast<Entity *>(*it2)) && (*it)->getBullet()->getIsActive())
+                {
                     (*it)->getBullet()->Deactivate();
                     break;
                 }
                 it2++;
             }
-            //Enemy Player
-            if(intersect(static_cast<Entity*>((*it)->getBullet()), static_cast<Entity*>(pl)) && (*it)->getBullet()->getIsActive() && pl->getIsActive())
+            // Enemy Player
+            if (intersect(static_cast<Entity *>((*it)->getBullet()), static_cast<Entity *>(pl)) && (*it)->getBullet()->getIsActive() && pl->getIsActive())
             {
                 (*it)->getBullet()->Deactivate();
                 pl->takeDamage();
             }
-            //Enemy Player2
-            if(intersect(static_cast<Entity*>((*it)->getBullet()), static_cast<Entity*>(pl2)) && (*it)->getBullet()->getIsActive() && pl2->getIsActive())
+            // Enemy Player2
+            if (intersect(static_cast<Entity *>((*it)->getBullet()), static_cast<Entity *>(pl2)) && (*it)->getBullet()->getIsActive() && pl2->getIsActive())
             {
                 (*it)->getBullet()->Deactivate();
                 pl2->takeDamage();
             }
         }
-        //Player Enemy
-        if(intersect(static_cast<Entity*>(pl->getBullet()), static_cast<Entity*>(*it)) && pl->getBullet()->getIsActive() && (*it)->getIsActive())
+        // Player Enemy
+        if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(*it)) && pl->getBullet()->getIsActive() && (*it)->getIsActive())
         {
             pl->getBullet()->Deactivate();
             (*it)->takeDamage();
         }
-        //Player2 Enemy
-        if(intersect(static_cast<Entity*>(pl2->getBullet()), static_cast<Entity*>(*it)) && pl2->getBullet()->getIsActive() && (*it)->getIsActive())
+        // Player2 Enemy
+        if (intersect(static_cast<Entity *>(pl2->getBullet()), static_cast<Entity *>(*it)) && pl2->getBullet()->getIsActive() && (*it)->getIsActive())
         {
             pl2->getBullet()->Deactivate();
             (*it)->takeDamage();
@@ -218,17 +226,21 @@ void CollisionManager::projCollision()
 
 void CollisionManager::PlEnemyCollision()
 {
-    vector<Enemy*>::iterator it = LIs.begin();
+    vector<Enemy *>::iterator it = LIs.begin();
 
-    while(it != LIs.end())
+    while (it != LIs.end())
     {
-        if((*it)->getIsActive())
+        if ((*it)->getIsActive())
         {
-            if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && !(*it)->getIsShooter())
-                pl->takeDamage();
-            
-            if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && !(*it)->getIsShooter())
-                pl2->takeDamage();
+            if (isColliding(static_cast<Entity *>(pl), static_cast<Entity *>(*it)) && !(*it)->getIsShooter()){
+                (*it)->doDamage(pl);
+                knockback(pl, false);
+            }
+
+            if (isColliding(static_cast<Entity *>(pl2), static_cast<Entity *>(*it)) && !(*it)->getIsShooter()){
+                (*it)->doDamage(pl2);
+                knockback(pl2, false);
+            }
         }
         it++;
     }

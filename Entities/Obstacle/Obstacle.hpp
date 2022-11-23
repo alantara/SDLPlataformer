@@ -18,6 +18,7 @@ namespace Entities
             }
             ~Obstacle(){};
 
+            virtual const int getDamage() const {return 0;}
             const bool getHarm() const { return isHarmful; }
             virtual void update() = 0;
             virtual void save(ofstream &arq){};

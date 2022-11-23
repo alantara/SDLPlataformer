@@ -17,7 +17,7 @@ namespace Entities
 
             void setHealth(int hp) { health = hp; }
             const int getHealth() const { return health; }
-            void takeDamage() { health--; }
+            void takeDamage(int dm = 1) { health -= dm; }
 
             virtual void update() = 0;
             virtual void save(ofstream &arq){};

@@ -4,7 +4,7 @@ using namespace Characters;
 
 int Player::points = 0;
 
-Player::Player() : Character(5), bullet(new Projectile(true))
+Player::Player() : Character(10), bullet(new Projectile(true))
 {
     type = "Player";
     physics.setH(64);
@@ -21,7 +21,7 @@ void Player::reset()
 {
     points = 0;
     Activate();
-    health = 5;
+    health = 10;
 }
 
 void Player::setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f)

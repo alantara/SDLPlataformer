@@ -21,9 +21,10 @@ namespace Entities
 
             virtual Projectile* getBullet() {return nullptr;}
             bool getIsShooter() {return shooter;}
+            
+            virtual void doDamage(Player* pl) {pl->takeDamage();}
 
             virtual void update() = 0;
-            void pursue(Player* player);
             virtual void save(ofstream &arq){};
         };
     }

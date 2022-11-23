@@ -35,14 +35,21 @@ void Sprite::setTexture(string p)
         SDL_DestroyTexture(texture);
     }
 
-    SDL_Texture *tx = IMG_LoadTexture(GraphicManager::getInstance()->getRenderer(), p.c_str());
-    if (tx == nullptr)
+    try{
+        SDL_Texture *tx = IMG_LoadTexture(GraphicManager::getInstance()->getRenderer(), p.c_str());
+        if (tx != nullptr)
+        {
+            texture = tx;
+
+        } else {
+            throw(SDL_GetError());
+        }
+    }
+    catch(const char* e)
     {
-        std::cout << "Texture could not be loaded: " << SDL_GetError() << std::endl;
+        std::cout << "Texture could not be loaded: " << e << std::endl;
         return;
     }
-
-    texture = tx;
 }
 
 void Sprite::render(int x, int y, int moveDir)

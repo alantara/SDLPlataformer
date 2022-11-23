@@ -35,6 +35,7 @@ namespace Managers
         void insertEnemy(Enemy *en) { LIs.push_back(en); }
         void insertObs(Obstacle *obs) { LOs.push_back(obs); }
 
+        void knockback(Player *pl, bool isSpike = true);
         bool intersect(Entity *ent1, Entity *ent2);
         int isColliding(Entity *ent1, Entity *ent2);
         void Execute();

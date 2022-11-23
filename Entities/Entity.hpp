@@ -44,7 +44,7 @@ namespace Entities
 
         virtual void update() = 0;
         void applyGravity();
-        void move();
+        virtual void move();
         virtual void render();
         virtual void save(ofstream &arq) = 0;
     };

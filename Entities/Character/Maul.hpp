@@ -15,13 +15,18 @@ namespace Entities
         public:
             Maul(Player *pl, Player *pl2) : Enemy(1, pl, pl2)
             {
-
-                physics.setXVelocity(2);
+                darkness = (rand()%3) + 1;
+                physics.setXVelocity(1);
                 physics.setW(61);
                 physics.setH(64);
                 sprite.setSprite("assets/maul.png", 0, 0, 61, 64);
             }
             ~Maul();
+
+            void doDamage(Player* pl) override
+            {
+                pl->takeDamage(darkness);
+            }
 
             void update()
             {
@@ -31,10 +36,8 @@ namespace Entities
                 if (health <= 0)
                 {
                     Deactivate();
-                    player->addScorePoints(10);
+                    player->addScorePoints(10 + darkness);
                 }
-                // pursue(player);
-                // pursue(player2);
                 move();
             }
             virtual void save(ofstream &arq)
