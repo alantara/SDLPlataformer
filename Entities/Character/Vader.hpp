@@ -43,7 +43,8 @@ namespace Entities
             virtual void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();
-                arq << "4" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+                arq << "4"
+                    << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
             }
         };
     }

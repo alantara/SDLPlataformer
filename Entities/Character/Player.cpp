@@ -15,6 +15,7 @@ Player::Player() : Character(10), bullet(new Projectile(true))
 Player::~Player()
 {
     event = nullptr;
+    delete bullet;
 }
 
 void Player::reset()

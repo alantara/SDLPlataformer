@@ -16,7 +16,7 @@ namespace Levels
         Level1(EventManager *ev, Player *player, Player *player2);
         ~Level1();
 
-        void createMaul(int x, int y);
+        Maul* createMaul(int x, int y);
         void maulBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void initialize(Player *player, Player *player2, bool multi);
         

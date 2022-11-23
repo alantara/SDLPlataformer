@@ -32,9 +32,9 @@ namespace Components
             setW(width);
             setH(height);
         }
-        
+
         const int getMoveDirection() const { return moveDir; }
-        void setMoveDirection(int dir) {moveDir = dir;}
+        void setMoveDirection(int dir) { moveDir = dir; }
 
         const float getXPosition() const { return xPosition; }
         const float getYPosition() const { return yPosition; }
@@ -58,6 +58,7 @@ namespace Components
         {
             xVelocity = x;
             yVelocity = y;
+            moveDir = (x > 0) ? 1 : -1;
         }
         void setXVelocity(float x) { xVelocity = x; }
         void setYVelocity(float y) { yVelocity = y; }

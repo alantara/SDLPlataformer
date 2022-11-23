@@ -37,6 +37,6 @@ namespace Entities
         {
             Physics *phy = this->getPhysics();
             arq << "8"
-                << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+                << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
         }
 }

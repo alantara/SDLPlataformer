@@ -16,12 +16,13 @@ namespace Levels
         cout << "Level1 Destroyed" << endl;
     }
 
-    void Level1::createMaul(int x, int y)
+    Maul *Level1::createMaul(int x, int y)
     {
         Maul *maul = new Maul(p1, p2);
         maul->getPhysics()->setPosition(x, y);
         entList.insert(static_cast<Entity *>(maul));
         colManager.insertEnemy(static_cast<Enemy *>(maul));
+        return maul;
     }
 
     void Level1::maulBulkInitialize(int n, int xi, int yi, int xf, int yf)
@@ -98,9 +99,19 @@ namespace Levels
 
         entList.insert(static_cast<Entity *>(gnd));
         int lvlnum;
-        int x, y;
+
         int id, active;
+        int x, y;
+        int vx, vy;
+
+        int bid;
+        int bActive;
+        int bx, by;
+        int bvx, bvy;
         int type;
+
+        Maul *maul = nullptr;
+        Vader *vader = nullptr;
 
         arq >> lvlnum;
 
@@ -112,15 +123,17 @@ namespace Levels
             {
             case 3:
                 arq >> active;
-                arq >> x;
-                arq >> y;
-                createMaul(x, y);
+                arq >> x >> y;
+                arq >> vx >> vy;
+                maul = createMaul(x, y);
+                maul->getPhysics()->setVelocity(vx, vy);
                 break;
             case 4:
                 arq >> active;
-                arq >> x;
-                arq >> y;
-                createVader(x, y);
+                arq >> x >> y;
+                arq >> vx >> vy;
+                vader = createVader(x, y);
+                vader->getPhysics()->setVelocity(vx, vy);
                 break;
             case 5:
                 arq >> active;
@@ -144,10 +157,26 @@ namespace Levels
                 break;
             case 10:
                 arq >> active;
-                arq >> x;
-                arq >> y;
+                arq >> x >> y;
+                arq >> vx >> vy;
+
+                arq >> bid;
+                arq >> bActive;
+                arq >> bx >> by;
+                arq >> bvx >> bvy;
 
                 p1->getPhysics()->setPosition(x, y);
+                p1->getPhysics()->setVelocity(vx, vy);
+
+                p1->getBullet()->getPhysics()->setPosition(bx, by);
+                p1->getBullet()->getPhysics()->setVelocity(bvx, bvy);
+
+                p1->getBullet()->Deactivate();
+                if (bActive)
+                {
+                    p1->getBullet()->Activate();
+                }
+
                 entList.insert(static_cast<Entity *>(p1));
                 entList.insert(static_cast<Entity *>(p1->getBullet()));
                 colManager.setPlayer(p1);
@@ -159,18 +188,36 @@ namespace Levels
                 break;
             case 11:
                 arq >> active;
-                arq >> x;
-                arq >> y;
+                arq >> x >> y;
+                arq >> vx >> vy;
+
+                arq >> bid;
+                arq >> bActive;
+                arq >> bx >> by;
+                arq >> bvx >> bvy;
 
                 p2->getPhysics()->setPosition(x, y);
-                entList.insert(static_cast<Entity *>(p2));
-                entList.insert(static_cast<Entity *>(p2->getBullet()));
-                colManager.setPlayer2(p2);
+                p2->getPhysics()->setVelocity(vx, vy);
+
                 p2->Deactivate();
                 if (active)
                 {
                     p2->Activate();
                 }
+
+                p2->getBullet()->getPhysics()->setPosition(bx, by);
+                p2->getBullet()->getPhysics()->setVelocity(bvx, bvy);
+
+                p2->getBullet()->Deactivate();
+                if (bActive)
+                {
+                    p2->getBullet()->Activate();
+                }
+
+                entList.insert(static_cast<Entity *>(p2));
+                entList.insert(static_cast<Entity *>(p2->getBullet()));
+                colManager.setPlayer2(p2);
+                
                 break;
 
             default:

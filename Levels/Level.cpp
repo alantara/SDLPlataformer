@@ -48,36 +48,40 @@ void Level::groundInitialize()
     colManager.setGND(gnd);
 }
 
-void Level::createSpike(int x, int y)
+Spike* Level::createSpike(int x, int y)
 {
     Spike *spike = new Spike();
     spike->getPhysics()->setPosition(x, y);
     colManager.insertObs(static_cast<Obstacle *>(spike));
     entList.insert(static_cast<Entity *>(spike));
+    return spike;
 }
 
-void Level::createPlataform(int x, int y, int type)
+Plataform* Level::createPlataform(int x, int y, int type)
 {
     Plataform *plataform = new Plataform(type);
     plataform->getPhysics()->setPosition(x, y);
     colManager.insertObs(static_cast<Obstacle *>(plataform));
     entList.insert(static_cast<Entity *>(plataform));
+    return plataform;
 }
 
-void Level::createBarrel(int x, int y)
+Barrel* Level::createBarrel(int x, int y)
 {
     Barrel *barrel = new Barrel();
     barrel->getPhysics()->setPosition(x, y);
     colManager.insertObs(static_cast<Obstacle *>(barrel));
     entList.insert(static_cast<Entity *>(barrel));
+    return barrel;
 }
 
-void Level::createVader(int x, int y)
+Vader* Level::createVader(int x, int y)
 {
     Vader *vader = new Vader(p1, p2);
     vader->getPhysics()->setPosition(x, y);
     entList.insert(static_cast<Entity *>(vader));
     colManager.insertEnemy(static_cast<Enemy *>(vader));
+    return vader;
 }
 
 void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)

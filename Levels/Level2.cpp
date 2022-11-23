@@ -13,16 +13,16 @@ namespace Levels
     }
     Level2::~Level2()
     {
-
     }
 
-    void Level2::createTrooper(int x, int y)
+    Trooper *Level2::createTrooper(int x, int y)
     {
         Trooper *trp = new Trooper(p1, p2);
         trp->getPhysics()->setPosition(x, y);
         entList.insert(static_cast<Entity *>(trp));
         entList.insert(static_cast<Entity *>(trp->getBullet()));
         colManager.insertEnemy(static_cast<Enemy *>(trp));
+        return trp;
     }
 
     void Level2::trooperBulkInitialize(int n, int xi, int yi, int xf, int yf)
@@ -108,9 +108,18 @@ namespace Levels
 
         entList.insert(static_cast<Entity *>(gnd));
         int lvlnum;
-        int x, y;
         int id, active;
+        int x, y;
+        int vx, vy;
+
+        int bid;
+        int bActive;
+        int bx, by;
+        int bvx, bvy;
         int type;
+
+        Trooper *trooper = nullptr;
+        Vader *vader = nullptr;
 
         arq >> lvlnum;
 
@@ -123,15 +132,31 @@ namespace Levels
             {
             case 2:
                 arq >> active;
-                arq >> x;
-                arq >> y;
-                createTrooper(x, y);
+                arq >> x >> y;
+                arq >> vx >> vy;
+
+                arq >> bid;
+                arq >> bActive;
+                arq >> bx >> by;
+                arq >> bvx >> bvy;
+                trooper = createTrooper(x, y);
+                trooper->getPhysics()->setVelocity(vx, vy);
+
+                trooper->getBullet()->getPhysics()->setPosition(bx, by);
+                trooper->getBullet()->getPhysics()->setVelocity(bvx, bvy);
+
+                trooper->getBullet()->Deactivate();
+                if (bActive)
+                {
+                    trooper->getBullet()->Activate();
+                }
                 break;
             case 4:
                 arq >> active;
-                arq >> x;
-                arq >> y;
-                createVader(x, y);
+                arq >> x >> y;
+                arq >> vx >> vy;
+                vader = createVader(x, y);
+                vader->getPhysics()->setVelocity(vx, vy);
                 break;
             case 5:
                 arq >> active;
@@ -154,13 +179,28 @@ namespace Levels
                 break;
             case 10:
                 arq >> active;
-                arq >> x;
-                arq >> y;
+                arq >> x >> y;
+                arq >> vx >> vy;
+
+                arq >> bid;
+                arq >> bActive;
+                arq >> bx >> by;
+                arq >> bvx >> bvy;
 
                 p1->getPhysics()->setPosition(x, y);
+                p1->getPhysics()->setVelocity(vx, vy);
+
+                p1->getBullet()->getPhysics()->setPosition(bx, by);
+                p1->getBullet()->getPhysics()->setVelocity(bvx, bvy);
+
+                p1->getBullet()->Deactivate();
+                if (bActive)
+                {
+                    p1->getBullet()->Activate();
+                }
+
                 entList.insert(static_cast<Entity *>(p1));
                 entList.insert(static_cast<Entity *>(p1->getBullet()));
-
                 colManager.setPlayer(p1);
                 p1->Deactivate();
                 if (active)
@@ -170,18 +210,36 @@ namespace Levels
                 break;
             case 11:
                 arq >> active;
-                arq >> x;
-                arq >> y;
+                arq >> x >> y;
+                arq >> vx >> vy;
+
+                arq >> bid;
+                arq >> bActive;
+                arq >> bx >> by;
+                arq >> bvx >> bvy;
 
                 p2->getPhysics()->setPosition(x, y);
-                entList.insert(static_cast<Entity *>(p2));
-                entList.insert(static_cast<Entity *>(p2->getBullet()));
-                colManager.setPlayer2(p2);
+                p2->getPhysics()->setVelocity(vx, vy);
+
                 p2->Deactivate();
                 if (active)
                 {
                     p2->Activate();
                 }
+
+                p2->getBullet()->getPhysics()->setPosition(bx, by);
+                p2->getBullet()->getPhysics()->setVelocity(bvx, bvy);
+
+                p2->getBullet()->Deactivate();
+                if (bActive)
+                {
+                    p2->getBullet()->Activate();
+                }
+
+                entList.insert(static_cast<Entity *>(p2));
+                entList.insert(static_cast<Entity *>(p2->getBullet()));
+                colManager.setPlayer2(p2);
+
                 break;
 
             default:

@@ -15,7 +15,7 @@ namespace Entities
         public:
             Maul(Player *pl, Player *pl2) : Enemy(1, pl, pl2)
             {
-                darkness = (rand()%3) + 1;
+                darkness = (rand() % 3) + 1;
                 physics.setXVelocity(1);
                 physics.setW(61);
                 physics.setH(64);
@@ -23,7 +23,7 @@ namespace Entities
             }
             ~Maul();
 
-            void doDamage(Player* pl) override
+            void doDamage(Player *pl) override
             {
                 pl->takeDamage(darkness);
             }
@@ -43,7 +43,8 @@ namespace Entities
             virtual void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();
-                arq << "3" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+                arq << "3"
+                    << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
             }
         };
     }

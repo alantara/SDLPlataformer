@@ -42,12 +42,11 @@ namespace Entities
                 }
                 move();
             }
-            //Precisa ser virtual?? Ainda vai ser redefinida?
-            virtual void save(ofstream &arq)
+            void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();
                 arq << "2"
-                    << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+                    << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
             }
         };
     }

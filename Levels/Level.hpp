@@ -52,10 +52,10 @@ namespace Levels
 
         int getEnemySize() { return entList.getEnemySize(); }
 
-        void createSpike(int x, int y);
-        void createPlataform(int x, int y, int type = 1);
-        void createBarrel(int x, int y);
-        void createVader(int x, int y);
+        Spike* createSpike(int x, int y);
+        Plataform* createPlataform(int x, int y, int type = 1);
+        Barrel* createBarrel(int x, int y);
+        Vader* createVader(int x, int y);
 
         void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
         void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type = 1);

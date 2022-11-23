@@ -11,7 +11,7 @@ namespace Entities
         class Barrel : public Obstacle
         {
         private:
-            float weight;
+            int weight;
 
         public:
             Barrel() : weight(((rand() % 1000) / 1000.0f) + 1)
