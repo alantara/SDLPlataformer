@@ -7,20 +7,20 @@ MainMenu::MainMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
     sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
 
-    singleplayer.setButton(760, 600, 400, 100);
-    singleplayer.setSprite("assets/Menu/singleplayer.png", 0, 0, 400, 100, 1);
+    singleplayer.setButton(760, 600, 400, 86);
+    singleplayer.setSprite("assets/Menu/singleplayer.png", 0, 0, 400, 86, 1);
 
-    multiplayer.setButton(760, 700, 400, 100);
-    multiplayer.setSprite("assets/Menu/multiplayer.png", 0, 0, 400, 100, 1);
+    multiplayer.setButton(760, 700, 400, 92);
+    multiplayer.setSprite("assets/Menu/multiplayer.png", 0, 0, 400, 92, 1);
 
-    load.setButton(760, 800, 400, 100);
-    load.setSprite("assets/Menu/loadsaved.png", 0, 0, 400, 100, 1);
+    load.setButton(760, 800, 400, 97);
+    load.setSprite("assets/Menu/loadsaved.png", 0, 0, 400, 97, 1);
 
-    exit.setButton(100, 900, 400, 100);
-    exit.setSprite("assets/Menu/exit.png", 0, 0, 400, 100, 1);
+    exit.setButton(100, 900, 177, 100);
+    exit.setSprite("assets/Menu/exit.png", 0, 0, 177, 100, 1);
 
-    ld.setButton(760, 900, 400, 100);
-    ld.setSprite("assets/Menu/leaderboard.png", 0, 0, 400, 100, 1);
+    ld.setButton(760, 900, 400, 85);
+    ld.setSprite("assets/Menu/leaderboard.png", 0, 0, 400, 85, 1);
 }
 MainMenu::~MainMenu()
 {

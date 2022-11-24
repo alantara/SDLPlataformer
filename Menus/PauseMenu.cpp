@@ -8,14 +8,14 @@ PauseMenu::PauseMenu(EventManager *ev, Game *gm) : Menu(ev, gm)
     sprite.setSprite("assets/bg.jpg", 0, 0, 1920, 1080, 1);
     lastLevel = 0;
 
-    mainMenu.setButton(760, 900, 400, 100);
-    mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 400, 100, 1);
+    mainMenu.setButton(780, 900, 360, 100);
+    mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 360, 100, 1);
 
-    levelMenu.setButton(760, 800, 400, 100);
-    levelMenu.setSprite("assets/Menu/levelmenu.png", 0, 0, 400, 100, 1);
+    levelMenu.setButton(762, 800, 396, 100);
+    levelMenu.setSprite("assets/Menu/levelmenu.png", 0, 0, 396, 100, 1);
 
-    saveLevel.setButton(760, 700, 400, 100);
-    saveLevel.setSprite("assets/Menu/savelevel.png", 0, 0, 400, 100, 1);
+    saveLevel.setButton(765, 700, 391, 100);
+    saveLevel.setSprite("assets/Menu/savelevel.png", 0, 0, 391, 100, 1);
 }
 PauseMenu::~PauseMenu()
 {

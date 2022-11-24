@@ -6,15 +6,15 @@ using namespace std;
 
 namespace Menus
 {
-    GameOver::GameOver(EventManager* ev, Game* gm): Menu(ev, gm), points(910, 500, 100, 125), name(660, 600, 600, 100)
+    GameOver::GameOver(EventManager* ev, Game* gm): Menu(ev, gm), points(910, 450, 100, 125), name(660, 600, 600, 100)
     {
         sprite.setSprite("assets/Menu/gameoverbg.jpg", 0, 0, 1920, 1080, 1);
 
-        playAgain.setButton(760, 800, 400, 100);
-        playAgain.setSprite("assets/Menu/playagain.png", 0, 0, 400, 100, 1);
+        playAgain.setButton(770, 800, 381, 100);
+        playAgain.setSprite("assets/Menu/playagain.png", 0, 0, 381, 100, 1);
 
-        mainMenu.setButton(760, 900, 400, 100);
-        mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 400, 100, 1);
+        mainMenu.setButton(780, 900, 360, 100);
+        mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 360, 100, 1);
 
         input.setButton(560, 600, 800, 100);
 

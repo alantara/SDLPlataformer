@@ -10,8 +10,8 @@ Leaderboard::Leaderboard(EventManager *ev, Game *gm) : Menu(ev, gm)
 {
     sprite.setSprite("assets/galaxy.jpg", 0, 0, 1920, 1080, 1);
 
-    mainMenu.setButton(760, 900, 400, 100);
-    mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 400, 100, 1);
+    mainMenu.setButton(780, 900, 360, 100);
+    mainMenu.setSprite("assets/Menu/mainmenu.png", 0, 0, 360, 100, 1);
 }
 Leaderboard::~Leaderboard()
 {
