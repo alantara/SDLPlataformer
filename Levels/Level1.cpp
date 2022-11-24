@@ -143,12 +143,14 @@ namespace Levels
         int id, active;
         float x, y;
         float vx, vy;
+        int hp;
 
         int bid;
         int bActive;
         int bx, by;
         int bvx, bvy;
         int type;
+        int points;
 
         Maul *maul = nullptr;
         Vader *vader = nullptr;
@@ -167,6 +169,11 @@ namespace Levels
                 arq >> vx >> vy;
                 maul = createMaul(x, y);
                 maul->getPhysics()->setVelocity(vx, vy);
+                maul->Deactivate();
+                if (active)
+                {
+                    maul->Activate();
+                }
                 break;
             case 4:
                 arq >> active;
@@ -174,6 +181,11 @@ namespace Levels
                 arq >> vx >> vy;
                 vader = createVader(x, y);
                 vader->getPhysics()->setVelocity(vx, vy);
+                vader->Deactivate();
+                if (active)
+                {
+                    vader->Activate();
+                }
                 break;
             case 5:
                 arq >> active;
@@ -192,11 +204,12 @@ namespace Levels
                 arq >> active;
                 arq >> x;
                 arq >> y;
-                cout << type << endl;
                 createPlataform(x, y, type);
                 break;
             case 10:
                 arq >> active;
+                arq >> hp;
+                arq >> points;
                 arq >> x >> y;
                 arq >> vx >> vy;
 
@@ -205,6 +218,8 @@ namespace Levels
                 arq >> bx >> by;
                 arq >> bvx >> bvy;
 
+                p1->setHealth(hp);
+                p1->addScorePoints(points);
                 p1->getPhysics()->setPosition(x, y);
                 p1->getPhysics()->setVelocity(vx, vy);
 
@@ -228,6 +243,8 @@ namespace Levels
                 break;
             case 11:
                 arq >> active;
+                arq >> hp;
+                arq >> points;
                 arq >> x >> y;
                 arq >> vx >> vy;
 
@@ -236,6 +253,7 @@ namespace Levels
                 arq >> bx >> by;
                 arq >> bvx >> bvy;
 
+                p2->setHealth(hp);
                 p2->getPhysics()->setPosition(x, y);
                 p2->getPhysics()->setVelocity(vx, vy);
 

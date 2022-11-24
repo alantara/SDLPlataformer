@@ -142,14 +142,16 @@ namespace Levels
         entList.insert(static_cast<Entity *>(gnd));
         int lvlnum;
         int id, active;
-        int x, y;
-        int vx, vy;
+        float x, y;
+        float vx, vy;
+        int hp;
 
         int bid;
         int bActive;
         int bx, by;
         int bvx, bvy;
         int type;
+        int points;
 
         Trooper *trooper = nullptr;
         Vader *vader = nullptr;
@@ -175,6 +177,12 @@ namespace Levels
                 trooper = createTrooper(x, y);
                 trooper->getPhysics()->setVelocity(vx, vy);
 
+                trooper->Deactivate();
+                if(active)
+                {
+                    trooper->Activate();
+                }
+
                 trooper->getBullet()->getPhysics()->setPosition(bx, by);
                 trooper->getBullet()->getPhysics()->setVelocity(bvx, bvy);
 
@@ -190,6 +198,12 @@ namespace Levels
                 arq >> vx >> vy;
                 vader = createVader(x, y);
                 vader->getPhysics()->setVelocity(vx, vy);
+
+                vader->Deactivate();
+                if (active)
+                {
+                    vader->Activate();
+                }
                 break;
             case 5:
                 arq >> active;
@@ -212,6 +226,8 @@ namespace Levels
                 break;
             case 10:
                 arq >> active;
+                arq >> hp;
+                arq >> points;
                 arq >> x >> y;
                 arq >> vx >> vy;
 
@@ -220,6 +236,8 @@ namespace Levels
                 arq >> bx >> by;
                 arq >> bvx >> bvy;
 
+                p1->setHealth(hp);
+                p1->addScorePoints(points);
                 p1->getPhysics()->setPosition(x, y);
                 p1->getPhysics()->setVelocity(vx, vy);
 
@@ -243,6 +261,8 @@ namespace Levels
                 break;
             case 11:
                 arq >> active;
+                arq >> hp;
+                arq >> points;
                 arq >> x >> y;
                 arq >> vx >> vy;
 
@@ -251,6 +271,7 @@ namespace Levels
                 arq >> bx >> by;
                 arq >> bvx >> bvy;
 
+                p2->setHealth(hp);
                 p2->getPhysics()->setPosition(x, y);
                 p2->getPhysics()->setVelocity(vx, vy);
 
