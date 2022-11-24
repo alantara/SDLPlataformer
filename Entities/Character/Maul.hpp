@@ -17,7 +17,7 @@ namespace Entities
             {
                 darkness = (rand() % 3) + 1;
                 physics.setXVelocity(((rand()% 1000)/1000.0f) + 0.401);
-                physics.setW(61);
+                physics.setW(32);
                 physics.setH(64);
                 sprite.setSprite("assets/maul.png", 0, 0, 61, 64);
             }

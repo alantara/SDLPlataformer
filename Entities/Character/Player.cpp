@@ -8,7 +8,7 @@ Player::Player() : Character(10), bullet(new Projectile(true))
 {
     type = "Player";
     physics.setH(64);
-    physics.setW(64);
+    physics.setW(44);
     bullet->setDeletable(false);
 }
 

@@ -27,22 +27,43 @@ namespace Levels
 
     void Level2::trooperBulkInitialize()
     {
-        
+        int cont = maxTroopers;
+        createTrooper(387, 888);
+        cont--;
+        createTrooper(882, 937);
+        cont--;
+        createTrooper(1440, 888);
+        cont--;
+        while(cont > 0)
+        {
+            if(rand()%3 == 0)
+                createTrooper(rand()% (795 - 475) + 475, 972);
+            cont--;
+        }
     }
 
     void Level2::spikeBulkInitialize()
     {
-
+        createSpike(rand()%(300-258)+258, 965);
+        if(rand()%3 == 0)
+            createSpike(rand()%(1376-1333)+1333, 965);
+        createSpike(rand()%(1032-990)+990, 850);
+        createSpike(rand()% (817-516)+516, 965);
     }
 
     void Level2::barrelBulkInitialize()
     {
-
+        createBarrel(473, 970);
+        createBarrel(rand()%(795-516)+516, 970);
+        createBarrel(rand()%(837-989)+989, 970);
+        createBarrel(1505, 880);
     }
 
     void Level2::vaderBulkInitialize()
     {
-       
+        createVader(rand()%(837-989)+989, 970);
+        createVader(rand()%(837-989)+989, 970);
+        createVader(rand()% (1810-1591)+1591, 970);
     }
 
     void Level2::initialize(Player *player, Player *player2, bool multi)
@@ -68,7 +89,7 @@ namespace Levels
             player2->Deactivate();
 
         //-------------------------------------------------------------------------
-        //Enemy Initialize
+        // Enemy Initialize
 
         vaderBulkInitialize();
         trooperBulkInitialize();
@@ -82,30 +103,25 @@ namespace Levels
         //-------------------------------------------------------------------------
         //"Static" plataforms
 
-        for (int i = 4; i > 0; i--)
-            createPlataform(0, 830 - i * 45, 3);
-        createPlataform(0, 830, 2);
-        for (int i = 4; i > 0; i--)
+        for (int i = 5; i > 0; i--)
         {
             createPlataform(0, GraphicManager::getInstance()->getHeight() - 45 - i * 45, 3);
             createPlataform(GraphicManager::getInstance()->getWidth() - 43, GraphicManager::getInstance()->getHeight() - 45 - i * 45, 3);
         }
 
-        createPlataform(228, 735, 2);
-        for (int i = 5; i > 0; i--)
-            createPlataform(314, 990 - i * 45, 3);
-        createPlataform(270, 900, 5);
-        createPlataform(270, 945, 3);
-        createPlataform(225, 900, 5);
-        createPlataform(225, 945, 3);
-        createPlataform(185, 990, 5);
-        createPlataform(228, 990);
+        createPlataform(344, 945);
+        createPlataform(344, 990);
+        createPlataform(215, 990);
+        
+        createPlataform(946, 875, 2);
+        createPlataform(946, 900, 3);
+        createPlataform(946, 945, 3);
+        createPlataform(860, 990);
 
-        createPlataform(1161, 850, 2);
-        for (int i = 3; i > 0; i--)
-            createPlataform(1161, 990 - i * 45, 3);
-        createPlataform(1117, 945, 5);
-        createPlataform(1075, 990);
+        createPlataform(1419, 945);
+        createPlataform(1333, 990);
+        createPlataform(1462, 990);
+
     }
 
     void Level2::update()

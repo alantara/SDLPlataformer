@@ -27,21 +27,21 @@ namespace Levels
 
     void Level1::maulBulkInitialize()
     {
+        int cont = maxMauls;
         createMaul(rand() % (720 - 360) + 360, 970);
-        maxMauls--;
+        cont--;
         if (rand() % 3 == 0)
         {
             createMaul(rand() % (720 - 360) + 360, 970);
-            maxMauls--;
+            cont--;
         }
         createMaul(rand() % (1500 - 1210) + 1210, 970);
-        maxMauls--;
-        while (maxMauls > 0)
+        cont--;
+        while (cont > 0)
         {
             createMaul(rand() % (1030 - 780) + 780, 970);
-            maxMauls--;
+            cont--;
         }
-        maxMauls = 5;
     }
 
     void Level1::spikeBulkInitialize()
@@ -141,8 +141,8 @@ namespace Levels
         int lvlnum;
 
         int id, active;
-        int x, y;
-        int vx, vy;
+        float x, y;
+        float vx, vy;
 
         int bid;
         int bActive;

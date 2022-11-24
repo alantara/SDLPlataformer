@@ -51,5 +51,5 @@ void Plataform::update()
 void Plataform::save(ofstream &arq)
 {
     Physics *phy = this->getPhysics();
-    arq << "7" << " " << this->getType() << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() << endl;
+    arq << "7" << " " << this->getType() << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << endl;
 }
