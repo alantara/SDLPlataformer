@@ -17,7 +17,10 @@ namespace Levels
         ~Level1();
 
         Maul* createMaul(int x, int y);
-        void maulBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void maulBulkInitialize();
+        void spikeBulkInitialize();
+        void barrelBulkInitialize();
+        void vaderBulkInitialize();
         void initialize(Player *player, Player *player2, bool multi);
         
         void update();

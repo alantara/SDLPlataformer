@@ -1,7 +1,7 @@
 #include "Level.hpp"
 using namespace Levels;
 
-Level::Level(EventManager *ev) : evManager(ev), Score(910, 30), p1Life(100, 30), p2Life(1720, 30)
+Level::Level(EventManager *ev) : evManager(ev), Score(870, 30), p1Life(100, 30), p2Life(1640, 30)
 {
     cout << "Level Initialized " << endl;
 
@@ -41,10 +41,7 @@ void Level::groundInitialize()
     gnd = new Ground();
     gnd->setDeletable(false);
 
-    createPlataform(-129, GraphicManager::getHeight() - 88);
-    createPlataform(GraphicManager::getWidth(), GraphicManager::getHeight() - 88);
-
-    gnd->setPhysics(-129, gfx->getHeight() - 44, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
+    gnd->setPhysics(-129, gfx->getHeight() - 40, gfx->getWidth() + 258, 44, 0, 0, 0, 0);
     colManager.setGND(gnd);
 }
 
@@ -82,49 +79,5 @@ Vader* Level::createVader(int x, int y)
     entList.insert(static_cast<Entity *>(vader));
     colManager.insertEnemy(static_cast<Enemy *>(vader));
     return vader;
-}
-
-void Level::spikeBulkInitialize(int n, int xi, int yi, int xf, int yf)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
-
-        createSpike(xRnd, yRnd);
-    }
-}
-
-void Level::plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
-
-        createPlataform(xRnd, yRnd, type);
-    }
-}
-
-void Level::barrelBulkInitialize(int n, int xi, int yi, int xf, int yf)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
-
-        createBarrel(xRnd, yRnd);
-    }
-}
-
-void Level::vaderBulkInitialize(int n, int xi, int yi, int xf, int yf)
-{
-    while (n--)
-    {
-        int xRnd = rand() % (xf - xi) + xi;
-        int yRnd = rand() % (yf - yi) + yi;
-
-        createVader(xRnd, yRnd);
-    }
 }
 

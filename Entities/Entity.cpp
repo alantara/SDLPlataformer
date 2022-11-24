@@ -20,8 +20,8 @@ void Entity::move()
     applyGravity();
 
     physics.setYVelocity(physics.getYVelocity() + physics.getYAcceleration());
-    if (physics.getYVelocity() > 15)
-        physics.setYVelocity(15);
+    if (physics.getYVelocity() > 10)
+        physics.setYVelocity(10);
 
     physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
     physics.setYPosition(physics.getYPosition() + physics.getYVelocity());

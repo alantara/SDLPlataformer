@@ -6,7 +6,7 @@ using namespace std;
 
 namespace Menus
 {
-    GameOver::GameOver(EventManager* ev, Game* gm): Menu(ev, gm), points(910, 500), name(560, 600, 800, 100)
+    GameOver::GameOver(EventManager* ev, Game* gm): Menu(ev, gm), points(910, 500, 100, 125), name(660, 600, 600, 100)
     {
         sprite.setSprite("assets/Menu/gameoverbg.jpg", 0, 0, 1920, 1080, 1);
 

@@ -20,7 +20,7 @@ private:
     SDL_Rect Message_rect;
 
 public:
-    Font(int x, int y, int w = 100, int h = 100)
+    Font(int x, int y, int w = 180, int h = 75)
     {
         TTF_Init();
         ST = TTF_OpenFont("assets/STJEDISE.TTF", 24);

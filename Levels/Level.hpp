@@ -57,10 +57,9 @@ namespace Levels
         Barrel* createBarrel(int x, int y);
         Vader* createVader(int x, int y);
 
-        void spikeBulkInitialize(int n, int xi, int yi, int xf, int yf);
-        void plataformBulkInitialize(int n, int xi, int yi, int xf, int yf, int type = 1);
-        void barrelBulkInitialize(int n, int xi, int yi, int xf, int yf);
-        void vaderBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        virtual void spikeBulkInitialize() = 0;
+        virtual void barrelBulkInitialize() = 0;
+        virtual void vaderBulkInitialize() = 0;
 
         void groundInitialize();
 

@@ -9,7 +9,7 @@ namespace Levels
 
         sprite.setSprite("assets/bglvl2.jpg", 0, 0, 1920, 1080);
         groundInitialize();
-        maxTroopers = 10;
+        maxTroopers = 5;
     }
     Level2::~Level2()
     {
@@ -25,15 +25,24 @@ namespace Levels
         return trp;
     }
 
-    void Level2::trooperBulkInitialize(int n, int xi, int yi, int xf, int yf)
+    void Level2::trooperBulkInitialize()
     {
-        while (n--)
-        {
-            int xRnd = rand() % (xf - xi) + xi;
-            int yRnd = rand() % (yf - yi) + yi;
+        
+    }
 
-            createTrooper(xRnd, yRnd);
-        }
+    void Level2::spikeBulkInitialize()
+    {
+
+    }
+
+    void Level2::barrelBulkInitialize()
+    {
+
+    }
+
+    void Level2::vaderBulkInitialize()
+    {
+       
     }
 
     void Level2::initialize(Player *player, Player *player2, bool multi)
@@ -43,12 +52,13 @@ namespace Levels
 
         //------------------------------------------------------------------------
         // Player initialize
-        player->getPhysics()->setPosition(150, 450);
+
+        player->getPhysics()->setPosition(50, 950);
         entList.insert(static_cast<Entity *>(player));
         entList.insert(static_cast<Entity *>(player->getBullet()));
         colManager.setPlayer(player);
 
-        player2->getPhysics()->setPosition(80, 450);
+        player2->getPhysics()->setPosition(150, 950);
         entList.insert(static_cast<Entity *>(player2));
         entList.insert(static_cast<Entity *>(player2->getBullet()));
         colManager.setPlayer2(player2);
@@ -57,38 +67,45 @@ namespace Levels
         if (!multi)
             player2->Deactivate();
 
-        vaderBulkInitialize(3, 400, 500, 800, 600);
+        //-------------------------------------------------------------------------
+        //Enemy Initialize
 
-        trooperBulkInitialize(rand() % (maxTroopers - 2) + 3, 900, 500, 1400, 600);
+        vaderBulkInitialize();
+        trooperBulkInitialize();
 
         //-------------------------------------------------------------------------
         // Obstacles Initialize
-        barrelBulkInitialize(3, 200, 700, 1600, 800);
 
-        spikeBulkInitialize(3, 500, 700, 800, 800);
+        barrelBulkInitialize();
+        spikeBulkInitialize();
 
+        //-------------------------------------------------------------------------
         //"Static" plataforms
 
-        createPlataform(0, 100, 5);
-        createPlataform(0, 200, 5);
-        createPlataform(0, 300, 5);
-        createPlataform(0, 400, 5);
-        createPlataform(0, 500, 5);
+        for (int i = 4; i > 0; i--)
+            createPlataform(0, 830 - i * 45, 3);
+        createPlataform(0, 830, 2);
+        for (int i = 4; i > 0; i--)
+        {
+            createPlataform(0, GraphicManager::getInstance()->getHeight() - 45 - i * 45, 3);
+            createPlataform(GraphicManager::getInstance()->getWidth() - 43, GraphicManager::getInstance()->getHeight() - 45 - i * 45, 3);
+        }
 
-        createPlataform(GraphicManager::getInstance()->getWidth() - 50, 100, 5);
-        createPlataform(GraphicManager::getInstance()->getWidth() - 50, 200, 5);
-        createPlataform(GraphicManager::getInstance()->getWidth() - 50, 300, 5);
-        createPlataform(GraphicManager::getInstance()->getWidth() - 50, 400, 5);
-        createPlataform(GraphicManager::getInstance()->getWidth() - 50, 500, 5);
+        createPlataform(228, 735, 2);
+        for (int i = 5; i > 0; i--)
+            createPlataform(314, 990 - i * 45, 3);
+        createPlataform(270, 900, 5);
+        createPlataform(270, 945, 3);
+        createPlataform(225, 900, 5);
+        createPlataform(225, 945, 3);
+        createPlataform(185, 990, 5);
+        createPlataform(228, 990);
 
-        createPlataform(900, 900, 4);
-        createPlataform(950, 900, 6);
-        createPlataform(450, 900, 5);
-
-        createPlataform(400, 1000);
-        createPlataform(900, 1000);
-        createPlataform(1500, 1000);
-        createPlataform(1600, 1000);
+        createPlataform(1161, 850, 2);
+        for (int i = 3; i > 0; i--)
+            createPlataform(1161, 990 - i * 45, 3);
+        createPlataform(1117, 945, 5);
+        createPlataform(1075, 990);
     }
 
     void Level2::update()
@@ -96,9 +113,9 @@ namespace Levels
         gnd->render();
         colManager.Execute();
         entList.updateAll();
-        Score.update(to_string(Player::getScorePoints()));
-        p1Life.update(to_string(p1->getHealth()));
-        p2Life.update(to_string(p2->getHealth()));
+        Score.update("Points: " + to_string(Player::getScorePoints()));
+        p1Life.update("HP: " + to_string(p1->getHealth()));
+        p2Life.update("HP: " + to_string(p2->getHealth()));
     }
 
     int Level2::load()

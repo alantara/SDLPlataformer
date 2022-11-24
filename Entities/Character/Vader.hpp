@@ -17,7 +17,7 @@ namespace Entities
             {
                 force = (rand()%3)+3;
                 sprite.setSprite("assets/vader.png", 0, 0, 64, 51, 1);
-                physics.setXVelocity(2);
+                physics.setXVelocity(((rand()% 1000)/1000.0f) + 1.301);
                 physics.setW(64 * sprite.getMultiplier());
                 physics.setH(51 * sprite.getMultiplier());
             }

@@ -40,7 +40,8 @@ namespace Entities
                 {
                     bullet->fire(this->getPhysics()->getXPosition(), this->getPhysics()->getYPosition() + 20, physics.getMoveDirection());
                 }
-                move();
+                if(physics.getYPosition() > 800)
+                    move();
             }
             void save(ofstream &arq)
             {

@@ -56,7 +56,8 @@ void Player::update()
     if (event->getKeyDown(input.getJump()))
     {
         if (getIsGrounded())
-            physics.setYVelocity(-35);
+            physics.setYVelocity(-37);
+        
     }
     if (event->getKeyDown(input.getFire()))
     {

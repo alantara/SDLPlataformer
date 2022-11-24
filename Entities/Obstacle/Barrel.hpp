@@ -14,7 +14,7 @@ namespace Entities
             int weight;
 
         public:
-            Barrel() : weight(((rand() % 1000) / 1000.0f) + 1)
+            Barrel() : weight(((rand() % 1000) / 1000.0f) + 0.001)
             {
                 physics.setW(45);
                 physics.setH(64);
@@ -27,8 +27,8 @@ namespace Entities
                 applyGravity();
 
                 physics.setYVelocity(physics.getYVelocity() + physics.getYAcceleration() + weight);
-                if (physics.getYVelocity() > 15)
-                    physics.setYVelocity(15);
+                if (physics.getYVelocity() > 10)
+                    physics.setYVelocity(10);
 
                 physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
                 physics.setYPosition(physics.getYPosition() + physics.getYVelocity());
@@ -40,6 +40,7 @@ namespace Entities
                 physics.setYVelocity(physics.getYVelocity() * weight);
                 move();
             }
+
             void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();

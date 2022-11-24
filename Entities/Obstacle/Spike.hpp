@@ -27,8 +27,6 @@ namespace Entities
 
             void update()
             {
-                applyGravity();
-
                 move();
             }
             void save(ofstream &arq)

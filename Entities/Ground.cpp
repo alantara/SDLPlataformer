@@ -8,7 +8,7 @@ namespace Entities
         for(int i = 0 ; i < size ; i++)
         {
             platvector[i] = new Plataform();
-            platvector[i]->getPhysics()->setPosition(i*129-129, GraphicManager::getInstance()->getHeight() - 44);
+            platvector[i]->getPhysics()->setPosition(i*129-129, GraphicManager::getInstance()->getHeight() - 40);
         }
     }
     Ground::~Ground()

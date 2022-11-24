@@ -16,7 +16,7 @@ namespace Entities
             Maul(Player *pl, Player *pl2) : Enemy(1, pl, pl2)
             {
                 darkness = (rand() % 3) + 1;
-                physics.setXVelocity(1);
+                physics.setXVelocity(((rand()% 1000)/1000.0f) + 0.401);
                 physics.setW(61);
                 physics.setH(64);
                 sprite.setSprite("assets/maul.png", 0, 0, 61, 64);

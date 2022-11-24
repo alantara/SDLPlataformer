@@ -38,12 +38,13 @@ namespace Managers
         void knockback(Player *pl, bool isSpike = true);
         bool intersect(Entity *ent1, Entity *ent2);
         int isColliding(Entity *ent1, Entity *ent2);
-        void Execute();
+                
         void PlEnemyCollision();
-
         void projCollision();
         void enemyCollision();
         void obsCollision();
         void groundCollision();
+
+        void Execute();
     };
 }

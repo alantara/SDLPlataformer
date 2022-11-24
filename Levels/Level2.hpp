@@ -14,7 +14,10 @@ namespace Levels
         ~Level2();
 
         Trooper* createTrooper(int x, int y);
-        void trooperBulkInitialize(int n, int xi, int yi, int xf, int yf);
+        void trooperBulkInitialize();
+        void spikeBulkInitialize();
+        void barrelBulkInitialize();
+        void vaderBulkInitialize();
         void initialize(Player *player, Player *player2, bool multi);
 
         void update();

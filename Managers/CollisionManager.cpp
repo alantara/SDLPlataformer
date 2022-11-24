@@ -38,50 +38,52 @@ int CollisionManager::isColliding(Entity *ent1, Entity *ent2)
     int y1 = ent1->getPhysics()->getYPosition();
     int w1 = ent1->getPhysics()->getW();
     int h1 = ent1->getPhysics()->getH();
+    float vx = ent1->getPhysics()->getXVelocity();
+    float vy = ent1->getPhysics()->getYVelocity();
 
     int x2 = ent2->getPhysics()->getXPosition();
     int y2 = ent2->getPhysics()->getYPosition();
     int w2 = ent2->getPhysics()->getW();
     int h2 = ent2->getPhysics()->getH();
 
-    if (x1 + w1 > x2 &&
-        x1 < x2 + w2 &&
-        y1 + h1 + 5 > y2 &&
-        y1 - 5 < y2 + h2)
-    {
-        if (y1 > y2)
-        {
-            ent1->getPhysics()->setYPosition(y2 + h2 + 6);
-            ent1->getPhysics()->setYVelocity(0);
-            return 4; // Top Collision
-        }
-        else if (y1 < y2)
-        {
-            ent1->setIsGrounded(true);
-            ent1->getPhysics()->setYPosition(y2 - h1 - 6);
-            ent1->getPhysics()->setYVelocity(0);
-            return 2; // Bottom Collision
-        }
-    }
-
-    if (x1 + w1 + 5 > x2 &&
-        x1 - 5 < x2 + w2 &&
+    if (x1 + w1 + vx > x2 &&
+        x1 + vx < x2 + w2 &&
         y1 + h1 > y2 &&
         y1 < y2 + h2)
     {
         if (x1 < x2)
         {
 
-            ent1->getPhysics()->setXPosition(x2 - w1 - 6);
+            ent1->getPhysics()->setXPosition(x2 - w1 - 5);
 
             return 1; // Right Collision
         }
         else if (x1 > x2)
         {
 
-            ent1->getPhysics()->setXPosition(x2 + w2 + 6);
+            ent1->getPhysics()->setXPosition(x2 + w2 + 5);
 
             return 3; // Left Collision
+        }
+    }
+
+    if (x1 + w1 > x2 &&
+        x1 < x2 + w2 &&
+        y1 + h1 + vy > y2 &&
+        y1 + vy < y2 + h2)
+    {
+        if (y1 > y2)
+        {
+            ent1->getPhysics()->setYPosition(y2 + h2 + 5);
+            ent1->getPhysics()->setYVelocity(0);
+            return 4; // Top Collision
+        }
+        else if (y1 < y2)
+        {
+            ent1->setIsGrounded(true);
+            ent1->getPhysics()->setYPosition(y2 - h1 - 5);
+            ent1->getPhysics()->setYVelocity(0);
+            return 2; // Bottom Collision
         }
     }
 
@@ -97,10 +99,12 @@ void CollisionManager::enemyCollision()
     {
         for (it2 = LOs.begin(); it2 != LOs.end(); it2++)
         {
-            if (isColliding(static_cast<Entity *>(*it), static_cast<Entity *>(*it2)) % 2 == 1)
-            {
-                (*it)->getPhysics()->setMoveDirection(-(*it)->getPhysics()->getMoveDirection());
-                (*it)->getPhysics()->setXVelocity(-(*it)->getPhysics()->getXVelocity());
+            if(!(*it2)->getHarm()){
+                if (isColliding(static_cast<Entity *>(*it), static_cast<Entity *>(*it2)) % 2 == 1)
+                {
+                    (*it)->getPhysics()->setMoveDirection(-(*it)->getPhysics()->getMoveDirection());
+                    (*it)->getPhysics()->setXVelocity(-(*it)->getPhysics()->getXVelocity());
+                }
             }
         }
     }
@@ -180,6 +184,12 @@ void CollisionManager::projCollision()
         it2++;
     }
 
+    if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(gnd)) && pl->getBullet()->getIsActive())
+        pl->getBullet()->Deactivate();
+
+    if (intersect(static_cast<Entity *>(pl2->getBullet()), static_cast<Entity *>(gnd)) && pl2->getBullet()->getIsActive())
+        pl2->getBullet()->Deactivate();
+
     it2 = LOs.begin();
     while (it != LIs.end())
     {
@@ -207,6 +217,9 @@ void CollisionManager::projCollision()
                 (*it)->getBullet()->Deactivate();
                 pl2->takeDamage();
             }
+
+            if (intersect(static_cast<Entity *>((*it)->getBullet()), static_cast<Entity *>(gnd)) && (*it)->getBullet()->getIsActive())
+                (*it)->getBullet()->Deactivate();
         }
         // Player Enemy
         if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(*it)) && pl->getBullet()->getIsActive() && (*it)->getIsActive())
