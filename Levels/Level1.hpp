@@ -21,6 +21,7 @@ namespace Levels
         void spikeBulkInitialize();
         void barrelBulkInitialize();
         void vaderBulkInitialize();
+        
         void initialize(Player *player, Player *player2, bool multi);
         
         void update();

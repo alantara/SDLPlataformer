@@ -175,12 +175,13 @@ void CollisionManager::projCollision()
 
     while (it2 != LOs.end())
     {
-        if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(*it2)) && pl->getBullet()->getIsActive())
-            pl->getBullet()->Deactivate();
+        if(!(*it2)->getHarm()){
+            if (intersect(static_cast<Entity *>(pl->getBullet()), static_cast<Entity *>(*it2)) && pl->getBullet()->getIsActive())
+                pl->getBullet()->Deactivate();
 
-        if (intersect(static_cast<Entity *>(pl2->getBullet()), static_cast<Entity *>(*it2)) && pl2->getBullet()->getIsActive())
-            pl2->getBullet()->Deactivate();
-
+            if (intersect(static_cast<Entity *>(pl2->getBullet()), static_cast<Entity *>(*it2)) && pl2->getBullet()->getIsActive())
+                pl2->getBullet()->Deactivate();
+        }
         it2++;
     }
 

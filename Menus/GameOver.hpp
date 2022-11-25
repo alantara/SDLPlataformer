@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Menu.hpp"
-#include "Button.hpp"
 #include "Font.hpp"
 using namespace Components;
 

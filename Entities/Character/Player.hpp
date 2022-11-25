@@ -39,10 +39,10 @@ namespace Entities
             Projectile *getBullet() { return bullet; }
 
             void update();
-            virtual void save(ofstream &arq)
+            void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();
-                arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
+                arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
             }
         };
     }

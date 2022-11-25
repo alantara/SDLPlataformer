@@ -105,7 +105,7 @@ namespace Levels
 
         //"Static" plataforms
 
-        for (int i = 4; i > 0; i--)
+        for (int i = 7; i > 0; i--)
             createPlataform(0, 830 - i * 45, 3);
         createPlataform(0, 830, 2);
         for (int i = 4; i > 0; i--)
@@ -117,10 +117,10 @@ namespace Levels
         createPlataform(228, 735, 2);
         for (int i = 5; i > 0; i--)
             createPlataform(314, 990 - i * 45, 3);
-        createPlataform(270, 900, 5);
-        createPlataform(270, 945, 3);
-        createPlataform(225, 900, 5);
-        createPlataform(225, 945, 3);
+        createPlataform(271, 900, 5);
+        createPlataform(271, 945, 3);
+        createPlataform(228, 900, 5);
+        createPlataform(228, 945, 3);
         createPlataform(185, 990, 5);
         createPlataform(228, 990);
 

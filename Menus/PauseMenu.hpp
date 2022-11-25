@@ -4,8 +4,6 @@
 
 #include "EventManager.hpp"
 using namespace Managers;
-#include "Button.hpp"
-using namespace Components;
 
 class Game;
 

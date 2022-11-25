@@ -4,7 +4,6 @@
 #include <map>
 using namespace std;
 
-#include "Button.hpp"
 #include "Font.hpp"
 using namespace Components;
 

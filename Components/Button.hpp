@@ -2,7 +2,7 @@
 
 #include "Ente.hpp"
 
-namespace Components
+namespace Menus
 {
     class Button : public Ente
     {

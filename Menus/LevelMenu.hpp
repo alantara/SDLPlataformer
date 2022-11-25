@@ -2,9 +2,6 @@
 
 #include "Menu.hpp"
 
-#include "Button.hpp"
-using namespace Components;
-
 class Game;
 
 namespace Menus
