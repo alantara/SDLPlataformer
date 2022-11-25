@@ -14,6 +14,8 @@ Level::~Level()
 {
     cout << "Level Destroyed" << endl;
 
+    delete gnd;
+
     evManager = nullptr;
     p1 = nullptr;
     p2 = nullptr;

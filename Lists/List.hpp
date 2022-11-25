@@ -27,18 +27,33 @@ namespace Lists
             TE getData() { return data; }
         };
 
-    private:
+    protected:
         Element<TL> *first;
         Element<TL> *last;
 
     public:
         List() : first(nullptr), last(nullptr) {}
-        ~List(){}
+        ~List() {}
 
         Element<TL> *begin() { return first; }
+        Element<TL> *getlast() { return last; }
 
         void clean()
         {
+            Element<TL> *aux = nullptr;
+            Element<TL> *aux2 = nullptr;
+            aux = first;
+            while (aux != nullptr)
+            {
+                aux2 = aux->getNext();
+                if (aux->getData()->getDeletable())
+                {
+                    delete (aux->getData());
+                }
+                delete aux;
+                aux = aux2;
+            }
+
             first = nullptr;
             last = nullptr;
         }
@@ -58,5 +73,33 @@ namespace Lists
                 last = el;
             }
         }
+
+        class iterator
+        {
+        private:
+            Element<TL> *iter;
+
+        public:
+            iterator operator++()
+            {
+                iter = iter->getNext();
+                return *this;
+            }
+
+            TL operator*()
+            {
+                return iter->getData();
+            }
+
+            void operator=(Element<TL> *el)
+            {
+                iter = el;
+            }
+
+            bool operator!=(Element<TL> *el)
+            {
+                return iter != el;
+            }
+        };
     };
 }

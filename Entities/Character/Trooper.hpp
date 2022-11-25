@@ -21,6 +21,7 @@ namespace Entities
             }
             ~Trooper()
             {
+                delete bullet;
             }
 
             Projectile *getBullet() override { return bullet; }
