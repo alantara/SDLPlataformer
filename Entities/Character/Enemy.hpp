@@ -20,7 +20,7 @@ namespace Entities
             ~Enemy();
 
             inline virtual Projectile* getBullet() {return nullptr;}
-            inline bool getIsShooter() {return shooter;}
+            inline const bool getIsShooter() const {return shooter;}
             
             inline virtual void doDamage(Player* pl) {pl->takeDamage();}
 

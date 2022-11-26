@@ -32,7 +32,7 @@ namespace Menus
         inline void setWidth(int w) { width = w; }
         inline void setHeight(int h) { height = h; }
 
-        void update(){}
+        inline void update() {}
         inline void render() { sprite.render(x, y); }
     };
 }

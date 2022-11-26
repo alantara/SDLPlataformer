@@ -19,6 +19,7 @@ namespace Entities
 
             inline virtual const int getDamage() const { return 0; }
             inline const bool getHarm() const { return isHarmful; }
+            
             virtual void update() = 0;
             inline virtual void save(ofstream &arq) {}
         };

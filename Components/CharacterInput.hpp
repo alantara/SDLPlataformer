@@ -13,7 +13,7 @@ namespace Components
         SDL_Scancode fire;
 
     public:
-        CharacterInput() : left(SDL_SCANCODE_A), right(SDL_SCANCODE_D), jump(SDL_SCANCODE_W), fire(SDL_SCANCODE_Q){};
+        CharacterInput() : left(SDL_SCANCODE_A), right(SDL_SCANCODE_D), jump(SDL_SCANCODE_SPACE), fire(SDL_SCANCODE_Q){};
         ~CharacterInput(){};
 
         void setCharacterInput(SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f)

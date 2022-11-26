@@ -4,8 +4,8 @@ Font::Font(int x, int y, int w, int h)
 {
     TTF_Init();
     ST = TTF_OpenFont("assets/STJEDISE.TTF", 24);
-    Yellow = {255, 191, 0};
-    surfaceMessage = TTF_RenderText_Solid(ST, "", Yellow);
+    yellow = {255, 191, 0};
+    surfaceMessage = TTF_RenderText_Solid(ST, "", yellow);
     Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
 
     Message_rect.x = x;
@@ -28,7 +28,7 @@ void Font::setRect(int x, int y, int w, int h)
 
 void Font::setMessage(string s)
 {
-    surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), Yellow);
+    surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), yellow);
     Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
 }
 
@@ -46,6 +46,6 @@ void Font::render()
 void Font::update(string s)
 {
     clean();
-    surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), Yellow);
+    surfaceMessage = TTF_RenderText_Solid(ST, s.c_str(), yellow);
     Message = SDL_CreateTextureFromSurface(GraphicManager::getInstance()->getRenderer(), surfaceMessage);
 }

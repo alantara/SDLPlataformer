@@ -27,7 +27,7 @@ namespace Lists
             TE getData() { return data; }
         };
 
-    protected:
+    private:
         Element<TL> *first;
         Element<TL> *last;
 

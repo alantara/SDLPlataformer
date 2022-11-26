@@ -14,7 +14,7 @@ class Font
 {
 private:
     TTF_Font *ST;
-    SDL_Color Yellow;
+    SDL_Color yellow;
     SDL_Surface *surfaceMessage;
     SDL_Texture *Message;
     SDL_Rect Message_rect;

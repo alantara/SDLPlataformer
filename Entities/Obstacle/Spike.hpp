@@ -23,10 +23,10 @@ namespace Entities
             }
             ~Spike()
             {
-                
+
             }
 
-            inline const int getDamage() const override { return damage;}
+            inline const int getDamage() const override { return damage; }
 
             inline void update() { move(); }
 
