@@ -26,26 +26,26 @@ namespace Entities
         Entity();
         ~Entity();
 
-        void Deactivate() { isActive = false; }
-        void Activate() { isActive = true; }
-        bool getIsActive() { return isActive; }
+        inline void Deactivate() { isActive = false; }
+        inline void Activate() { isActive = true; }
+        inline const bool getIsActive() const { return isActive; }
 
-        void setPhysics(int xPos, int yPos, int width, int height, int vX, int vY, int aX, int aY) { physics.setPhysics(xPos, yPos, width, height, vX, vY, aX, aY); }
-        Physics *getPhysics() { return &physics; }
+        inline void setPhysics(int xPos, int yPos, int width, int height, int vX, int vY, int aX, int aY) { physics.setPhysics(xPos, yPos, width, height, vX, vY, aX, aY); }
+        inline Physics *getPhysics() { return &physics; }
 
-        bool getDeletable() { return deletable; }
-        void setDeletable(bool b) { deletable = b; }
+        inline const bool getDeletable() const { return deletable; }
+        inline void setDeletable(bool b) { deletable = b; }
 
-        void setIsGrounded(bool v) { isGrounded = v; }
-        const bool getIsGrounded() const { return isGrounded; }
+        inline void setIsGrounded(bool v) { isGrounded = v; }
+        inline const bool getIsGrounded() const { return isGrounded; }
 
-        string getType() { return type; }
-        void setType(string t) { type = t; }
+        inline const string getType() const { return type; }
+        inline void setType(string t) { type = t; }
 
-        virtual void update() = 0;
         void applyGravity();
         virtual void move();
         virtual void render();
+        virtual void update() = 0;
         virtual void save(ofstream &arq) = 0;
     };
 }

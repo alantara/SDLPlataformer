@@ -29,11 +29,11 @@ namespace Managers
         ~CollisionManager();
         void clean();
 
-        void setPlayer(Player *player) { pl = player; }
-        void setPlayer2(Player *player) { pl2 = player; }
-        void setGND(Ground *g) { gnd = g; }
-        void insertEnemy(Enemy *en) { LIs.push_back(en); }
-        void insertObs(Obstacle *obs) { LOs.push_back(obs); }
+        inline void setPlayer(Player *player) { pl = player; }
+        inline void setPlayer2(Player *player) { pl2 = player; }
+        inline void setGND(Ground *g) { gnd = g; }
+        inline void insertEnemy(Enemy *en) { LIs.push_back(en); }
+        inline void insertObs(Obstacle *obs) { LOs.push_back(obs); }
 
         void knockback(Player *pl, bool isSpike = true);
         bool intersect(Entity *ent1, Entity *ent2);

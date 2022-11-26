@@ -17,7 +17,7 @@ namespace Entities
         Plataform(int tp = 1, bool fl = false);
         ~Plataform();
 
-        int getType() { return type; }
+        inline int getType() { return type; }
 
         void update();
         void save(ofstream &arq);

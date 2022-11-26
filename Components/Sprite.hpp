@@ -26,21 +26,20 @@ namespace Components
 
         void setSprite(string p, int c, int r, int w, int h, int m = 1);
 
-        const string getPath() const { return path; }
-        const SDL_Texture *getTexture() const { return texture; }
-        const int getRow() const { return row; }
-        const int getColumn() const { return column; }
-        const int getWidth() const { return width; }
-        const int getHeight() const { return height; }
-        const int getMultiplier() const { return multiplier; }
+        inline const SDL_Texture *getTexture() const { return texture; }
+        inline const int getRow() const { return row; }
+        inline const int getColumn() const { return column; }
+        inline const int getWidth() const { return width; }
+        inline const int getHeight() const { return height; }
+        inline const int getMultiplier() const { return multiplier; }
 
-        void setPath(string p) { path = p; }
-        void setTexture(string p);
-        void setRow(int r) { row = r; }
-        void setColumn(int c) { column = c; }
-        void setWidth(int w) { width = w; }
-        void setHeight(int h) { height = h; }
-        void setMultiplier(int m) { multiplier = m; }
+        inline void setPath(string p) { path = p; }
+        inline void setTexture(string p);
+        inline void setRow(int r) { row = r; }
+        inline void setColumn(int c) { column = c; }
+        inline void setWidth(int w) { width = w; }
+        inline void setHeight(int h) { height = h; }
+        inline void setMultiplier(int m) { multiplier = m; }
 
         void render(int x = 0, int y = 0, int moveDir = 1);
 

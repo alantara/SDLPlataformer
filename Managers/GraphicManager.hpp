@@ -8,13 +8,13 @@ namespace Managers
     class GraphicManager
     {
     public:
-        SDL_Window *getWindow() const { return window; }
-        SDL_Renderer *getRenderer() const { return renderer; }
-        static int getWidth() { return sWidth; }
-        static int getHeight() { return sHeight; }
+        inline SDL_Window *getWindow() const { return window; }
+        inline SDL_Renderer *getRenderer() const { return renderer; }
+        inline static int getWidth() { return sWidth; }
+        inline static int getHeight() { return sHeight; }
 
-        static GraphicManager *getInstance() { return instance = (instance == nullptr) ? new GraphicManager() : instance; }
-        void deleteInstance() { delete instance; }
+        inline static GraphicManager *getInstance() { return instance = (instance == nullptr) ? new GraphicManager() : instance; }
+        inline void deleteInstance() { delete instance; }
 
     private:
         SDL_Window *window;

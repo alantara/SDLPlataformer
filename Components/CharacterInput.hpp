@@ -24,14 +24,14 @@ namespace Components
             setFire(f);
         }
 
-        const SDL_Scancode getLeft() const {return left;}
-        const SDL_Scancode getRight() const { return right; }
-        const SDL_Scancode getJump() const { return jump; }
-        const SDL_Scancode getFire() const { return fire; }
+        inline const SDL_Scancode getLeft() const {return left;}
+        inline const SDL_Scancode getRight() const { return right; }
+        inline const SDL_Scancode getJump() const { return jump; }
+        inline const SDL_Scancode getFire() const { return fire; }
 
-        void setLeft(SDL_Scancode l) { left = l; }
-        void setRight(SDL_Scancode r) { right = r; }
-        void setJump(SDL_Scancode j) { jump = j; }
-        void setFire(SDL_Scancode f) { fire = f; }
+        inline void setLeft(SDL_Scancode l) { left = l; }
+        inline void setRight(SDL_Scancode r) { right = r; }
+        inline void setJump(SDL_Scancode j) { jump = j; }
+        inline void setFire(SDL_Scancode f) { fire = f; }
     };
 }

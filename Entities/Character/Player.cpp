@@ -57,7 +57,6 @@ void Player::update()
     {
         if (getIsGrounded())
             physics.setYVelocity(-37);
-        
     }
     if (event->getKeyDown(input.getFire()))
     {
@@ -65,4 +64,10 @@ void Player::update()
     }
     move();
     setIsGrounded(false);
+}
+
+void Player::save(ofstream &arq)
+{
+    Physics *phy = this->getPhysics();
+    arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
 }

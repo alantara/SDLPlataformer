@@ -13,15 +13,14 @@ namespace Entities
             bool isHarmful;
 
         public:
-            Obstacle(bool harm = false) : isHarmful(harm) {
-                type = "Obstacle";
-            }
-            ~Obstacle(){};
+            Obstacle(bool harm) : isHarmful(harm) {type = "Obstacle";}
+            Obstacle() : isHarmful(false) { type = "Obstacle";}
+            ~Obstacle(){}
 
-            virtual const int getDamage() const {return 0;}
-            const bool getHarm() const { return isHarmful; }
+            inline virtual const int getDamage() const { return 0; }
+            inline const bool getHarm() const { return isHarmful; }
             virtual void update() = 0;
-            virtual void save(ofstream &arq){};
+            inline virtual void save(ofstream &arq) {}
         };
     }
 }

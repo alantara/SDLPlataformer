@@ -30,20 +30,16 @@ namespace Entities
 
             void reset();
 
-            static void addScorePoints(int i) { points += i; }
-            static int getScorePoints() { return points; }
+            inline static void addScorePoints(int i) { points += i; }
+            inline static int getScorePoints() { return points; }
 
             void setInputSystem(EventManager *ev, SDL_Scancode l, SDL_Scancode r, SDL_Scancode j, SDL_Scancode f);
-            CharacterInput getInputSystem() { return input; };
+            inline const CharacterInput getInputSystem() const { return input; }
 
-            Projectile *getBullet() { return bullet; }
+            inline Projectile *getBullet() { return bullet; }
 
             void update();
-            void save(ofstream &arq)
-            {
-                Physics *phy = this->getPhysics();
-                arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
-            }
+            void save(ofstream &arq);
         };
     }
 }

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Obstacle.hpp"
-using namespace Entities;
-using namespace Obstacles;
 
 namespace Entities
 {
@@ -14,38 +12,13 @@ namespace Entities
             int weight;
 
         public:
-            Barrel() : weight(((rand() % 1000) / 1000.0f) + 0.001)
-            {
-                physics.setW(45);
-                physics.setH(64);
-                sprite.setSprite("assets/barrel.png", 0, 0, 45, 64);
-            }
+            Barrel();
             ~Barrel();
 
-            void move() override
-            {
-                applyGravity();
+            void move() override;
 
-                physics.setYVelocity(physics.getYVelocity() + physics.getYAcceleration() + weight);
-                if (physics.getYVelocity() > 10)
-                    physics.setYVelocity(10);
-
-                physics.setXPosition(physics.getXPosition() + physics.getXVelocity());
-                physics.setYPosition(physics.getYPosition() + physics.getYVelocity());
-            }
-
-            void update()
-            {
-                applyGravity();
-                physics.setYVelocity(physics.getYVelocity() * weight);
-                move();
-            }
-
-            void save(ofstream &arq)
-            {
-                Physics *phy = this->getPhysics();
-                arq << "5" << " " << (this->getIsActive() ? 1 : 0) << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << endl;
-            }
+            void update();
+            void save(ofstream &arq);
         };
     }
 }

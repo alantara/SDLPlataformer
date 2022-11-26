@@ -16,19 +16,20 @@ namespace Entities
         public:
             Spike() : Obstacle(true)
             {
-                damage = rand()%3 + 1;
+                damage = rand()%2 + 1;
                 physics.setW(32);
                 physics.setH(22);
                 setSprite("assets/spike.png", 0, 0, 32, 22, 1);
             }
-            ~Spike();
-
-            const int getDamage() const override { return damage;}
-
-            void update()
+            ~Spike()
             {
-                move();
+                
             }
+
+            inline const int getDamage() const override { return damage;}
+
+            inline void update() { move(); }
+
             void save(ofstream &arq)
             {
                 Physics *phy = this->getPhysics();

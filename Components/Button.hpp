@@ -11,8 +11,8 @@ namespace Menus
         int width, height;
 
     public:
-        Button() : x(0), y(0), width(0), height(0){};
-        ~Button(){};
+        Button() : x(0), y(0), width(0), height(0){}
+        ~Button(){}
 
         void setButton(int xPos, int yPos, int w, int h)
         {
@@ -22,20 +22,17 @@ namespace Menus
             setHeight(h);
         }
 
-        const int getX() const { return x; }
-        const int getY() const { return y; }
-        const int getHeight() const { return height; }
-        const int getWidth() const { return width; }
+        inline const int getX() const { return x; }
+        inline const int getY() const { return y; }
+        inline const int getHeight() const { return height; }
+        inline const int getWidth() const { return width; }
 
-        void setX(int xPos) { x= xPos; }
-        void setY(int yPos) { y= yPos; }
-        void setWidth(int w) {width = w; }
-        void setHeight(int h) {height = h; }
+        inline void setX(int xPos) { x= xPos; }
+        inline void setY(int yPos) { y= yPos; }
+        inline void setWidth(int w) { width = w; }
+        inline void setHeight(int h) { height = h; }
 
-        void update(){};
-        void render()
-        {
-            sprite.render(x, y);
-        }
+        void update(){}
+        inline void render() { sprite.render(x, y); }
     };
 }

@@ -13,12 +13,11 @@ namespace Managers
         void listen(bool &isRunning);
         void keyUpdate();
 
-        bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }
-        bool getMBDown() { return mouseClick; }
-
-        int getMouseX() { return mouseX; }
-        int getMouseY() { return mouseY; }
-        bool getMouseClick() { return mouseClick; }
+        inline bool getKeyDown(SDL_Scancode key) { return (keyStates[key] == 1); }
+        inline bool getMBDown() { return mouseClick; }
+        inline int getMouseX() { return mouseX; }
+        inline int getMouseY() { return mouseY; }
+        inline bool getMouseClick() { return mouseClick; }
 
     private:
         int mouseX, mouseY;

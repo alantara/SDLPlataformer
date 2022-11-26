@@ -20,8 +20,8 @@ public:
     Ente();
     ~Ente();
 
-    int getEnteSize() { return enteSize; }
-    int getID() { return id; }
+    inline int getEnteSize() { return enteSize; }
+    inline int getID() { return id; }
     void setSprite(string p, int f, int c, int w, int h, int m = 1);
 
     virtual void update() = 0;

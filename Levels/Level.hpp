@@ -50,7 +50,7 @@ namespace Levels
         virtual void update() = 0;
         void clean();
 
-        int getEnemySize() { return entList.getEnemySize(); }
+        inline int getEnemySize() { return entList.getEnemySize(); }
 
         Spike* createSpike(int x, int y);
         Plataform* createPlataform(int x, int y, int type = 1);

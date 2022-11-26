@@ -19,13 +19,13 @@ namespace Entities
             Enemy(int hp, Player* pl, Player* pl2, bool sh = false);
             ~Enemy();
 
-            virtual Projectile* getBullet() {return nullptr;}
-            bool getIsShooter() {return shooter;}
+            inline virtual Projectile* getBullet() {return nullptr;}
+            inline bool getIsShooter() {return shooter;}
             
-            virtual void doDamage(Player* pl) {pl->takeDamage();}
+            inline virtual void doDamage(Player* pl) {pl->takeDamage();}
 
             virtual void update() = 0;
-            virtual void save(ofstream &arq){};
+            inline virtual void save(ofstream &arq){}
         };
     }
 }

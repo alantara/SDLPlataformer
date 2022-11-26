@@ -44,11 +44,11 @@ public:
     Game();
     ~Game();
 
-    void setMultiplayer(bool b) { multiplayer = b; }
-    bool getMultiplayer() { return multiplayer; }
+    inline void setMultiplayer(bool b) { multiplayer = b; }
+    inline bool getMultiplayer() { return multiplayer; }
 
-    int getGameState() { return gameState; }
-    void setGameState(int g) { gameState = g; }
+    inline int getGameState() { return gameState; }
+    inline void setGameState(int g) { gameState = g; }
 
     void resetLevels();
     void Level1Initialize();

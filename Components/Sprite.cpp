@@ -18,7 +18,6 @@ Sprite::~Sprite()
 
 void Sprite::setSprite(string p, int c, int r, int w, int h, int m)
 {
-    setPath(p);
     setTexture(p);
 
     setRow(r);
