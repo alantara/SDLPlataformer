@@ -69,5 +69,5 @@ void Player::update()
 void Player::save(ofstream &arq)
 {
     Physics *phy = this->getPhysics();
-    arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity() << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
+    arq << (this->getType() == "Player1" ? 10 : 11) << " " << (this->getIsActive() ? 1 : 0) << " " << this->getHealth() << " " << this->getScorePoints() << " " << phy->getXPosition() << " " << phy->getYPosition() - phy->getYVelocity()-5 << " " << phy->getXVelocity() << " " << phy->getYVelocity() << endl;
 }
