@@ -25,6 +25,7 @@ namespace Components
         ~Sprite();
 
         void setSprite(string p, int c, int r, int w, int h, int m = 1);
+        void setSprite(const char *p, int c, int r, int w, int h, int m = 1);
 
         inline const SDL_Texture *getTexture() const { return texture; }
         inline const int getRow() const { return row; }
@@ -35,6 +36,7 @@ namespace Components
 
         inline void setPath(string p) { path = p; }
         inline void setTexture(string p);
+        inline void setTexture(const char *p);
         inline void setRow(int r) { row = r; }
         inline void setColumn(int c) { column = c; }
         inline void setWidth(int w) { width = w; }
@@ -42,6 +44,5 @@ namespace Components
         inline void setMultiplier(int m) { multiplier = m; }
 
         void render(int x = 0, int y = 0, int moveDir = 1);
-
     };
 }
